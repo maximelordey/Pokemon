@@ -46,4 +46,20 @@
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\Sons\musique.ogg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\Sons\musique2.ogg">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\..\..\Sons\musique.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="..\..\..\Sons\musique.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
 </Project>
