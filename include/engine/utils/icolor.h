@@ -1,6 +1,6 @@
 include <cstdint>;
 
-class abstract IColor {
+class IColor {
 
 	public:
 		virtual uint8_t getRed() = 0;
