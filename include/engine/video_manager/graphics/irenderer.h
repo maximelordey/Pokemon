@@ -1,6 +1,13 @@
 #ifndef IRENDERER_H
 #define IRENDERER_H
 
+#include "icolor.h"
+#include "idimension.h"
+#include "irectangle.h"
+#include "ipoint.h"
+#include "irenderer.h"
+#include "itexture.h"
+
 class IRenderer {
 	public:
 		virtual const IColor getColor() const = 0;

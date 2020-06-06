@@ -1,7 +1,7 @@
 #ifndef ICOLOR_H
 #define ICOLOR_H
 
-include <cstdint>;
+#include <cstdint>
 
 class IColor {
 

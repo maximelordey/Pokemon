@@ -1,12 +1,12 @@
 #ifndef ABSTRACT_GAME_MANAGER_H
 #define ABSTRACT_GAME_MANAGER_H
 
-include "igame_manager.h";
-include "isound_manager.h";
-include "ivideo_manager.h";
-include "iaction_manager.h";
-include "iaction_command.h";
-include "irenderer.h"
+#include "igame_manager.h"
+#include "isound_manager.h"
+#include "ivideo_manager.h"
+#include "iaction_manager.h"
+#include "iaction_command.h"
+#include "irenderer.h"
 
 class AbstractGameManager: public IGameManager {
 	public:
@@ -22,9 +22,9 @@ class AbstractGameManager: public IGameManager {
 		IActionManager& getActionManager() const;
 
 	protected:
-		virtual void processAction(IActionCommand &action) = 0;
+		virtual void processAction(IActionCommand& action) = 0;
 		virtual void update(double elapsed) = 0;
-		virtual void render(IRenderer &render) = 0;
+		virtual void render(IRenderer& render) = 0;
 }
 
 #endif

@@ -1,10 +1,12 @@
 #ifndef ITEXTURE_H
 #define ITEXTURE_H
 
+#include <cstdint>
+
 class ITexture {
 	public:
-		virtual int getAlphaMode(uint8_t &alpha) = 0;
-		virtual int setAlphaMode(uint8_t alpha) = 0;
+		virtual uint8_t getAlphaMode() = 0;
+		virtual void setAlphaMode(uint8_t alpha) = 0;
 }
 
 #endif

@@ -1,9 +1,9 @@
 #ifndef IGAME_MANAGER_H
 #define IGAME_MANAGER_H
 
-include "isound_manager.h";
-include "ivideo_manager.h";
-include "iaction_manager.h";
+#include "isound_manager.h"
+#include "ivideo_manager.h"
+#include "iaction_manager.h"
 
 class IGameManager {
 	public:
