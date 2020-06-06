@@ -1,11 +1,11 @@
-# set minimum version required
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.0.0)
+project(Pokemon VERSION 0.1.0)
 
-# set project's name
-project(Pokemon VERSION 0.0.0)
+include(CTest)
+enable_testing()
 
-# set project's path to headers/sources files
+add_executable(Pokemon main.cpp)
 
-# add executable
-add_executable(Pokemon src/main.cpp)
-
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+include(CPack)

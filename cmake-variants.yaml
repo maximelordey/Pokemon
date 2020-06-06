@@ -1,0 +1,16 @@
+buildType:
+  default: debug 
+  choices:
+    debug:
+      short: Debug
+      long: Emit debug information, compiler optimisations are disabled
+      buildType: Debug
+    release:
+      short: Release
+      long: Emit debug information, compiler optimisations are enabled
+      buildType: Release
+    production:
+      short: Production
+      long: Omit debug information, optimize generated code
+      buildType: Production
+
