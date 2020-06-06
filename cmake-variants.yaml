@@ -5,12 +5,18 @@ buildType:
       short: Debug
       long: Emit debug information, compiler optimisations are disabled
       buildType: Debug
+      settings: 
+        CXX_OPTI_FLAGS: -O0
     release:
       short: Release
       long: Emit debug information, compiler optimisations are enabled
       buildType: Release
+      settings: 
+        CXX_OPTI_FLAGS: -O2
     production:
       short: Production
       long: Omit debug information, optimize generated code
       buildType: Production
+      settings:
+        CXX_OPTI_FLAGS: -O2
 
