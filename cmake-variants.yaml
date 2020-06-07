@@ -6,17 +6,17 @@ buildType:
       long: Emit debug information, compiler optimisations are disabled
       buildType: Debug
       settings: 
-        CXX_OPTI_FLAGS: -O0
+        CMAKE_CXX_FLAGS: -std=c++11 -c -O0 -Wall -g
     release:
       short: Release
       long: Emit debug information, compiler optimisations are enabled
       buildType: Release
       settings: 
-        CXX_OPTI_FLAGS: -O2
+        CMAKE_CXX_FLAGS: -std=c++11 -c -O2 -Wall -g
     production:
       short: Production
-      long: Omit debug information, optimize generated code
+      long: Omit debug information, compiler optimisations are enabled
       buildType: Production
       settings:
-        CXX_OPTI_FLAGS: -O2
+        CMAKE_CXX_FLAGS: -std=c++11 -O2
 
