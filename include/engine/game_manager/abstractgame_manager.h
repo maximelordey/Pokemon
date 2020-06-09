@@ -26,5 +26,4 @@ class AbstractGameManager: public IGameManager {
 		virtual void update(double elapsed) = 0;
 		virtual void render(IRenderer& render) = 0;
 }
-
 #endif

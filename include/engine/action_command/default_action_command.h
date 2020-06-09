@@ -5,9 +5,7 @@
 
 class IDefaultActionCommand: public IActionCommand {
 	public:
-	
-		@Override
-		inline void action(){}
+		inline void action() override{}
 }
 
 #endif

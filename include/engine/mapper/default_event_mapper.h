@@ -7,12 +7,9 @@
 
 class DefaultEventMapper: public IEventMapper {
 	public:
+		IActionCommand& toAction(const IEvent& event) override;
 
-		@Override
-		IActionCommand& getAction(const IEvent& event);
-
-		@Override
-		void setMap(const IEvent& event, const IActionCommand& action);
+		void setMap(const IEvent& event, const IActionCommand& action) override;
 }
 
 #endif

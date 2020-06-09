@@ -8,5 +8,4 @@ class IEventManager {
 		virtual bool hasEventPending() const = 0;
 		virtual IEvent& getEventPending() const = 0;
 }
-
 #endif

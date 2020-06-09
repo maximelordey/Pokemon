@@ -6,8 +6,7 @@
 
 class IEventMapper {
 	public:
-		virtual IActionCommand& getAction(const IEvent& event) = 0;
+		virtual IActionCommand& toAction(const IEvent& event) const = 0;
 		virtual void addPair(const IEvent& event, const IActionCommand& action) = 0;
 }
-
 #endif

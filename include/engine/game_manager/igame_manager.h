@@ -15,5 +15,4 @@ class IGameManager {
 		virtual IVideoManager& getVideoManager() const = 0;
 		virtual IActionManager& getActionManager() const = 0;
 }
-
 #endif

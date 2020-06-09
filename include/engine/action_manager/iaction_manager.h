@@ -8,5 +8,4 @@ class IActionManager {
 		virtual bool hasEventPending() const = 0;
 		virtual IActionCommand& getEventPending() = 0;
 }
-
 #endif
