@@ -1,7 +1,7 @@
 #ifndef IGAME_MANAGER_H
 #define IGAME_MANAGER_H
 
-#include "isound_manager.h"
+#include "iaudio_manager.h"
 #include "ivideo_manager.h"
 #include "iaction_manager.h"
 
@@ -11,7 +11,7 @@ class IGameManager {
 		virtual double getFramePerSeconds() const = 0;
 		virtual void setFramePerSeconds(double fps) = 0;
 
-		virtual ISoundManager& getSoundManager() const = 0;
+		virtual IAudioManager& getAudioManager() const = 0;
 		virtual IVideoManager& getVideoManager() const = 0;
 		virtual IActionManager& getActionManager() const = 0;
 }

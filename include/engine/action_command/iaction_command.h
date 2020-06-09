@@ -5,7 +5,7 @@
 
 class IActionCommand {
 	public:
-		virtual int32_t action() = 0;
+		virtual void action() = 0;
 }
 
 #endif

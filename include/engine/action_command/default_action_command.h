@@ -7,7 +7,7 @@ class IDefaultActionCommand: public IActionCommand {
 	public:
 	
 		@Override
-		inline int32_t action(){}
+		inline void action(){}
 }
 
 #endif
