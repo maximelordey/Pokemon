@@ -6,6 +6,6 @@
 class IDefaultActionCommand: public IActionCommand {
 	public:
 		inline void action() override{}
-}
+};
 
 #endif

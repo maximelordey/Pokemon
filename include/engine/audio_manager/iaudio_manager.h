@@ -18,6 +18,6 @@ class IAudioManager {
 
 		virtual void playMusic(std::string& path) = 0;
 		virtual void playEffect(std::string& path) = 0;
-}
+};
 
 #endif

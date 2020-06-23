@@ -10,6 +10,6 @@ class IPoint {
 
 		virtual void move(int32_t x, int32_t y) = 0;
 		virtual void translate(int32_t dx, int32_t dy) = 0;
-}
+};
 
 #endif

@@ -12,5 +12,5 @@ class IAudioVolume {
         virtual void setVolume(uint32_t volume) = 0;
 
         virtual uint32_t getVolume() const = 0;
-}
+};
 #endif

@@ -10,6 +10,6 @@ class IColor {
 		virtual uint8_t getGreen() const = 0;
 		virtual uint8_t getBlue() const = 0;
 		virtual uint8_t getAlpha() const = 0;
-}
+};
 
 #endif

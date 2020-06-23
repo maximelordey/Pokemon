@@ -22,6 +22,6 @@ class IRenderer {
 		virtual void show() = 0;
 		virtual void setViewport(IRectangle &rectangle) = 0;
 		virtual void setColor(IColor &color) = 0;
-}
+};
 
 #endif

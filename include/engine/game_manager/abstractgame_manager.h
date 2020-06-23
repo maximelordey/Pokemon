@@ -25,5 +25,5 @@ class AbstractGameManager: public IGameManager {
 		virtual void processAction(IActionCommand& action) = 0;
 		virtual void update(double elapsed) = 0;
 		virtual void render(IRenderer& render) = 0;
-}
+};
 #endif
