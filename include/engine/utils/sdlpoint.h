@@ -1,5 +1,5 @@
-#ifndef DEFAULT_POINT_H
-#define DEFAULT_POINT_H
+#ifndef SDL_POINT_H
+#define SDL_POINT_H
 
 #include "ipoint.h"
 #include <SDL.h>
