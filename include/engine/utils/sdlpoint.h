@@ -6,8 +6,8 @@
 
 class SdlPoint : public IPoint {
 	public:
-    SdlPoint(int32_t x, int32_t y);
-    ~SdlPoint();
+		SdlPoint(int32_t x, int32_t y);
+		~SdlPoint();
 
 		int32_t getX() const override;
 		int32_t getY() const override;
@@ -15,8 +15,8 @@ class SdlPoint : public IPoint {
 		void move(int32_t x, int32_t y) override;
 		void translate(int32_t dx, int32_t dy) override;
 
-  public:
-    SDL_Point* _point;  
+	public:
+		SDL_Point* _point;  
 
 };
 

@@ -5,9 +5,9 @@
 #include <SDL.h>
 
 class SdlRectangle : public IRectangle{
-    public:
-        SdlRectangle(int32_t x, int32_t y, uint32_t width, uint32_t height);
-        ~SdlRectangle();
+	public:
+		SdlRectangle(int32_t x, int32_t y, uint32_t width, uint32_t height);
+		~SdlRectangle();
 
 		int32_t getX() const;
 		int32_t getY() const;
@@ -19,10 +19,10 @@ class SdlRectangle : public IRectangle{
 		void setWidth(uint32_t width);
 		void setHeight(uint32_t height);
 
-        void move(int32_t x, int32_t y);
+		void move(int32_t x, int32_t y);
 		void translate(int32_t dx, int32_t dy);
 
-    private:
+	private:
 		SDL_Rect* _rect;
 };
 
