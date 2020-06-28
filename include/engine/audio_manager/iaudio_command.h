@@ -9,5 +9,5 @@ class IAudioCommand {
     virtual void stopMusic() = 0;		
 		
     virtual bool isPlaying() const = 0;
-}
+};
 #endif

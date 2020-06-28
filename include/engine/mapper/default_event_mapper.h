@@ -10,6 +10,6 @@ class DefaultEventMapper: public IEventMapper {
 		IActionCommand& toAction(const IEvent& event) override;
 
 		void setMap(const IEvent& event, const IActionCommand& action) override;
-}
+};
 
 #endif

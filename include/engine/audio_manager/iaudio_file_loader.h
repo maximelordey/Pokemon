@@ -8,6 +8,6 @@
 class IAudioFileLoader {
     public:
         IAudioFile& load(const std::string& path) const;
-}
+};
 
 #endif

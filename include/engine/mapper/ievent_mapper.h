@@ -8,5 +8,5 @@ class IEventMapper {
 	public:
 		virtual IActionCommand& toAction(const IEvent& event) const = 0;
 		virtual void addPair(const IEvent& event, const IActionCommand& action) = 0;
-}
+};
 #endif

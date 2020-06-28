@@ -6,6 +6,6 @@
 class IAudioPlayer {
     public:
         virtual void playAudio(const IAudioFile& audioFile) = 0;
-}
+};
 
 #endif
