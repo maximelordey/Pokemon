@@ -1,14 +1,13 @@
-#ifndef DEFAULT_RECTANGLE_H
-#define DEFAULT_RECTANGLE_H
+#ifndef SDL_RECTANGLE_H
+#define SDL_RECTANGLE_H
 
 #include "irectangle.h"
-#include "ipoint.h"
-#include "idimension.h"
+#include <SDL.h>
 
-class DefaultRectangle : public IRectangle{
+class SdlRectangle : public IRectangle{
     public:
-        DefaultRectangle(int32_t x, int32_t y, uint32_t width, uint32_t height);
-        ~DefaultRectangle();
+        SdlRectangle(int32_t x, int32_t y, uint32_t width, uint32_t height);
+        ~SdlRectangle();
 
 		int32_t getX() const;
 		int32_t getY() const;
@@ -24,8 +23,7 @@ class DefaultRectangle : public IRectangle{
 		void translate(int32_t dx, int32_t dy);
 
     private:
-        IPoint* _origin;
-        IDimension* _dimension;
+		SDL_Rect* _rect;
 };
 
 #endif
