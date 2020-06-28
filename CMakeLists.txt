@@ -13,6 +13,10 @@ enable_testing()
 add_executable(Pokemon main.cpp)
 target_link_libraries(Pokemon ${SDL2_LIBRARIES})
 
+target_include_directories(Pokemon PUBLIC
+                        "${PROJECT_SOURCE_DIR}/include/engine/utils" 
+)
+
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
