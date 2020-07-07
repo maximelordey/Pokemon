@@ -2,20 +2,21 @@
 #define SDL_AUDIO_CONTROL_H
 
 #include "iaudio_control.h"
+#include <cstdint>
 
 class SdlAudioControl : public IAudioControl {
-    public:
-        SdlAudioControl();
-        ~SdlAudioControl();
+	public:
+		SdlAudioControl(uint32_t channel);
+		~SdlAudioControl();
 
-        void pause() override;
-        
-        void unpause() override;
+		void pause() override;
 
-        bool isPaused() const override;
+		void unpause() override;
 
-    private:
-        bool _paused;
+		bool isPaused() const override;
+
+	private:
+		uint32_t _channel;
 };
 
 #endif
