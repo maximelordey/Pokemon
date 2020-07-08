@@ -4,8 +4,12 @@
 #include "iaudio_file.h"
 
 class IAudioPlayer {
-    public:
-        virtual void playAudio(const IAudioFile& audioFile) = 0;
+	public:
+		virtual void playAudio(const IAudioFile& audioFile) = 0;
+
+		virtual void stopAudio() = 0;
+
+		virtual bool isPlaying() const = 0;
 };
 
 #endif
