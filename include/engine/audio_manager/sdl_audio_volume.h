@@ -4,9 +4,14 @@
 #include "iaudio_volume.h"
 
 class SdlAudioVolume: public IAudioVolume {
-	public:
+	private: 
 		static const int32_t GET_VOLUME;
 
+	public:
+		static const int32_t MAX_VOLUME;
+		static const int32_t MIN_VOLUME;
+
+	public:
 		SdlAudioVolume();
 		~SdlAudioVolume();
 
