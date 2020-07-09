@@ -9,7 +9,7 @@ class AudioFileLoader: public IAudioFileLoader {
 		IAudioFileLoader();
 		~IAudioFileLoader();
 
-        IAudioFile* load(const std::string& path) const;
+		IAudioFile* load(const std::string& path) const;
 }
 
 #endif
