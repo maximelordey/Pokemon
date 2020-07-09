@@ -5,7 +5,7 @@
 
 class IAudioPlayer {
 	public:
-		virtual void playAudio(const IAudioFile& audioFile) = 0;
+		virtual void playAudio(IAudioFile& audioFile) = 0;
 
 		virtual void stopAudio() = 0;
 

@@ -4,11 +4,11 @@
 int32_t SdlAudioPlayer::INFINITE = -1;
 int8_t SdlAudioPlayer::PLAYING = 1;
 
-SdlAudioPlayer::SdlAudioPlayer(){}
+SdlAudioPlayer::SdlAudioPlayer() {}
 
-SdlAudioPlayer::~SdlAudioPlayer(){}
+SdlAudioPlayer::~SdlAudioPlayer() {}
 
-void SdlAudioPlayer::playAudio(const IAudioFile& audioFile) {
+void SdlAudioPlayer::playAudio(IAudioFile& audioFile) {
 	SdlAudioFile audioFile = dynamic_cast<SdlAudioFile>(audioFile);
 	Mix_PlayMusic(audioFile.getFile(), INFINITE);
 }

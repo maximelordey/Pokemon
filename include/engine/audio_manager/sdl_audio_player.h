@@ -12,11 +12,14 @@ class SdlAudioPlayer : public IAudioPlayer {
 		SdlAudioPlayer();
 		~SdlAudioPlayer();
 
-		void playAudio(const IAudioFile& audioFile) override;
+		void playAudio(IAudioFile& audioFile) override;
 
 		void stopAudio() override;
 
 		bool isPlaying() const override;
+
+	private:
+		IAudioFile* _currentAudioFile;
 };
 
 #endif
