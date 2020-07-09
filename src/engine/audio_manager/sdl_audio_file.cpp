@@ -8,6 +8,6 @@ SdlAudioFile::~SdlAudioFile(){
 	Mix_FreeMusic(_music);
 }
 
-SdlAudioFile::getFile() const {
+Mix_Music* SdlAudioFile::getFile() const {
 	return _music;
 }

@@ -10,7 +10,7 @@ class SdlAudioFile: public IAudioFile {
 		SdlAudioFile(std::string& path);
 		~SdlAudioFile();
 
-		Mix_Music& getFile() const;
+		Mix_Music* getFile() const;
 	
 	private:
 		Mix_Music* _music;
