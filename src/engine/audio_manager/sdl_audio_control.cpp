@@ -16,5 +16,5 @@ void SdlAudioControl::unpause() {
 }
 
 bool SdlAudioControl::isPaused() const {
-    return Mix_PausedMusic() == PAUSED;
+	return Mix_PausedMusic() == PAUSED;
 }
