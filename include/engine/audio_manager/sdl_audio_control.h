@@ -6,7 +6,9 @@
 
 class SdlAudioControl : public IAudioControl {
 	public:
-		SdlAudioControl(uint32_t channel);
+		static const int8_t PAUSED; 
+
+		SdlAudioControl();
 		~SdlAudioControl();
 
 		void pause() override;
@@ -14,9 +16,6 @@ class SdlAudioControl : public IAudioControl {
 		void unpause() override;
 
 		bool isPaused() const override;
-
-	private:
-		uint32_t _channel;
 };
 
 #endif

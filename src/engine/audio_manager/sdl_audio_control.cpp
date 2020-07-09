@@ -2,20 +2,21 @@
 #include "sdl_audio_control.h"
 #include <SDL_mixer.h>
 
-SdlAudioControl::SdlAudioControl(uint32_t channel)
-    : _channel(channel)
-{}
+
+const int8_t SdlAudioControl::PAUSED = 1;
+
+SdlAudioControl::SdlAudioControl(){}
 
 SdlAudioControl::~SdlAudioControl(){}
 
 void SdlAudioControl::pause(){
-    Mix_Pause(_channel);
+    Mix_PauseMusic();
 }
 
 void SdlAudioControl::unpause() {
-    Mix_Resume(_channel);
+    Mix_ResumeMusic();
 }
 
 bool SdlAudioControl::isPaused() const {
-    return Mix_Paused(_channel) == 1;
+    return Mix_PausedMusic() == PAUSED;
 }
