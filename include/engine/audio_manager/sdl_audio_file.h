@@ -11,6 +11,7 @@ class SdlAudioFile: public IAudioFile {
 		~SdlAudioFile();
 
 		Mix_Music& getFile() const;
+	
 	private:
 		Mix_Music* _music;
 };
