@@ -9,7 +9,7 @@ SdlAudioPlayer::SdlAudioPlayer(){}
 SdlAudioPlayer::~SdlAudioPlayer(){}
 
 void SdlAudioPlayer::playAudio(const IAudioFile& audioFile) {
-	SdlAudioFile audioFile = dynamic_cast<SdlAudioFile&>(audioFile);
+	SdlAudioFile audioFile = dynamic_cast<SdlAudioFile>(audioFile);
 	Mix_PlayMusic(audioFile.getFile(), INFINITE);
 }
 
