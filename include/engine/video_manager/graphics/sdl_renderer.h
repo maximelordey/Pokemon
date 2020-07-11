@@ -2,9 +2,15 @@
 #define SDL_RENDERER_H
 
 #include "irenderer.h"
+#include "icolor.h"
+#include "idimension.h"
+#include <SDL.h>
 
 class SdlRenderer: public IRenderer {
 	public:
+		SdlRenderer(SDL_Renderer& renderer);
+		~SdlRenderer();
+
 		const IColor& getColor() const override;
 		const IDimension& getOutputSize() const override;
 		void clear() override;
@@ -18,6 +24,10 @@ class SdlRenderer: public IRenderer {
 		void setViewport(IRectangle &rectangle) override;
 		void setColor(IColor &color) override;
 
+	private:
+		SDL_Renderer* _renderer;
+		IColor* _color;
+		IDimension* _dimension;
 };
 
 #endif
