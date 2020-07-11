@@ -30,17 +30,35 @@ void SdlRenderer::drawPoint(IPoint &p) {
 }
 
 void SdlRenderer::drawRect(IRectangle &rectangle) {
+	SDL_Rect rect;
+	rect.x = rectangle.getX();
+	rect.y = rectangle.getY();
+	rect.w = rectangle.getWidth();
+	rect.h = rectangle.getHeight();
 
+	SDL_RenderDrawRect(_renderer,&rect);
 }
 
 void SdlRenderer::fillRect(IRectangle &rectangle) {
+	SDL_Rect rect;
+	rect.x = rectangle.getX();
+	rect.y = rectangle.getY();
+	rect.w = rectangle.getWidth();
+	rect.h = rectangle.getHeight();
 
+	SDL_RenderFillRect(_renderer,&rect);
 }
 
 void SdlRenderer::getViewport(IRectangle &rectangle) const {}
 
-void SdlRenderer::show() {}
+void SdlRenderer::show() {
+	SDL_RenderPresent(_renderer);
+}
 
-void SdlRenderer::setViewport(IRectangle &rectangle) {}
+void SdlRenderer::setViewport(IRectangle &rectangle) {
 
-void SdlRenderer::setColor(IColor &color) {}
+}
+
+void SdlRenderer::setColor(IColor &color) {
+	
+}
