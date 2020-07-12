@@ -2,6 +2,7 @@
 #define SDL_TEXTURE_H
 
 #include "itexture.h"
+#include <SDL.h>
 
 class SdlTexture: public ITexture {
 	public:
