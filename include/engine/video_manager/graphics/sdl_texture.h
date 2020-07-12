@@ -1,0 +1,20 @@
+#ifndef SDL_TEXTURE_H
+#define SDL_TEXTURE_H
+
+#include "itexture.h"
+
+class SdlTexture: public ITexture {
+	public:
+		SdlTexture(SDL_Renderer& renderer, SDL_Surface& surface);
+		~SdlTexture();
+
+		uint8_t getAlphaMode() const override;
+		void setAlphaMode(uint8_t alpha) override;
+
+		SDL_Texture& getTexture() const;
+	
+	private:
+		SDL_Texture* _texture;
+};
+
+#endif
