@@ -8,26 +8,25 @@
 
 class SdlRenderer: public IRenderer {
 	public:
-		SdlRenderer(SDL_Renderer& renderer);
+		SdlRenderer(SDL_Window* window);
 		~SdlRenderer();
 
-		const IColor& getColor() const override;
-		const IDimension& getOutputSize() const override;
+		void getColor(IColor& color) const override;
+		void getOutputSize(IDimension& dimension)const override;
 		void clear() override;
-		void drawTexture(ITexture &texture, IRectangle &src, IRectangle &dest) override;
+		void drawTexture(ITexture &texture, IRectangle *src, IRectangle *dest) override;
+		void drawTexture(ITexture &texture, IRectangle *dest) override;
 		void drawLine(IPoint &p1, IPoint &p2) override;
 		void drawPoint(IPoint &p) override;
 		void drawRect(IRectangle &rectangle) override;
 		void fillRect(IRectangle &rectangle) override;
 		void getViewport(IRectangle &rectangle) const override;
 		void show() override;
-		void setViewport(IRectangle &rectangle) override;
-		void setColor(IColor &color) override;
+		void setViewport(const IRectangle &rectangle) override;
+		void setColor(const IColor &color) override;
 
 	private:
-		SDL_Renderer* _renderer;
-		IColor* _color;
-		IDimension* _dimension;
+		struct SDL_Renderer* _renderer;
 };
 
 #endif
