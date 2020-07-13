@@ -1,7 +1,8 @@
 #include "sdl_texture.h"
 
 
-SdlTexture::SdlTexture(SDL_Renderer& renderer, SDL_Surface& surface) {
+SdlTexture::SdlTexture(std::string& path) {
+	
 	_texture = SDL_CreateTextureFromSurface(&renderer, &surface);
 }
 
@@ -20,5 +21,5 @@ void SdlTexture::setAlphaMode(uint8_t alpha) {
 }
 
 SDL_Texture& SdlTexture::getTexture() const {
-	return _texture;
+	return *_texture;
 }

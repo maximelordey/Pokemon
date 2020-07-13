@@ -6,7 +6,7 @@
 
 class SdlTexture: public ITexture {
 	public:
-		SdlTexture(SDL_Renderer& renderer, SDL_Surface& surface);
+		SdlTexture(std::string& path);
 		~SdlTexture();
 
 		uint8_t getAlphaMode() const override;
