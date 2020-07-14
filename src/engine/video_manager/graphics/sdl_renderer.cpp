@@ -40,9 +40,7 @@ void SdlRenderer::drawTexture(ITexture &texture, IRectangle *src, IRectangle *de
 	SDL_Rect destRect;SDL_Rect* destRectPtr = nullptr;	
 	SDL_Surface* surface;
 
-
-	SdlTexture texture = dynamic_cast<SdlTexture>(texture);
-	surface = sdlTexture.getSurface();
+	SdlTexture sdlTexture = dynamic_cast<SdlTexture>(texture);
 
 	if (src != nullptr){
 		srcRect.x = src->getX();
@@ -60,7 +58,7 @@ void SdlRenderer::drawTexture(ITexture &texture, IRectangle *src, IRectangle *de
 		destRectPtr = &destRect;
 	}
 
-	SdlHardwareTexture hardwareTexture(*_renderer, *surface);
+	SdlHardwareTexture hardwareTexture(*_renderer, *(sdlTexture.getSurface()));
 
 	SDL_RenderCopy(_renderer,hardwareTexture.getTexture(),srcRectPtr,destRectPtr);
 }
