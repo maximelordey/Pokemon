@@ -10,6 +10,6 @@ SdlTexture::~SdlTexture(
 );
 
 
-SDL_Surface* SdlSurface::getSurface() {
+SDL_Surface* SdlSurface::getSurface() const{
 	return _surface;
 }

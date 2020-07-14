@@ -18,6 +18,6 @@ void SdlHardwareTexture::setAlphaMode(uint8_t alpha) {
 	SDL_SetTextureAlphaMod(alpha);
 }
 
-SDL_Texture& SdlHardwareTexture::getTexture() const {
-	return *_texture;
+SDL_Texture* SdlHardwareTexture::getTexture() const {
+	return _texture;
 }

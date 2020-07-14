@@ -11,7 +11,7 @@ class SdlTexture: public ITexture {
 		SdlTexture(std::string& path);
 		~SdlTexture();
 
-		SDL_Surface* getSurface();
+		SDL_Surface* getSurface() const;
 
 	private: 
 		SDL_Surface* _surface;

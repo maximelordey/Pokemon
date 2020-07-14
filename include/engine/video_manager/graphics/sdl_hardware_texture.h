@@ -13,7 +13,7 @@ class SdlHardwareTexture {
 		uint8_t getAlphaMode() const override;
 		void setAlphaMode(uint8_t alpha) override;
 
-		SDL_Texture& getTexture() const;
+		SDL_Texture* getTexture() const;
 	
 	private:
 		SDL_Texture* _texture;
