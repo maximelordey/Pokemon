@@ -1,12 +1,13 @@
 #ifndef SDL_TEXTURE_H
 #define SDL_TEXTURE_H
 
-#include "itexture.h"
+#include "sdl_surface.h"
+#include "sdl_renderer.h"
 #include <SDL.h>
 
-class SdlTexture: public ITexture {
+class SdlTexture {
 	public:
-		SdlTexture(std::string& path);
+		SdlTexture(SdlRenderer& renderer, SdlSurface& surface);
 		~SdlTexture();
 
 		uint8_t getAlphaMode() const override;

@@ -1,9 +1,8 @@
 #include "sdl_texture.h"
 
 
-SdlTexture::SdlTexture(std::string& path) {
-	
-	_texture = SDL_CreateTextureFromSurface(&renderer, &surface);
+SdlTexture::SdlTexture(SdlRenderer& renderer, SdlSurface& surface) {
+	_texture = SDL_CreateTextureFromSurface(renderer.getRenderer(), surface.getSurface());
 }
 
 SdlTexture::~SdlTexture() {

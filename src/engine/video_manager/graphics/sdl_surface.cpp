@@ -8,3 +8,8 @@ SdlSurface::SdlSurface(std::string& path) {
 SdlSurface::~SdlSurface(
 	SDL_FreeSurface(_surface);
 );
+
+
+SDL_Surface* SdlSurface::getSurface() {
+	return _surface;
+}
