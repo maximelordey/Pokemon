@@ -1,7 +1,7 @@
 #include "sdl_hardware_texture.h"
 
-SdlHardwareTexture::SdlHardwareTexture(SdlRenderer& renderer, SdlTexture& texture) {
-	_texture = SDL_CreateTextureFromSurface(renderer.getRenderer(), texture.getSurface());
+SdlHardwareTexture::SdlHardwareTexture(SDL_Renderer& renderer, SDL_Surface& surface) {
+	_texture = SDL_CreateTextureFromSurface(&renderer, &surface);
 }
 
 SdlHardwareTexture::~SdlHardwareTexture() {

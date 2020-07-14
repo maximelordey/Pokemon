@@ -7,7 +7,7 @@
 
 class SdlHardwareTexture {
 	public:
-		SdlHardwareTexture(SdlRenderer& renderer, SdlTexture& texture);
+		SdlHardwareTexture(SDL_Renderer& renderer, SDL_Surface& surface);
 		~SdlHardwareTexture();
 
 		uint8_t getAlphaMode() const override;
