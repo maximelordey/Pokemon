@@ -1,5 +1,5 @@
-#ifndef SDL_WINDOW_H
-#define SDL_WINDOW_H
+#ifndef WINDOW_H
+#define WINDOW_H
 
 #include <string>
 #include <SDL.h>
@@ -8,10 +8,10 @@
 #include "ipoint.h"
 #include "idimension.h"
 
-class SdlWindow: public IWindow {
+class Window: public IWindow {
 	public:
-		SdlWindow(std::string& name, IPoint& origin, IDimension& dimension);
-		~SdlWindow();
+		Window(std::string& name, IPoint& origin, IDimension& dimension);
+		~Window();
 		
 		void getOrigin(IPoint& point) const override;
 		void getDimension(IDimension& dimension) const override;
@@ -20,7 +20,6 @@ class SdlWindow: public IWindow {
 
 	private:
 		SDL_Window* _window;
-
 };
 
 #endif

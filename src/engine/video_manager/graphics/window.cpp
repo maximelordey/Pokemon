@@ -1,14 +1,14 @@
-#include "sdl_window.h"
+#include "window.h"
 
-SdlWindow::SdlWindow(std::string& name, IPoint& origin, IDimension& dimension) {
+Window::Window(std::string& name, IPoint& origin, IDimension& dimension) {
 	_window = SDL_CreateWindow(name.c_str(), origin.getX(), origin.getY(), dimension.getWidth(), dimension.getHeight(), 0);
 }
 
-SdlWindow::~SdlWindow() {
+Window::~Window() {
 	SDL_DestroyWindow(_window);
 }
 
-void SdlWindow::getOrigin(IPoint& point) const{
+void Window::getOrigin(IPoint& point) const{
 	int32_t x;
 	int32_t y;
 
@@ -17,7 +17,7 @@ void SdlWindow::getOrigin(IPoint& point) const{
 	point.move(x, y);
 }
 
-void SdlWindow::getDimension(IDimension& dimension) const  {
+void Window::getDimension(IDimension& dimension) const  {
 	uint32_t width;
 	uint32_t height;
 
@@ -26,6 +26,6 @@ void SdlWindow::getDimension(IDimension& dimension) const  {
 	dimension.setSize(width, height);
 }
 
-SDL_Window* SdlWindow::getWindow() const {
+SDL_Window* Window::getWindow() const {
 	return _window;
 }
