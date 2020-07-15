@@ -15,6 +15,9 @@ class Color : public IColor {
 		uint8_t getBlue() const override;
 		uint8_t getAlpha() const override;
 
+		Color& operator=(Color& color);
+		Color& operator=(Color&& color);
+
 	private:
 		uint8_t _red;
 		uint8_t _green;

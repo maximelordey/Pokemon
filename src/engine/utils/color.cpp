@@ -35,3 +35,23 @@ uint8_t Color::getBlue() const {
 uint8_t Color::getAlpha() const {
 	return _alpha;
 }
+
+Color& Color::operator=(Color& color) {
+	if (this != &color) {
+		_alpha = color._alpha;
+		_red = color._red;
+		_green = color._green;
+		_blue = color._blue;
+	}	
+	return *this;
+}
+
+Color& Color::operator=(Color&& color) {
+	if (this != &color) {
+		_alpha = color._alpha;
+		_red = color._red;
+		_green = color._green;
+		_blue = color._blue;
+	}	
+	return *this;
+}
