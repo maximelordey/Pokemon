@@ -15,6 +15,9 @@ class Dimension : public IDimension{
 
 		void setSize(uint32_t width, uint32_t height) override;
 
+		Dimension& operator=(Dimension& dimension);
+		Dimension& operator=(Dimension&& dimension);
+
 	private:
 		uint32_t _width;
 		uint32_t _height;
