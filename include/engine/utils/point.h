@@ -1,13 +1,14 @@
-#ifndef SDL_POINT_H
-#define SDL_POINT_H
+#ifndef POINT_H
+#define POINT_H
 
 #include "ipoint.h"
-#include <SDL.h>
 
-class SdlPoint : public IPoint {
+class Point : public IPoint {
 	public:
-		SdlPoint(int32_t x, int32_t y);
-		~SdlPoint();
+		Point(int32_t x, int32_t y);
+		Point(const Point& point);
+		Point(Point&& point);
+		~Point();
 
 		int32_t getX() const override;
 		int32_t getY() const override;
@@ -15,9 +16,12 @@ class SdlPoint : public IPoint {
 		void move(int32_t x, int32_t y) override;
 		void translate(int32_t dx, int32_t dy) override;
 
-	public:
-		SDL_Point* _point;  
+		Point& operator=(const Point& point);
+		Point& operator=(Point&& point);
 
+	public:
+		int32_t _x;
+		int32_t _y;
 };
 
 #endif
