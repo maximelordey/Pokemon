@@ -1,15 +1,15 @@
-#ifndef SDL_TEXTURE_H
-#define SDL_TEXTURE_H
+#ifndef TEXTURE_H
+#define TEXTURE_H
 
 #include "itexture.h"
 #include <string>
 #include <SDL.h>
 #include <SDL_image.h>
 
-class SdlTexture: public ITexture {
+class Texture: public ITexture {
 	public:
-		SdlTexture(std::string& path);
-		~SdlTexture();
+		Texture(std::string& path);
+		~Texture();
 
 		SDL_Surface* getSurface() const;
 
