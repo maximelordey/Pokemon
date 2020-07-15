@@ -1,12 +1,14 @@
-#ifndef DEFAULT_DIMENSION_H
-#define DEFAULT_DIMENSION_H
+#ifndef DIMENSION_H
+#define DIMENSION_H
 
 #include "idimension.h"
 
-class DefaultDimension : public IDimension{
+class Dimension : public IDimension{
 	public:
-		DefaultDimension(uint32_t width, uint32_t height);
-		~DefaultDimension();
+		Dimension(uint32_t width, uint32_t height);
+		Dimension(Dimension& dimension);
+		Dimension(Dimension&& dimension);
+		~Dimension();
 
 		uint32_t getWidth() const override;
 		uint32_t getHeight() const override;
