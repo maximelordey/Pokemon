@@ -17,9 +17,6 @@ class SdlAudioPlayer : public IAudioPlayer {
 		void stopAudio() override;
 
 		bool isPlaying() const override;
-
-	private:
-		IAudioFile* _currentAudioFile;
 };
 
 #endif
