@@ -1,6 +1,6 @@
 #include "sdl_audio_file.h"
 
-SdlAudioFile::SdlAudioFile(std::string& path){
+SdlAudioFile::SdlAudioFile(const std::string& path){
 	_music = Mix_LoadMUS(path.c_str());
 }
 
