@@ -12,7 +12,7 @@ class SdlAudioPlayer : public IAudioPlayer {
 		SdlAudioPlayer();
 		~SdlAudioPlayer();
 
-		void playAudio(IAudioFile& audioFile) override;
+		void playAudio(SdlAudioFile& audioFile) override;
 
 		void stopAudio() override;
 
