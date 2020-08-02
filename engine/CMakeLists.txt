@@ -9,16 +9,7 @@ pkg_check_modules(SDL2_MIXER REQUIRED SDL2_mixer)
 pkg_check_modules(SDL2_IMAGE REQUIRED SDL2_image)
 ##### Check for SDL2, SDL2_Mixer, SDL2_Image
 ##### Add libraries here.
-add_library(engine STATIC
-"include/action_command/iaction_command.h"
-"include/action_command/default_action_command.h"
-
-)
-
-##### Add libraries here.
-set_target_properties(engine PROPERTIES LINKER_LANGUAGE CXX)
-##### Add directories here.
-target_include_directories(engine PRIVATE
+add_library(Engine STATIC
 "include/action_command/iaction_command.h"
 "include/action_command/default_action_command.h"
 "include/action_manager/iaction_manager.h"
@@ -41,6 +32,21 @@ target_include_directories(engine PRIVATE
 "include/video/irenderer.h"
 "include/video/itexture.h"
 "include/video/iwindow.h"
+)
+
+##### Add libraries here.
+set_target_properties(Engine PROPERTIES LINKER_LANGUAGE CXX)
+##### Add directories here.
+target_include_directories(Engine PRIVATE
+"include/action_command"
+"include/action_manager"
+"include/audio_manager"
+"include/event"
+"include/event_manager"
+"include/game_manager"
+"include/mapper"
+"include/utils"
+"include/video"
 )
 ##### Add directories here.
 
