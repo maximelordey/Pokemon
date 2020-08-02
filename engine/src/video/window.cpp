@@ -8,22 +8,22 @@ Window::~Window() {
 	SDL_DestroyWindow(_window);
 }
 
-void Window::getOrigin(Point& point) const{
+Point Window::getOrigin() const{
 	int32_t x;
 	int32_t y;
 
 	SDL_GetWindowPosition(_window, &x, &y);
 
-	point.move(x, y);
+	return Point(x, y);
 }
 
-void Window::getDimension(Dimension& dimension) const  {
+Dimension Window::getDimension() const  {
 	uint32_t width;
 	uint32_t height;
 
 	SDL_GetWindowSize(_window, &width, &height);
 
-	dimension.setSize(width, height);
+	return Dimension(width, height);
 }
 
 SDL_Window* Window::getWindow() const {

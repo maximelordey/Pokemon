@@ -13,8 +13,8 @@ class Window: public IWindow {
 		Window(const std::string& name,const Point& origin,const Dimension& dimension);
 		~Window();
 		
-		void getOrigin(Point& point) const override;
-		void getDimension(Dimension& dimension) const override;
+		Point getOrigin() const override;
+		Dimension getDimension() const override;
 
 		SDL_Window* getWindow() const ;
 
