@@ -49,6 +49,10 @@ target_include_directories(Engine PUBLIC
 "${CMAKE_CURRENT_SOURCE_DIR}/include/utils"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/video"
 )
+
+target_include_directories(Engine PUBLIC 
+${SDL2_INCLUDE_DIRS} ${SDL2_MIXER_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS}
+)
 ##### Add directories here.
 
 include(CTest)
