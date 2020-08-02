@@ -1,11 +1,12 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 
-#include "irectangle.h"
+#include <cstdint>
+
 #include "point.h"
 #include "dimension.h"
 
-class Rectangle : public IRectangle{
+class Rectangle {
 	public:
 		Rectangle(int32_t x, int32_t y, uint32_t width, uint32_t height);
 		Rectangle(const Rectangle& rectangle);

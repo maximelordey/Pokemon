@@ -64,8 +64,8 @@ void Rectangle::translate(int32_t dx, int32_t dy){
 
 Rectangle& Rectangle::operator=(const Rectangle& rectangle) {
 	if (this != &rectangle){
-		_point->move(rectangle._point->getX(), rectangle._point->getY());
-		_dimension->setSize(rectangle._dimension->getWidth(), rectangle._dimension->getHeight());
+		_point = rectangle._point;
+		_dimension = rectangle._dimension;		
 	}
 	return *this;
 }

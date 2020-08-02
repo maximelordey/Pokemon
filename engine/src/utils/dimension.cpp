@@ -4,7 +4,7 @@ Dimension::Dimension(uint32_t width, uint32_t height)
 	: _width(width), _height(height)
 {}
 
-Dimension::Dimension(Dimension& dimension) {
+Dimension::Dimension(const Dimension& dimension) {
 	setSize(dimension._width, dimension._height);
 }
 
@@ -27,7 +27,7 @@ void Dimension::setSize(uint32_t width, uint32_t height){
 	_height = height;
 }
 
-Dimension& Dimension::operator=(Dimension& dimension){
+Dimension& Dimension::operator=(const Dimension& dimension){
 	if (this != &dimension){
 		setSize(dimension._width, dimension._height);
 	}

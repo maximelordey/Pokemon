@@ -1,10 +1,10 @@
 #include "color.h"
 
-Color::Color(uint8_t alpha, uint8_t red, uint8_t green, uint8_t blue)
+Color::Color(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha)
 : _red(red), _green(green), _blue(blue), _alpha(alpha)
 {}
 
-Color::Color(Color& color) {
+Color::Color(const Color& color) {
 	_alpha = color._alpha;
 	_red = color._red;
 	_green = color._green;
@@ -36,7 +36,7 @@ uint8_t Color::getAlpha() const {
 	return _alpha;
 }
 
-Color& Color::operator=(Color& color) {
+Color& Color::operator=(const Color& color) {
 	if (this != &color) {
 		_alpha = color._alpha;
 		_red = color._red;

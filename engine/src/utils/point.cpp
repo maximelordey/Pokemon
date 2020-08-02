@@ -33,9 +33,15 @@ void Point::translate(int32_t dx, int32_t dy){
 }
 
 Point& Point::operator=(const Point& point) {
-	move(point._x, point._y);
+	if (this != &point) {
+		move(point._x, point._y);
+	}
+	return *this;
 }
 
 Point& Point::operator=(Point&& point) {
-	move(point._x, point._y);
+	if (this != &point) {
+		move(point._x, point._y);
+	}
+	return *this;
 }
