@@ -37,16 +37,16 @@ add_library(Engine STATIC
 ##### Add libraries here.
 set_target_properties(Engine PROPERTIES LINKER_LANGUAGE CXX)
 ##### Add directories here.
-target_include_directories(Engine PRIVATE
-"include/action_command"
-"include/action_manager"
-"include/audio_manager"
-"include/event"
-"include/event_manager"
-"include/game_manager"
-"include/mapper"
-"include/utils"
-"include/video"
+target_include_directories(Engine PUBLIC
+"${CMAKE_CURRENT_SOURCE_DIR}/include/action_command"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/action_manager"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/audio_manager"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/event"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/event_manager"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/game_manager"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/mapper"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/utils"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/video"
 )
 ##### Add directories here.
 
