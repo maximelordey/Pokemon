@@ -9,16 +9,16 @@ pkg_check_modules(SDL2_MIXER REQUIRED SDL2_mixer)
 pkg_check_modules(SDL2_IMAGE REQUIRED SDL2_image)
 ##### Check for SDL2, SDL2_Mixer, SDL2_Image
 ##### Add libraries here.
-add_library(Engine STATIC
+add_library(engine STATIC
 "include/action_command/iaction_command.h"
 "include/action_command/default_action_command.h"
 
 )
 
 ##### Add libraries here.
-set_target_properties(Engine PROPERTIES LINKER_LANGUAGE CXX)
+set_target_properties(engine PROPERTIES LINKER_LANGUAGE CXX)
 ##### Add directories here.
-target_include_directories(Engine PRIVATE
+target_include_directories(engine PRIVATE
 "include/action_command/iaction_command.h"
 "include/action_command/default_action_command.h"
 "include/action_manager/iaction_manager.h"
