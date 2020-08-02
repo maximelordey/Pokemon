@@ -1,1 +1,5 @@
 cmake_minimum_required(VERSION 3.0.0)
+
+message( STATUS "CMAKE_BUILD_TYPE: " ${CMAKE_BUILD_TYPE})
+message( STATUS "CMAKE_CXX_FLAGS: " ${CMAKE_CXX_FLAGS})
+message( STATUS "CMAKE_CXX_STANDARD: " ${CMAKE_CXX_STANDARD})
