@@ -5,16 +5,16 @@
 #include <SDL.h>
 
 #include "iwindow.h"
-#include "ipoint.h"
-#include "idimension.h"
+#include "point.h"
+#include "dimension.h"
 
 class Window: public IWindow {
 	public:
-		Window(std::string& name, IPoint& origin, IDimension& dimension);
+		Window(const std::string& name,const Point& origin,const Dimension& dimension);
 		~Window();
 		
-		void getOrigin(IPoint& point) const override;
-		void getDimension(IDimension& dimension) const override;
+		void getOrigin(Point& point) const override;
+		void getDimension(Dimension& dimension) const override;
 
 		SDL_Window* getWindow() const ;
 
