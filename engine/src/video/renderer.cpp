@@ -33,37 +33,11 @@ void Renderer::clear() {
 }
 
 void Renderer::drawTexture(const ITexture &texture, const Rectangle *src, const Rectangle *dest) {
-	/**
-	SDL_Rect srcRect;SDL_Rect* srcRectPtr = nullptr;
-	SDL_Rect destRect;SDL_Rect* destRectPtr = nullptr;	
-	SDL_Surface* surface;
 
-	SdlTexture sdlTexture = dynamic_cast<SdlTexture>(texture);
-
-	if (src != nullptr){
-		srcRect.x = src->getX();
-		srcRect.y = src->getY();
-		srcRect.w = src->getWidth();
-		srcRect.h = src->getHeight();
-		srcRectPtr = &srcRect;
-	}
-
-	if (dest != nullptr){
-		destRect.x = dest->getX();
-		destRect.y = dest->getY();
-		destRect.w = dest->getWidth();
-		destRect.h = dest->getHeight();
-		destRectPtr = &destRect;
-	}
-
-	SdlHardwareTexture hardwareTexture(*_renderer, *(sdlTexture.getSurface()));
-
-	SDL_RenderCopy(_renderer,hardwareTexture.getTexture(),srcRectPtr,destRectPtr);
-	**/
 }
 
 void Renderer::drawTexture(const ITexture &texture, const Rectangle *dest) {
-	//drawTexture(texture,nullptr,dest);
+	drawTexture(texture,nullptr,dest);
 }
 
 void Renderer::drawLine(const Point &p1, const Point &p2) {
