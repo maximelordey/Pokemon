@@ -50,10 +50,15 @@ target_include_directories(Engine PUBLIC
 "${CMAKE_CURRENT_SOURCE_DIR}/include/video"
 )
 
+## Add Sdl2 directories.
 target_include_directories(Engine PUBLIC 
 ${SDL2_INCLUDE_DIRS} ${SDL2_MIXER_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS}
 )
 ##### Add directories here.
+##### include sdl2 libraries
+target_link_libraries(Engine ${SDL2_LIBRARIES} ${SDL2_MIXER_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})
+##### include sdl2 libraries
+
 
 include(CTest)
 enable_testing()

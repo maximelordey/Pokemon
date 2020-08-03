@@ -7,8 +7,8 @@
 
 class IWindow {
 	public:
-		virtual void getOrigin(IPoint& point) const = 0;
-		virtual void getDimension(IDimension& dimension) const = 0;
+		virtual Point getOrigin() const = 0;
+		virtual Dimension getDimension() const = 0;
 };
 
 #endif

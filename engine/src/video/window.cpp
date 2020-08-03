@@ -1,7 +1,7 @@
 #include "window.h"
 
-Window::Window(const std::string &name, const IPoint &origin, const IDimension &dimension) {
-	_window = SDL_CreateWindow(name.c_str(), origin.getX(), origin.getY(), dimension.getWidth(), dimension.getHeight(), 0);
+Window::Window(const std::string &name, const Point &origin, const Dimension &dimension) {
+	_window = SDL_CreateWindow(name.c_str(), origin.getX(), origin.getY(), dimension.getWidth(), dimension.getHeight(), SDL_WINDOW_SHOWN);
 }
 
 Window::~Window() {
@@ -18,8 +18,8 @@ Point Window::getOrigin() const{
 }
 
 Dimension Window::getDimension() const  {
-	uint32_t width;
-	uint32_t height;
+	int32_t width;
+	int32_t height;
 
 	SDL_GetWindowSize(_window, &width, &height);
 
