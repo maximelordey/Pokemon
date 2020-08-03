@@ -1,14 +1,14 @@
-#include "sdl_renderer.h"
+#include "renderer.h"
 
-SdlRenderer::SdlRenderer(SDL_Window* window) {
+Renderer::Renderer(SDL_Window* window) {
 	 _renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
  }
 
-SdlRenderer::~SdlRenderer(){
+Renderer::~Renderer(){
 	SDL_DestroyRenderer(_renderer);
 }
 
-void SdlRenderer::getColor(IColor& color) const {
+Color Renderer::getColor() const {
 	uint8_t red;
 	uint8_t green;
 	uint8_t blue;
@@ -16,26 +16,24 @@ void SdlRenderer::getColor(IColor& color) const {
 
 	SDL_GetRenderDrawColor(_renderer, &red, &green, &blue, &alpha);
 	
-	color.setRed(red);
-	color.setGreen(green);
-	color.setBlue(blue);
-	color.setAlpha(alpha);
+	return Color(red, green, blue, alpha);
 }
 
-void SdlRenderer::getOutputSize(IDimension& dimension)const {
-	uint32_t width;
-	uint32_t height;
+Dimension Renderer::getOutputSize()const {
+	int32_t width;
+	int32_t height;
 
 	SDL_GetRendererOutputSize(_renderer, &width, &height);
 
-	dimension.setSize(width, height);
+	return Dimension(width, height);
 }
 
-void SdlRenderer::clear() {
+void Renderer::clear() {
 	SDL_RenderClear(_renderer);
 }
 
-void SdlRenderer::drawTexture(ITexture &texture, IRectangle *src, IRectangle *dest) {
+void Renderer::drawTexture(const ITexture &texture, const Rectangle *src, const Rectangle *dest) {
+	/**
 	SDL_Rect srcRect;SDL_Rect* srcRectPtr = nullptr;
 	SDL_Rect destRect;SDL_Rect* destRectPtr = nullptr;	
 	SDL_Surface* surface;
@@ -61,21 +59,22 @@ void SdlRenderer::drawTexture(ITexture &texture, IRectangle *src, IRectangle *de
 	SdlHardwareTexture hardwareTexture(*_renderer, *(sdlTexture.getSurface()));
 
 	SDL_RenderCopy(_renderer,hardwareTexture.getTexture(),srcRectPtr,destRectPtr);
+	**/
 }
 
-void SdlRenderer::drawTexture(ITexture &texture, IRectangle *dest) {
-	drawTexture(texture,nullptr,dest);
+void Renderer::drawTexture(const ITexture &texture, const Rectangle *dest) {
+	//drawTexture(texture,nullptr,dest);
 }
 
-void SdlRenderer::drawLine(IPoint &p1, IPoint &p2) {
+void Renderer::drawLine(const Point &p1, const Point &p2) {
 	SDL_RenderDrawLine(_renderer,p1.getX(),p1.getY(),p2.getX(),p2.getY());
 }
 
-void SdlRenderer::drawPoint(IPoint &p) {
+void Renderer::drawPoint(const Point &p) {
 	SDL_RenderDrawPoint(_renderer,p.getX(),p.getY());
 }
 
-void SdlRenderer::drawRect(IRectangle &rectangle) {
+void Renderer::drawRect(const Rectangle &rectangle) {
 	SDL_Rect rect;
 	rect.x = rectangle.getX();
 	rect.y = rectangle.getY();
@@ -85,7 +84,7 @@ void SdlRenderer::drawRect(IRectangle &rectangle) {
 	SDL_RenderDrawRect(_renderer,&rect);
 }
 
-void SdlRenderer::fillRect(IRectangle &rectangle) {
+void Renderer::fillRect(const Rectangle &rectangle) {
 	SDL_Rect rect;
 	rect.x = rectangle.getX();
 	rect.y = rectangle.getY();
@@ -95,21 +94,18 @@ void SdlRenderer::fillRect(IRectangle &rectangle) {
 	SDL_RenderFillRect(_renderer,&rect);
 }
 
-void SdlRenderer::getViewport(IRectangle &rectangle) const {
+Rectangle Renderer::getViewport() const {
 	SDL_Rect viewport;
 	SDL_RenderGetViewport(_renderer, &viewport);
 
-	rectangle.setX(viewport.x);
-	rectangle.setY(viewport.y);
-	rectangle.setWidth(viewport.w);
-	rectangle.setHeight(viewport.h);
+	return Rectangle(viewport.x, viewport.y, viewport.w, viewport.h);
 }
 
-void SdlRenderer::show() {
+void Renderer::show() {
 	SDL_RenderPresent(_renderer);
 }
 
-void SdlRenderer::setViewport(const IRectangle &rectangle) {
+void Renderer::setViewport(const Rectangle &rectangle) {
 	SDL_Rect viewport;
 	viewport.x = rectangle.getX();
 	viewport.y = rectangle.getY();
@@ -119,6 +115,6 @@ void SdlRenderer::setViewport(const IRectangle &rectangle) {
     SDL_RenderSetViewport(_renderer, &viewport );
 }
 
-void SdlRenderer::setColor(const IColor &color) {
+void Renderer::setColor(const Color &color) {
 	SDL_SetRenderDrawColor(_renderer, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
 }

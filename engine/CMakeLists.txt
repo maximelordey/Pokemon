@@ -30,6 +30,7 @@ add_library(Engine STATIC
 "include/utils/point.h" "src/utils/point.cpp"
 "include/utils/rectangle.h" "src/utils/rectangle.cpp"
 "include/video/irenderer.h"
+"include/video/renderer.h" "src/video/renderer.cpp"
 "include/video/itexture.h"
 "include/video/iwindow.h"
 "include/video/window.h" "src/video/window.cpp"
