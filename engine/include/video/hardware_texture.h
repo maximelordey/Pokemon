@@ -10,8 +10,8 @@ class HardwareTexture {
 		HardwareTexture(SDL_Renderer& renderer, SDL_Surface& surface);
 		~HardwareTexture();
 
-		uint8_t getAlphaMode() const override;
-		void setAlphaMode(uint8_t alpha) override;
+		uint8_t getAlphaMode() const;
+		void setAlphaMode(uint8_t alpha);
 
 		SDL_Texture* getTexture() const;
 	

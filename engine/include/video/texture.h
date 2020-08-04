@@ -1,15 +1,18 @@
 #ifndef TEXTURE_H
 #define TEXTURE_H
 
-#include "itexture.h"
 #include <string>
 #include <SDL.h>
 #include <SDL_image.h>
+#include "itexture.h"
 
 class Texture: public ITexture {
 	public:
-		Texture(std::string& path);
+		Texture(const std::string &path);
 		~Texture();
+
+		uint8_t getAlphaMode() const override;
+		void setAlphaMode(uint8_t alpha) override;
 
 		SDL_Surface* getSurface() const;
 

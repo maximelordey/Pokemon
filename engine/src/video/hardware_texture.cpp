@@ -15,7 +15,7 @@ uint8_t HardwareTexture::getAlphaMode() const {
 }
 
 void HardwareTexture::setAlphaMode(uint8_t alpha) {
-	SDL_SetTextureAlphaMod(alpha);
+	SDL_SetTextureAlphaMod(_texture, alpha);
 }
 
 SDL_Texture* HardwareTexture::getTexture() const {

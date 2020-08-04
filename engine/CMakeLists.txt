@@ -32,6 +32,8 @@ add_library(Engine STATIC
 "include/video/irenderer.h"
 "include/video/renderer.h" "src/video/renderer.cpp"
 "include/video/itexture.h"
+"include/video/texture.h" "src/video/texture.cpp"
+"include/video/hardware_texture.h" "src/video/hardware_texture.cpp"
 "include/video/iwindow.h"
 "include/video/window.h" "src/video/window.cpp"
 )

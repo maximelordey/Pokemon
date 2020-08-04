@@ -1,7 +1,7 @@
 #include "texture.h"
 
 
-Texture::Texture(std::string& path) {
+Texture::Texture(const std::string& path) {
 	_surface = IMG_Load(path.c_str());	
 }
 
