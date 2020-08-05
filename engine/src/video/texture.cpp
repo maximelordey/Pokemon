@@ -1,4 +1,5 @@
 #include "texture.h"
+#include <SDL_image.h>
 
 
 Texture::Texture(const std::string& path) {

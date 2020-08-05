@@ -1,5 +1,8 @@
 #include "renderer.h"
 
+#include "texture.h"
+#include "hardware_texture.h"
+
 Renderer::Renderer(SDL_Window* window) {
 	 _renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
  }
@@ -33,7 +36,32 @@ void Renderer::clear() {
 }
 
 void Renderer::drawTexture(const ITexture &texture, const Rectangle *src, const Rectangle *dest) {
+	SDL_Rect srcRect;
+	SDL_Rect* srcRectPtr = nullptr;
+	SDL_Rect destRect;
+	SDL_Rect* destRectPtr = nullptr;
 
+	Texture *t = (Texture*)(&texture);
+	SDL_Surface *surface = t->getSurface();
+
+	if (src != nullptr){
+		srcRect.x = src->getX();
+		srcRect.y = src->getY();
+		srcRect.w = src->getWidth();
+		srcRect.h = src->getHeight();
+		srcRectPtr = &srcRect;
+	}
+	if (dest != nullptr){
+		destRect.x = dest->getX();
+		destRect.y = dest->getY();
+		destRect.w = dest->getWidth();
+		destRect.h = dest->getHeight();
+		destRectPtr = &destRect;
+	}
+
+	HardwareTexture hardwareTexture(*_renderer, *surface);
+
+	SDL_RenderCopy(_renderer,hardwareTexture.getTexture(),srcRectPtr,destRectPtr);
 }
 
 void Renderer::drawTexture(const ITexture &texture, const Rectangle *dest) {

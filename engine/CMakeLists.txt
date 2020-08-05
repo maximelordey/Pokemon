@@ -2,11 +2,13 @@ cmake_minimum_required(VERSION 3.0.0)
 project(GameEngine VERSION 1.0.0)
 
 ##### Check for SDL2, SDL2_Mixer, SDL2_Image
+
 find_package(PkgConfig)
 
 pkg_check_modules(SDL2 REQUIRED sdl2)
 pkg_check_modules(SDL2_MIXER REQUIRED SDL2_mixer)
 pkg_check_modules(SDL2_IMAGE REQUIRED SDL2_image)
+
 ##### Check for SDL2, SDL2_Mixer, SDL2_Image
 ##### Add libraries here.
 add_library(Engine STATIC
