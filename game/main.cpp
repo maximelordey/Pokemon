@@ -88,19 +88,17 @@ void init() {
 
 	current_buffer = buffer1;
 	next_buffer = buffer2;
-	
-	setValueAt(current_buffer, 10+0,10+0,true);
-	setValueAt(current_buffer, 10+3,10+0,true);
-	setValueAt(current_buffer, 10+4,10+1,true);
-	setValueAt(current_buffer, 10+0,10+2,true);
-	setValueAt(current_buffer, 10+4,10+2,true);
-	setValueAt(current_buffer, 10+1,10+3,true);
-	setValueAt(current_buffer, 10+2,10+3,true);
-	setValueAt(current_buffer, 10+3,10+3,true);
-	setValueAt(current_buffer, 10+4,10+3,true);
+
+	for (int column = 0 ; column < columns ; column++) {
+		for (int line = 0 ; line < lines ; line++ ) {
+			bool value = ((rand() & 0x1) == 0);
+			setValueAt(current_buffer, column, line,value);
+		}
+	}
 }
 
 int main() {
+	srand( (unsigned)time( NULL ) );
 	init();
 
 	Window w("Pokemon", origin, d);
