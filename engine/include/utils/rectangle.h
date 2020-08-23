@@ -2,10 +2,6 @@
 #define RECTANGLE_H
 
 #include <cstdint>
-
-#include "point.h"
-#include "dimension.h"
-
 class Rectangle {
 	public:
 		Rectangle(int32_t x, int32_t y, uint32_t width, uint32_t height);
@@ -13,25 +9,17 @@ class Rectangle {
 		Rectangle(Rectangle&& rectangle);
 		~Rectangle();
 
-		int32_t getX() const;
-		int32_t getY() const;
-		void setX(int32_t x);
-		void setY(int32_t y);
-
-		uint32_t getWidth() const;
-		uint32_t getHeight() const;
-		void setWidth(uint32_t width);
-		void setHeight(uint32_t height);
-
 		void move(int32_t x, int32_t y);
 		void translate(int32_t dx, int32_t dy);
 
 		Rectangle& operator=(const Rectangle& rectangle);
 		Rectangle& operator=(Rectangle&& rectangle);
 
-	private:
-		Point* _point;
-		Dimension* _dimension;
+	public: 
+		int32_t _x;
+		int32_t _y;
+		uint32_t _width;
+		uint32_t _height;
 };
 
 #endif

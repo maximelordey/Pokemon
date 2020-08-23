@@ -1,7 +1,7 @@
 #include "window.h"
 
 Window::Window(const std::string &name, const Point &origin, const Dimension &dimension) {
-	_window = SDL_CreateWindow(name.c_str(), origin.getX(), origin.getY(), dimension.getWidth(), dimension.getHeight(), SDL_WINDOW_SHOWN);
+	_window = SDL_CreateWindow(name.c_str(), origin.getX(), origin.getY(), dimension.getWidth(), dimension.getHeight(), 0);
 }
 
 Window::~Window() {

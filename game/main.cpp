@@ -1,4 +1,5 @@
 #include <iostream>
+#include <SDL.h>
 
 #include "color.h"
 #include "dimension.h"
@@ -6,15 +7,19 @@
 #include "renderer.h"
 #include "point.h"
 
-Color white(0xFF,0xFF,0xFF,0xFF);
-Color black(0,0,0,0xFF);
+const Color white(0xFF,0xFF,0xFF,0xFF);
+const Color black(0,0,0,0xFF);
 
-int rsize = 10;
-const int columns = 64;
-const int lines = 64;
+const int rsize = 10;
+const int columns = 100;
+const int lines = 100;
+int tickRate = 300;
+int refreshRate = 33;
+bool quit = false;
+bool pause = false;
 
-Point origin(0,0);
-Dimension d(rsize * columns, rsize * lines);
+const Point origin(0,0);
+const Dimension d(rsize * columns, rsize * lines);
 
 bool buffer1[columns * lines];
 bool buffer2[columns * lines];
@@ -45,41 +50,79 @@ uint32_t getNumberOfNeighbour(bool *buffer,int column, int line) {
 	int total_neighbour = 0;
 	for (int column_offset = -1; column_offset <=1 ; column_offset++) {
 		for (int line_offset = -1; line_offset <=1 ; line_offset++) {
-			if (line_offset != 0 || column_offset != 0) {
-				bool value = getValueAt(buffer, column + column_offset, line + line_offset);
+				bool value = getValueAt(buffer, column + column_offset, line + line_offset) && (line_offset != 0 || column_offset != 0);
 				if (value) total_neighbour++;
-			}
 		}
 	}
 	return total_neighbour;
 }
 
-bool update(uint32_t elapsed) {
-	if (elapsed > 40) {
-		for (int column = 0 ; column < columns ; column++) {
-			for (int line = 0 ; line < lines ; line++ ) {
-				bool value = getValueAt(current_buffer, column, line);
-				int neighbour = getNumberOfNeighbour(current_buffer, column, line);
-				bool nextValue = (neighbour == 3) || (value && neighbour == 2);
-				setValueAt(next_buffer, column, line, nextValue);
-			}
+
+void update(uint32_t elapsed) {	
+	for (int column = 0 ; column < columns ; column++) {
+		for (int line = 0 ; line < lines ; line++ ) {
+			bool value = getValueAt(current_buffer, column, line);
+			int neighbour = getNumberOfNeighbour(current_buffer, column, line);
+			bool nextValue = (neighbour == 3) || (value && neighbour == 2);
+			setValueAt(next_buffer, column, line, nextValue);
 		}
-		swapBuffers();
-		return true;
 	}
-	return false;
+	swapBuffers();
 }
 
 void paint(Renderer &renderer){
-		for (int column = 0 ; column < columns ; column++) {
-			for (int line = 0 ; line < lines ; line++ ) {
-				Rectangle r(column * rsize, line * rsize , rsize, rsize);
-				bool value = getValueAt(current_buffer, column, line);
-				renderer.setColor(value ? white : black);
-				renderer.fillRect(r);
-			}
+	Rectangle r(0,0,rsize,rsize);
+	for (int column = 0 ; column < columns ; column++) {
+		for (int line = 0 ; line < lines ;line++ ) {
+			r.move(column * rsize, line* rsize);
+			bool value = getValueAt(current_buffer, column, line);
+			renderer.setColor(value ? white : black);
+			renderer.fillRect(r);
 		}
+	}
+}
 
+
+void processInput() {
+	SDL_Event e;
+	while (SDL_PollEvent(&e) != 0)
+	{
+		if (e.type == SDL_QUIT) {
+			quit = true;
+		} else if (e.type == SDL_KEYDOWN) {
+			switch (e.key.keysym.sym)
+			{
+			case SDLK_p:
+				pause = !pause;
+				break;
+			
+			case SDLK_KP_PLUS:
+				if (tickRate > 20) tickRate -= 20;
+				break;
+			
+			case SDLK_KP_MINUS:
+				tickRate += 20;
+				break;
+			
+			case SDLK_u:
+				if (pause) update(0);
+				break;
+
+			default:
+				break;
+			}
+		} else if (e.type == SDL_MOUSEBUTTONDOWN) {
+			int x, y;
+			SDL_GetMouseState(&x, &y);
+
+			int column = x / rsize;
+			int line = y / rsize;
+
+			bool value = getValueAt(current_buffer, column, line);
+			setValueAt(current_buffer, column, line, !value);
+		}
+	}
+	
 }
 
 void init() {
@@ -88,13 +131,6 @@ void init() {
 
 	current_buffer = buffer1;
 	next_buffer = buffer2;
-
-	for (int column = 0 ; column < columns ; column++) {
-		for (int line = 0 ; line < lines ; line++ ) {
-			bool value = ((rand() & 0x1) == 0);
-			setValueAt(current_buffer, column, line,value);
-		}
-	}
 }
 
 int main() {
@@ -104,25 +140,30 @@ int main() {
 	Window w("Pokemon", origin, d);
 	Renderer renderer(w.getWindow());
 
-	uint32_t start = 0;
-	uint32_t end = 0;
+	uint32_t current = SDL_GetTicks();
 	uint32_t elapsed = 0;
-	uint32_t total_elapsed = 0;
 
+	uint32_t currentRR = SDL_GetTicks();
+	uint32_t elapsedRR = 0;
+	
 
-	while (end < 10000)
+	while (!quit)
 	{
-		start = SDL_GetTicks();
-		if (update(total_elapsed)) {
-			renderer.setColor(Color(0,0,0,0xFF));
+		processInput();
+		if (elapsed > tickRate && !pause) {
+			update(elapsed);
+			current = SDL_GetTicks();
+		}
+
+		if (elapsedRR > refreshRate) {
+			currentRR = SDL_GetTicks();
+			renderer.setColor(black);
 			renderer.clear();
 			paint(renderer);
 			renderer.show();
-			total_elapsed = 0;
 		}
-		end = SDL_GetTicks();
-		elapsed = end - start;
-		total_elapsed += elapsed;
+		elapsed = SDL_GetTicks() - current;
+		elapsedRR = SDL_GetTicks() - currentRR;
 	}
 	
 	return 0;

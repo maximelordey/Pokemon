@@ -45,17 +45,17 @@ void Renderer::drawTexture(const ITexture &texture, const Rectangle *src, const 
 	SDL_Surface *surface = t->getSurface();
 
 	if (src != nullptr){
-		srcRect.x = src->getX();
-		srcRect.y = src->getY();
-		srcRect.w = src->getWidth();
-		srcRect.h = src->getHeight();
+		srcRect.x = src->_x;
+		srcRect.y = src->_y;
+		srcRect.w = src->_width;
+		srcRect.h = src->_height;
 		srcRectPtr = &srcRect;
 	}
 	if (dest != nullptr){
-		destRect.x = dest->getX();
-		destRect.y = dest->getY();
-		destRect.w = dest->getWidth();
-		destRect.h = dest->getHeight();
+		destRect.x = dest->_x;
+		destRect.y = dest->_y;
+		destRect.w = dest->_width;
+		destRect.h = dest->_height;
 		destRectPtr = &destRect;
 	}
 
@@ -78,22 +78,22 @@ void Renderer::drawPoint(const Point &p) {
 
 void Renderer::drawRect(const Rectangle &rectangle) {
 	SDL_Rect rect;
-	rect.x = rectangle.getX();
-	rect.y = rectangle.getY();
-	rect.w = rectangle.getWidth();
-	rect.h = rectangle.getHeight();
+		rect.x = rectangle._x;
+		rect.y = rectangle._y;
+		rect.w = rectangle._width;
+		rect.h = rectangle._height;
 
 	SDL_RenderDrawRect(_renderer,&rect);
 }
 
 void Renderer::fillRect(const Rectangle &rectangle) {
-	SDL_Rect rect;
-	rect.x = rectangle.getX();
-	rect.y = rectangle.getY();
-	rect.w = rectangle.getWidth();
-	rect.h = rectangle.getHeight();
+	SDL_Rect r1;
+	r1.x = rectangle._x;
+	r1.y = rectangle._y;
+	r1.w = rectangle._width;
+	r1.h = rectangle._height;
 
-	SDL_RenderFillRect(_renderer,&rect);
+	SDL_RenderFillRect(_renderer,&r1);
 }
 
 Rectangle Renderer::getViewport() const {
@@ -109,10 +109,10 @@ void Renderer::show() {
 
 void Renderer::setViewport(const Rectangle &rectangle) {
 	SDL_Rect viewport;
-	viewport.x = rectangle.getX();
-	viewport.y = rectangle.getY();
-	viewport.w = rectangle.getWidth();
-	viewport.h = rectangle.getHeight();
+	viewport.x = rectangle._x;
+	viewport.y = rectangle._y;
+	viewport.w = rectangle._width;
+	viewport.h = rectangle._height;
 
     SDL_RenderSetViewport(_renderer, &viewport );
 }
