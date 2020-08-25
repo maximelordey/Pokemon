@@ -10,15 +10,26 @@
 
 class Window: public IWindow {
 	public:
-		Window(const std::string& name,int32_t x, int32_t y, uint32_t width, uint32_t height);
-		Window(const std::string& name,const Point& origin,const Dimension& dimension);
+		Window(const std::string& name, int32_t x, int32_t y, uint32_t width, uint32_t height);
+		Window(const std::string& name, const Point& origin, const Dimension& dimension);
 		~Window();
 
 		void show() override;
 		void hidde() override;
+		bool isVisible() const override;
+		bool isHidden() const override;
+
 		void setFullScreen() override;
-		void setBorderless() override;
 		void setWindowed() override;
+		bool isFullScreen() const override;
+
+		void setBorderless() override;
+		void setBordered() override;
+		bool isBorderless() const override;
+
+		void setResizable() override;
+		void unsetResizable() override;
+		bool isResizable() const override;
 
 		std::string getName() const override;
 		Point getOrigin() const override;
