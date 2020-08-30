@@ -40,8 +40,8 @@ void Renderer::drawTexture(const ITexture &texture, const Rectangle *dest) {
 	drawTexture(texture,nullptr,dest);
 }
 
-void Renderer::drawLine(const Point &p1, const Point &p2) {
-	SDL_RenderDrawLine(_renderer,p1.getX(),p1.getY(),p2.getX(),p2.getY());
+void Renderer::drawLine(const Line &line) {
+	SDL_RenderDrawLine(_renderer,line._x1, line._y1, line._x2, line._y2);
 }
 
 void Renderer::drawPoint(const Point &p) {

@@ -29,6 +29,7 @@ add_library(Engine STATIC
 "include/utils/dimension.h" "src/utils/dimension.cpp"
 "include/utils/point.h" "src/utils/point.cpp"
 "include/utils/rectangle.h" "src/utils/rectangle.cpp"
+"include/utils/line.h" "src/utils/line.cpp"
 "include/video/irenderer.h"
 "include/video/renderer.h" "src/video/renderer.cpp"
 "include/video/itexture.h"
