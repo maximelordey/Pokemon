@@ -4,8 +4,8 @@
 #include "hardware_texture.h"
 
 Renderer::Renderer(SDL_Window* window) {
-	 _renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
- }
+	_renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
+}
 
 Renderer::~Renderer(){
 	SDL_DestroyRenderer(_renderer);
@@ -94,6 +94,21 @@ void Renderer::fillRect(const Rectangle &rectangle) {
 	r1.h = rectangle._height;
 
 	SDL_RenderFillRect(_renderer,&r1);
+}
+
+void Renderer::fillRects(const std::vector<Rectangle> &rectangles) {
+	const int size = rectangles.size();
+
+	SDL_Rect rects[size];
+
+	for (int i = 0 ; i < size ; i++) {
+		rects[i].h = rectangles[i]._height; 
+		rects[i].w = rectangles[i]._width; 
+		rects[i].x = rectangles[i]._x; 
+		rects[i].y = rectangles[i]._y; 
+	}
+
+	SDL_RenderFillRects(_renderer, rects, size);
 }
 
 Rectangle Renderer::getViewport() const {

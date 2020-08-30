@@ -1,10 +1,11 @@
 #ifndef SDL_RENDERER_H
 #define SDL_RENDERER_H
+#include "SDL.h"
+#include <vector>
 
 #include "irenderer.h"
 #include "color.h"
 #include "dimension.h"
-#include <SDL.h>
 
 class Renderer: public IRenderer {
 	public:
@@ -19,6 +20,7 @@ class Renderer: public IRenderer {
 		void drawLine(const Point &p1, const Point &p2) override;
 		void drawPoint(const Point &p) override;
 		void drawRect(const Rectangle &rectangle) override;
+		void fillRects(const std::vector<Rectangle> &rectangles);
 		void fillRect(const Rectangle &rectangle) override;
 		Rectangle getViewport() const override;
 		void show() override;

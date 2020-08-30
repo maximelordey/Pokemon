@@ -1,5 +1,5 @@
 #include <iostream>
-#include <SDL.h>
+#include "SDL.h"
 
 #include "color.h"
 #include "dimension.h"
@@ -10,11 +10,11 @@
 const Color white(0xFF,0xFF,0xFF,0xFF);
 const Color black(0,0,0,0xFF);
 
-const int rsize = 10;
-const int columns = 100;
-const int lines = 100;
-int tickRate = 300;
-int refreshRate = 33;
+const int rsize = 1;
+const int columns = 800;
+const int lines = 600;
+uint32_t tickRate = 0;
+uint32_t refreshRate = 33;
 bool quit = false;
 bool pause = false;
 
@@ -71,15 +71,21 @@ void update(uint32_t elapsed) {
 }
 
 void paint(Renderer &renderer){
-	Rectangle r(0,0,rsize,rsize);
+	std::vector<Rectangle> whites;
+	std::vector<Rectangle> blacks;
+	
 	for (int column = 0 ; column < columns ; column++) {
 		for (int line = 0 ; line < lines ;line++ ) {
-			r.move(column * rsize, line* rsize);
+			Rectangle r(column * rsize, line* rsize, rsize, rsize);
 			bool value = getValueAt(current_buffer, column, line);
-			renderer.setColor(value ? white : black);
-			renderer.fillRect(r);
+			value ? whites.push_back(r) : blacks.push_back(r); 
 		}
 	}
+
+	renderer.setColor(black);
+	renderer.fillRects(blacks);
+	renderer.setColor(white);
+	renderer.fillRects(whites);
 }
 
 
@@ -131,10 +137,15 @@ void init() {
 
 	current_buffer = buffer1;
 	next_buffer = buffer2;
+
+	for (int i=0; i < lines * columns ; i++){
+		current_buffer[i] = ((i & 0x1) == 0);
+	}
 }
 
 int main() {
 	srand( (unsigned)time( NULL ) );
+
 	init();
 
 	Window w("Pokemon", origin, d);
@@ -150,7 +161,8 @@ int main() {
 	while (!quit)
 	{
 		processInput();
-		if (elapsed > tickRate && !pause) {
+		if ( (elapsed > tickRate) && !pause) {
+			std::cout << "fps: " << 1000/(elapsed+1) << '\n' ;
 			update(elapsed);
 			current = SDL_GetTicks();
 		}
