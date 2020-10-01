@@ -14,6 +14,8 @@ class Surface {
 
 		Surface &operator=(const Surface &surface);
 		Surface &operator=(Surface &&surface);
+
+	private:
 };
 
 #endif

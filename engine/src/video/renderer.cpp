@@ -32,12 +32,12 @@ void Renderer::clear() {
 	SDL_RenderClear(_renderer);
 }
 
-void Renderer::drawTexture(const ITexture &texture, const Rectangle *src, const Rectangle *dest) {
+void Renderer::drawTexture(const Surface &surface, const Rectangle *src, const Rectangle *dest) {
 
 }
 
-void Renderer::drawTexture(const ITexture &texture, const Rectangle *dest) {
-	drawTexture(texture,nullptr,dest);
+void Renderer::drawTexture(const Surface &surface, const Rectangle *dest) {
+	drawTexture(surface,nullptr,dest);
 }
 
 void Renderer::drawLine(const Line &line) {

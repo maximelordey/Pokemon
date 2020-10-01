@@ -15,8 +15,8 @@ class Renderer: public IRenderer {
 		Color getColor() const override;
 		Dimension getOutputSize()const override;
 		void clear() override;
-		void drawTexture(const ITexture &texture, const Rectangle *src, const Rectangle *dest) override;
-		void drawTexture(const ITexture &texture, const Rectangle *dest) override;
+		void drawTexture(const Surface &surface, const Rectangle *src, const Rectangle *dest) override;
+		void drawTexture(const Surface &surface, const Rectangle *dest) override;
 		void drawLine(const Line &line) override;
 		void drawPoint(const Point &p) override;
 		void drawRect(const Rectangle &rectangle) override;
