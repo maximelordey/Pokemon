@@ -1,12 +1,18 @@
-#ifndef ITEXTURE_H
-#define ITEXTURE_H
+#ifndef SURFACE_H
+#define SURFACE_H
 
-#include <cstdint>
+#include <string>
 
-class ITexture {
+class Surface {
 	public:
-		virtual uint8_t getAlphaMode() const = 0;
-		virtual void setAlphaMode(uint8_t alpha) = 0;
+		Surface();
+		Surface(std::string &path);
+		Surface(const Surface &surface);
+		Surface(Surface &&surface);
+
+
+		Surface &operator=(const Surface &surface);
+		Surface &operator=(Surface &&surface);
 };
 
 #endif
