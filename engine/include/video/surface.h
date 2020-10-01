@@ -9,6 +9,7 @@ class Surface {
 		Surface(std::string &path);
 		Surface(const Surface &surface);
 		Surface(Surface &&surface);
+		~Surface();
 
 
 		Surface &operator=(const Surface &surface);
