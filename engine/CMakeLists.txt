@@ -32,7 +32,7 @@ add_library(Engine STATIC
 "include/utils/line.h" "src/utils/line.cpp"
 "include/video/irenderer.h"
 "include/video/renderer.h" "src/video/renderer.cpp"
-"include/video/itexture.h"
+"include/video/surface.h" "src/video/surface.cpp"
 "include/video/iwindow.h"
 "include/video/window.h" "src/video/window.cpp"
 )
