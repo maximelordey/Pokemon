@@ -2,6 +2,7 @@
 #define SURFACE_H
 
 #include <string>
+#include "SDL.h"
 
 class Surface {
 	public:
@@ -16,6 +17,7 @@ class Surface {
 		Surface &operator=(Surface &&surface);
 
 	private:
+		SDL_Surface *_surface;
 };
 
 #endif
