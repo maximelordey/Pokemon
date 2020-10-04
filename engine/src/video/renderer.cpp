@@ -33,7 +33,30 @@ void Renderer::clear() {
 }
 
 void Renderer::drawTexture(const Surface &surface, const Rectangle *src, const Rectangle *dest) {
+	SDL_Rect* src_ptrRect = nullptr;
+	SDL_Rect* dest_ptrRect = nullptr;
 
+	if (src) {
+		SDL_Rect srcRect;
+		srcRect.x = src->getX();
+		srcRect.y = src->getY();
+		srcRect.w = src->getWidth();
+		srcRect.h = src->getHeight();
+		src_ptrRect = &srcRect;
+	}
+
+	if (dest) {
+		SDL_Rect destRect;
+		destRect.x = src->getX();
+		destRect.y = src->getY();
+		destRect.w = src->getWidth();
+		destRect.h = src->getHeight();
+		dest_ptrRect = &destRect;
+	}
+
+	SDL_Texture* texture = SDL_CreateTextureFromSurface(_renderer, surface.getSurface());
+	SDL_RenderCopy(_renderer, texture, src_ptrRect, dest_ptrRect);
+	SDL_DestroyTexture(texture);
 }
 
 void Renderer::drawTexture(const Surface &surface, const Rectangle *dest) {

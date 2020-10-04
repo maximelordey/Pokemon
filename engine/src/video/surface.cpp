@@ -56,8 +56,8 @@ Surface Surface::blitting(const Surface& surface,const Rectangle& area) const {
 	return Surface(*destSurface);
 }
 
-const SDL_Surface& Surface::getSurface() const {
-	return *_surface;
+SDL_Surface* Surface::getSurface() const {
+	return _surface;
 }
 
 Surface &Surface::operator=(const Surface &surface) {
