@@ -4,6 +4,7 @@
 #include <string>
 #include "SDL.h"
 #include "rectangle.h"
+#include "SDL_image.h"
 
 class Surface {
 	public:
@@ -17,7 +18,7 @@ class Surface {
 		void setFormat(const SDL_PixelFormat& pixelFormat);
 		SDL_PixelFormat& getFormat() const;
 
-		Surface& blitting(const Surface& surface,const Rectangle& area) const;
+		Surface blitting(const Surface& surface,const Rectangle& area) const;
 		const SDL_Surface& getSurface() const;
 
 		Surface& operator=(const Surface &surface);
