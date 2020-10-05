@@ -37,10 +37,10 @@ SDL_PixelFormat &Surface::getFormat() const {
 
 Surface Surface::blitting(const Surface& surface,const Rectangle& area) const {
 	SDL_Rect srcRect;
-	srcRect.x = area.getX();
-	srcRect.y = area.getY();
-	srcRect.w = area.getWidth();
-	srcRect.h = area.getHeight();
+	srcRect.x = area._x;
+	srcRect.y = area._y;
+	srcRect.w = area._width;
+	srcRect.h = area._height;
 
 	SDL_Surface* srcSurface = surface._surface;
 	SDL_Surface* destSurface = SDL_CreateRGBSurface(srcSurface->flags,

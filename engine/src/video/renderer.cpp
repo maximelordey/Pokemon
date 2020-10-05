@@ -38,19 +38,19 @@ void Renderer::drawTexture(const Surface &surface, const Rectangle *src, const R
 
 	if (src) {
 		SDL_Rect srcRect;
-		srcRect.x = src->getX();
-		srcRect.y = src->getY();
-		srcRect.w = src->getWidth();
-		srcRect.h = src->getHeight();
+		srcRect.x = src->_x;
+		srcRect.y = src->_y;
+		srcRect.w = src->_width;
+		srcRect.h = src->_height;
 		src_ptrRect = &srcRect;
 	}
 
 	if (dest) {
 		SDL_Rect destRect;
-		destRect.x = dest->getX();
-		destRect.y = dest->getY();
-		destRect.w = dest->getWidth();
-		destRect.h = dest->getHeight();
+		destRect.x = dest->_x;
+		destRect.y = dest->_y;
+		destRect.w = dest->_width;
+		destRect.h = dest->_height;
 		dest_ptrRect = &destRect;
 	}
 
