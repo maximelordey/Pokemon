@@ -97,10 +97,10 @@ void Window::setName(const std::string &name){
 }
 
 void Window::setOrigin(const Point &origin){
-	SDL_SetWindowPosition(_window, origin.getX(), origin.getY());
+	SDL_SetWindowPosition(_window, origin._x, origin._y);
 }
 
 void Window::setDimension(const Dimension &dimension){
-	SDL_SetWindowSize(_window, dimension.getWidth(), dimension.getHeight());
+	SDL_SetWindowSize(_window, dimension._width, dimension._height);
 }
 
