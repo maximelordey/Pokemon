@@ -5,7 +5,7 @@ Window::Window(const std::string& name,int32_t x, int32_t y,uint32_t width, uint
 }
 
 Window::Window(const std::string &name, const Point &origin, const Dimension &dimension) {
-	_window = SDL_CreateWindow(name.c_str(), origin.getX(), origin.getY(), dimension.getWidth(), dimension.getHeight(), 0);
+	_window = SDL_CreateWindow(name.c_str(), origin._x, origin._y, dimension._width, dimension._height, SDL_WINDOW_SHOWN);
 }
 
 Window::~Window() {

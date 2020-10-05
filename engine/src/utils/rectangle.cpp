@@ -1,85 +1,55 @@
 #include "rectangle.h"
 
-Rectangle::Rectangle(int32_t x, int32_t y, uint32_t width, uint32_t height){
-	_point = new Point(x, y);
-	_dimension = new Dimension(width, height);
-}
+Rectangle::Rectangle() : 
+	_x(0), _y(0), _width(0), _height(0)
+{}
+
+Rectangle::Rectangle(int32_t x, int32_t y, uint32_t width, uint32_t height) : 
+	_x(x), _y(y), _width(width), _height(height)
+{}
 
 Rectangle::Rectangle(const Rectangle& rectangle) {
-	_point = new Point(*(rectangle._point));
-	_dimension = new Dimension(*(rectangle._dimension));
+	_x = rectangle._x;
+	_y = rectangle._y;
+	_width = rectangle._width;
+	_height = rectangle._height;
 }
 
 Rectangle::Rectangle(Rectangle&& rectangle) {
-	_point = rectangle._point;
-	_dimension = rectangle._dimension;
-	
-	rectangle._point = nullptr;
-	rectangle._dimension = nullptr;
+	_x = rectangle._x;
+	_y = rectangle._y;
+	_width = rectangle._width;
+	_height = rectangle._height;
 }
 
-Rectangle::~Rectangle(){
-	delete _point;
-	delete _dimension;
-}
-
-int32_t Rectangle::getX() const {
-	return _point->getX();
-}
-
-int32_t Rectangle::getY() const{
-	return _point->getY();
-}
-
-void Rectangle::setX(int32_t x){
-	_point->move(x, getY());
-}
-
-void Rectangle::setY(int32_t y){
-	_point->move(getX(), y);
-}
-
-uint32_t Rectangle::getWidth() const{
-	return _dimension->getWidth();
-}
-
-uint32_t Rectangle::getHeight() const{
-	return _dimension->getHeight();
-}
-void Rectangle::setWidth(uint32_t width){
-	_dimension->setSize(width, getHeight());
-}
-
-void Rectangle::setHeight(uint32_t height){
-	_dimension->setSize(getWidth(), height);
-}
+Rectangle::~Rectangle(){}
 
 void Rectangle::move(int32_t x, int32_t y){
-	_point->move(x, y);
+	_x = x;
+	_y = y;
 }
 
 void Rectangle::translate(int32_t dx, int32_t dy){
-	_point->translate(dx, dy);
+	_x += dx;
+	_y += dy;
 }
 
 Rectangle& Rectangle::operator=(const Rectangle& rectangle) {
 	if (this != &rectangle){
-		_point = rectangle._point;
-		_dimension = rectangle._dimension;		
+		_x = rectangle._x;
+		_y = rectangle._y;
+		_width = rectangle._width;
+		_height = rectangle._height;	
 	}
 	return *this;
 }
 
 Rectangle& Rectangle::operator=(Rectangle&& rectangle) {
 	if (this != &rectangle){
-		delete _point;
-		delete _dimension;
-
-		_point = rectangle._point;
-		_dimension = rectangle._dimension;
-	
-		rectangle._point = nullptr;
-		rectangle._dimension = nullptr;
+		_x = rectangle._x;
+		_y = rectangle._y;
+		_width = rectangle._width;
+		_height = rectangle._height;
 	}
 	return *this;
 }

@@ -5,13 +5,11 @@
 
 class Point {
 	public:
+		Point();
 		Point(int32_t x, int32_t y);
 		Point(const Point& point);
 		Point(Point&& point);
 		~Point();
-
-		int32_t getX() const;
-		int32_t getY() const;
 
 		void move(int32_t x, int32_t y);
 		void translate(int32_t dx, int32_t dy);

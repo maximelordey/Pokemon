@@ -10,15 +10,10 @@ class Color {
 		Color(Color &&color);	
 		~Color();
 
-		uint8_t getRed() const;
-		uint8_t getGreen() const;
-		uint8_t getBlue() const;
-		uint8_t getAlpha() const;
-
 		Color& operator=(const Color &color);
 		Color& operator=(Color &&color);
 
-	private:
+	public:
 		uint8_t _red;
 		uint8_t _green;
 		uint8_t _blue;

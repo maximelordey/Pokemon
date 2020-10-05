@@ -1,5 +1,9 @@
 #include "point.h"
 
+Point::Point()
+: _x(0), _y(0)
+{}
+
 Point::Point(int32_t x, int32_t y)
 : _x(x), _y(y)
 {}
@@ -13,14 +17,6 @@ Point::Point(Point&& point) {
 }
 
 Point::~Point(){}
-
-int32_t Point::getX() const{
-	return _x;
-}
-
-int32_t Point::getY() const {
-	return _y;
-}
 
 void Point::move(int32_t x, int32_t y){
 	_x = x;
