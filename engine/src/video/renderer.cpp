@@ -47,10 +47,10 @@ void Renderer::drawTexture(const Surface &surface, const Rectangle *src, const R
 
 	if (dest) {
 		SDL_Rect destRect;
-		destRect.x = src->getX();
-		destRect.y = src->getY();
-		destRect.w = src->getWidth();
-		destRect.h = src->getHeight();
+		destRect.x = dest->getX();
+		destRect.y = dest->getY();
+		destRect.w = dest->getWidth();
+		destRect.h = dest->getHeight();
 		dest_ptrRect = &destRect;
 	}
 
