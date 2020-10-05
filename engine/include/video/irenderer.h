@@ -8,16 +8,16 @@
 #include "rectangle.h"
 #include "point.h"
 #include "line.h"
+#include "surface.h"
 #include "irenderer.h"
-#include "itexture.h"
 
 class IRenderer {
 	public:
 		virtual Color getColor() const = 0;
 		virtual Dimension getOutputSize() const = 0;
 		virtual void clear() = 0;
-		virtual void drawTexture(const ITexture &texture, const Rectangle *src, const Rectangle *dest) = 0;
-		virtual void drawTexture(const ITexture &texture, const Rectangle *dest) = 0;
+		virtual void drawTexture(const Surface &surface, const Rectangle *src, const Rectangle *dest) = 0;
+		virtual void drawTexture(const Surface &surface, const Rectangle *dest) = 0;
 		virtual void drawLine(const Line &line) = 0;
 		virtual void drawPoint(const Point &p) = 0;
 		virtual void drawRect(const Rectangle &rectangle) = 0;
