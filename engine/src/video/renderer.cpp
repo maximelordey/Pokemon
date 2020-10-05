@@ -90,5 +90,5 @@ void Renderer::setViewport(const Rectangle &rectangle) {
 }
 
 void Renderer::setColor(const Color &color) {
-	SDL_SetRenderDrawColor(_renderer, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+	SDL_SetRenderDrawColor(_renderer, color._red, color._green, color._blue, color._alpha);
 }
