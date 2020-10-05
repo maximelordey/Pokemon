@@ -19,13 +19,9 @@ class IRenderer {
 		virtual void drawTexture(const ITexture &texture, const Rectangle *src, const Rectangle *dest) = 0;
 		virtual void drawTexture(const ITexture &texture, const Rectangle *dest) = 0;
 		virtual void drawLine(const Line &line) = 0;
-		virtual void drawLines(const std::iterator_traits<Line> &begin, const std::iterator_traits<Line> &end) = 0;
 		virtual void drawPoint(const Point &p) = 0;
-		virtual void drawPoints(const std::iterator_traits<Point> &begin, const std::iterator_traits<Point> &cend) = 0;
 		virtual void drawRect(const Rectangle &rectangle) = 0;
-		virtual void drawRects(const std::iterator_traits<Rectangle> &begin, const std::iterator_traits<Rectangle> &end) = 0;
 		virtual void fillRect(const Rectangle &rectangle) = 0;
-		virtual void fillRects(const std::iterator_traits<Rectangle> &begin, const std::iterator_traits<Rectangle> &end) = 0;
 		virtual Rectangle getViewport() const = 0;
 		virtual void show() = 0;
 		virtual void setViewport(const Rectangle &rectangle) = 0;
