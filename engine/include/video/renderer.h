@@ -4,11 +4,12 @@
 #include "irenderer.h"
 #include "color.h"
 #include "dimension.h"
+#include "window.h"
 #include <SDL.h>
 
 class Renderer: public IRenderer {
 	public:
-		Renderer(SDL_Window* window);
+		Renderer(Window& window);
 		~Renderer();
 
 		Color getColor() const override;

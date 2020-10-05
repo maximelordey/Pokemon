@@ -1,7 +1,7 @@
 #include "renderer.h"
 
-Renderer::Renderer(SDL_Window* window) {
-	 _renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
+Renderer::Renderer(Window& window) {
+	 _renderer = SDL_CreateRenderer(window.getWindow(), -1, SDL_RENDERER_SOFTWARE);
  }
 
 Renderer::~Renderer(){
