@@ -45,25 +45,25 @@ void Renderer::drawLine(const Line &line) {
 }
 
 void Renderer::drawPoint(const Point &p) {
-	SDL_RenderDrawPoint(_renderer,p.getX(),p.getY());
+	SDL_RenderDrawPoint(_renderer,p._x,p._y);
 }
 
 void Renderer::drawRect(const Rectangle &rectangle) {
 	SDL_Rect rect;
-	rect.x = rectangle.getX();
-	rect.y = rectangle.getY();
-	rect.w = rectangle.getWidth();
-	rect.h = rectangle.getHeight();
+	rect.x = rectangle._x;
+	rect.y = rectangle._y;
+	rect.w = rectangle._width;
+	rect.h = rectangle._height;
 
 	SDL_RenderDrawRect(_renderer,&rect);
 }
 
 void Renderer::fillRect(const Rectangle &rectangle) {
 	SDL_Rect rect;
-	rect.x = rectangle.getX();
-	rect.y = rectangle.getY();
-	rect.w = rectangle.getWidth();
-	rect.h = rectangle.getHeight();
+	rect.x = rectangle._x;
+	rect.y = rectangle._y;
+	rect.w = rectangle._width;
+	rect.h = rectangle._height;
 
 	SDL_RenderFillRect(_renderer,&rect);
 }
@@ -81,10 +81,10 @@ void Renderer::show() {
 
 void Renderer::setViewport(const Rectangle &rectangle) {
 	SDL_Rect viewport;
-	viewport.x = rectangle.getX();
-	viewport.y = rectangle.getY();
-	viewport.w = rectangle.getWidth();
-	viewport.h = rectangle.getHeight();
+	viewport.x = rectangle._x;
+	viewport.y = rectangle._y;
+	viewport.w = rectangle._width;
+	viewport.h = rectangle._height;
 
     SDL_RenderSetViewport(_renderer, &viewport );
 }
