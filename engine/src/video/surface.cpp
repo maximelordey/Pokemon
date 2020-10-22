@@ -1,14 +1,14 @@
 #include "surface.h"
 
-Surface::Surface() {
+Surface::Surface() 
+: _surface(nullptr)
+{}
 
+Surface::Surface(SDL_Surface *surface) {
+	_surface = SDL_DuplicateSurface(surface);
 }
 
-Surface::Surface(SDL_Surface &surface) {
-	_surface = &surface;
-}
-
-Surface::Surface(std::string &path) {
+Surface::Surface(const std::string &path) {
 	_surface = IMG_Load(path.c_str());
 }
 
@@ -53,7 +53,9 @@ Surface Surface::blitting(const Rectangle& area) const {
         srcSurface->format->Amask
     );
 	SDL_BlitSurface(srcSurface, &srcRect, destSurface, nullptr);
-	return Surface(*destSurface);
+	Surface surface(destSurface);
+	SDL_FreeSurface(destSurface);
+	return surface;
 }
 
 SDL_Surface* Surface::getSurface() const {

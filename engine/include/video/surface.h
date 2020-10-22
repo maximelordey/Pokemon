@@ -9,8 +9,8 @@
 class Surface {
 	public:
 		Surface();
-		Surface(SDL_Surface& surface);
-		Surface(std::string& path);
+		Surface(const std::string& path);
+		Surface(SDL_Surface* surface);
 		Surface(const Surface& surface);
 		Surface(Surface&& surface);
 		~Surface();
