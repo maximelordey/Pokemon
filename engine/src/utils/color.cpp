@@ -1,5 +1,9 @@
 #include "color.h"
 
+Color::Color()
+: _red(0), _green(0), _blue(0), _alpha(0)
+{}
+
 Color::Color(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha)
 : _red(red), _green(green), _blue(blue), _alpha(alpha)
 {}

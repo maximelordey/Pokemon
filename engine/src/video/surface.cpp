@@ -1,14 +1,14 @@
 #include "surface.h"
 
-Surface::Surface() {
+Surface::Surface() 
+: _surface(nullptr)
+{}
 
+Surface::Surface(SDL_Surface *surface) {
+	_surface = SDL_DuplicateSurface(surface);
 }
 
-Surface::Surface(SDL_Surface &surface) {
-	_surface = &surface;
-}
-
-Surface::Surface(std::string &path) {
+Surface::Surface(const std::string &path) {
 	_surface = IMG_Load(path.c_str());
 }
 
@@ -35,14 +35,14 @@ SDL_PixelFormat &Surface::getFormat() const {
 	return *(_surface->format);
 }
 
-Surface Surface::blitting(const Surface& surface,const Rectangle& area) const {
+Surface Surface::blitting(const Rectangle& area) const {
 	SDL_Rect srcRect;
 	srcRect.x = area._x;
 	srcRect.y = area._y;
 	srcRect.w = area._width;
 	srcRect.h = area._height;
 
-	SDL_Surface* srcSurface = surface._surface;
+	SDL_Surface* srcSurface = _surface;
 	SDL_Surface* destSurface = SDL_CreateRGBSurface(srcSurface->flags,
 	 	srcRect.w,
 	 	srcRect.h,
@@ -53,7 +53,9 @@ Surface Surface::blitting(const Surface& surface,const Rectangle& area) const {
         srcSurface->format->Amask
     );
 	SDL_BlitSurface(srcSurface, &srcRect, destSurface, nullptr);
-	return Surface(*destSurface);
+	Surface surface(destSurface);
+	SDL_FreeSurface(destSurface);
+	return surface;
 }
 
 SDL_Surface* Surface::getSurface() const {
