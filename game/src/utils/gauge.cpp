@@ -32,3 +32,7 @@ void Gauge::drain(uint32_t value) {
 		_value -= value;
 	}
 }
+
+uint32_t Gauge::getCapacity() const {
+	return _capacity;
+}
