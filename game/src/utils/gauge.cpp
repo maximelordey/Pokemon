@@ -46,3 +46,10 @@ void Gauge::setValue(uint32_t value) {
 		_value = value;
 	}
 }
+
+void Gauge::init(uint32_t capacity, uint32_t value) {
+	if (value <= capacity) {
+		_value = value;
+		_capacity = capacity;
+	}
+}
