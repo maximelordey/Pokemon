@@ -26,9 +26,9 @@ void Gauge::fill(uint32_t value) {
 }
 
 void Gauge::drain(uint32_t value) {
-	if (_value < value) {
-
-	} else {
-
+	if(_value < value) {
+		_value = 0;
+	} else {
+		_value -= value;
 	}
 }
