@@ -17,10 +17,18 @@ void Gauge::setFull() {
 }
 
 void Gauge::fill(uint32_t value) {
-	uint32_t estimated = _value + value;
-	if ( (estimated < _value) || (estimated > _capacity) ){
+	uint32_t estimated = _capacity - _value;
+	if (value > estimated){
 		_value = _capacity;
 	} else {
 		_value += value;
+	}
+}
+
+void Gauge::drain(uint32_t value) {
+	if (_value < value) {
+
+	} else {
+
 	}
 }
