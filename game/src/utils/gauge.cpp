@@ -7,3 +7,7 @@ bool Gauge::isEmpty() const {
 bool Gauge::isFull() const {
 	return _value == _capacity;
 }
+
+void Gauge::setEmpty() {
+	_value = 0;
+}
