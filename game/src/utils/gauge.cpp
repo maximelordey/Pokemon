@@ -17,8 +17,8 @@ void Gauge::setFull() {
 }
 
 void Gauge::fill(uint32_t value) {
-	uint32_t estimated = _capacity - _value;
-	if (value > estimated){
+	uint32_t gap = _capacity - _value;
+	if (value > gap){
 		_value = _capacity;
 	} else {
 		_value += value;
@@ -39,4 +39,10 @@ uint32_t Gauge::getCapacity() const {
 
 uint32_t Gauge::getValue() const {
 	return _value;
+}
+
+void Gauge::setValue(uint32_t value) {
+	if (value <= _capacity) {
+		_value = value;
+	}
 }

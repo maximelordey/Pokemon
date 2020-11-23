@@ -19,7 +19,7 @@ class Gauge {
 		void drain(uint32_t value);
 		uint32_t getCapacity() const;
 		uint32_t getValue() const;
-		uint32_t setValue() const;
+		void setValue(uint32_t value);
 		void init(uint32_t capacity, uint32_t value);
 
 		Gauge& operator=(const Gauge &gauge);
