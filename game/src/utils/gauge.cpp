@@ -1,5 +1,17 @@
 #include "gauge.h"
 
+Gauge::Gauge(uint32_t capacity) 
+: _capacity(capacity), _value(0)
+{}
+
+Gauge::Gauge(uint32_t capacity, uint32_t value) 
+: _capacity(capacity), _value(value)
+{
+	if (_value > _capacity) {
+		_value = _capacity;
+	}
+}
+
 bool Gauge::isEmpty() const {
 	return _value == 0;
 }
