@@ -11,3 +11,7 @@ bool Gauge::isFull() const {
 void Gauge::setEmpty() {
 	_value = 0;
 }
+
+void Gauge::setFull() {
+	_value = _capacity;
+}
