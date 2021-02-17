@@ -15,8 +15,8 @@ class Gauge {
 		bool isFull() const;
 		void setEmpty();
 		void setFull();
-		void fill(uint32_t value);
-		void drain(uint32_t value);
+		void add(uint32_t value);
+		void remove(uint32_t value);
 		uint32_t getCapacity() const;
 		uint32_t getValue() const;
 		void setValue(uint32_t value);

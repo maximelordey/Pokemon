@@ -38,7 +38,7 @@ void Gauge::setFull() {
 	_value = _capacity;
 }
 
-void Gauge::fill(uint32_t value) {
+void Gauge::add(uint32_t value) {
 	uint32_t gap = _capacity - _value;
 	if (value > gap){
 		_value = _capacity;
@@ -47,7 +47,7 @@ void Gauge::fill(uint32_t value) {
 	}
 }
 
-void Gauge::drain(uint32_t value) {
+void Gauge::remove(uint32_t value) {
 	if(_value < value) {
 		_value = 0;
 	} else {
