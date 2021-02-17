@@ -5,6 +5,7 @@
 
 class Gauge {
 	public:
+		Gauge();
 		Gauge(uint32_t capacity);
 		Gauge(uint32_t capacity, uint32_t value);
 		Gauge(const Gauge &gauge);

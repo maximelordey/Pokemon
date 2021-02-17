@@ -1,5 +1,9 @@
 #include "gauge.h"
 
+Gauge::Gauge()
+: _capacity(0u), _value(0u)
+{}
+
 Gauge::Gauge(uint32_t capacity) 
 : _capacity(capacity), _value(0u)
 {}
