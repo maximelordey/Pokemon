@@ -1,7 +1,7 @@
 #include "gauge.h"
 
 Gauge::Gauge(uint32_t capacity) 
-: _capacity(capacity), _value(0)
+: _capacity(capacity), _value(0uu)
 {}
 
 Gauge::Gauge(uint32_t capacity, uint32_t value) 
@@ -23,7 +23,7 @@ Gauge::Gauge(Gauge &&gauge) {
 }
 
 bool Gauge::isEmpty() const {
-	return _value == 0;
+	return _value == 0u;
 }
 
 bool Gauge::isFull() const {
@@ -31,7 +31,7 @@ bool Gauge::isFull() const {
 }
 
 void Gauge::setEmpty() {
-	_value = 0;
+	_value = 0u;
 }
 
 void Gauge::setFull() {
@@ -49,7 +49,7 @@ void Gauge::add(uint32_t value) {
 
 void Gauge::remove(uint32_t value) {
 	if(_value < value) {
-		_value = 0;
+		_value = 0u;
 	} else {
 		_value -= value;
 	}
@@ -74,6 +74,28 @@ void Gauge::init(uint32_t capacity, uint32_t value) {
 		_value = value;
 		_capacity = capacity;
 	}
+}
+
+Gauge Gauge::operator+(uint32_t value) {
+	Gauge gauge = *this;
+	gauge.add(value);
+	return gauge;
+}
+
+Gauge Gauge::operator-(uint32_t value) {
+	Gauge gauge = *this;
+	gauge.remove(value);
+	return gauge;
+}
+
+Gauge& Gauge::operator+=(uint32_t value) {
+	this->add(value);
+	return *this;
+}
+
+Gauge& Gauge::operator-=(uint32_t value) {
+	this->remove(value);
+	return *this;
 }
 
 Gauge& Gauge::operator=(const Gauge &gauge) {

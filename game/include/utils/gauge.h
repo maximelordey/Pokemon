@@ -22,6 +22,12 @@ class Gauge {
 		void setValue(uint32_t value);
 		void init(uint32_t capacity, uint32_t value);
 
+		Gauge operator+(uint32_t value);
+		Gauge operator-(uint32_t value);
+
+		Gauge& operator+=(uint32_t value);
+		Gauge& operator-=(uint32_t value);
+		
 		Gauge& operator=(const Gauge &gauge);
 		Gauge& operator=(Gauge &&gauge);
 
