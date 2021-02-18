@@ -11,11 +11,6 @@ class Iv {
 	public:
 		Iv();
 		Iv(uint32_t limit);
-		Iv(const Iv &iv);
-		Iv(Iv &&iv);
-
-		Iv& operator=(const Iv &iv);
-		Iv& operator=(Iv &&iv);
 		
 	public:
 		Gauge _health;
