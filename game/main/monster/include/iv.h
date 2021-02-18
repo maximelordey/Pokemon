@@ -2,16 +2,28 @@
 #define IV_H
 
 #include <cstdint> 
+#include "gauge.h"
 
 class Iv {
-	
 	public:
-		uint32_t _health;
-		uint32_t _attack;
-		uint32_t _defence;
-		uint32_t _attackSpe;
-		uint32_t _defenceSpe;
-		uint32_t _speed;
+		static const uint32_t DEFAULT_LIMIT;
+
+	public:
+		Iv();
+		Iv(uint32_t limit);
+		Iv(const Iv &iv);
+		Iv(Iv &&iv);
+
+		Iv& operator=(const Iv &iv);
+		Iv& operator=(Iv &&iv);
+		
+	public:
+		Gauge _health;
+		Gauge _attack;
+		Gauge _defence;
+		Gauge _attackSpe;
+		Gauge _defenceSpe;
+		Gauge _speed;
 };
 
 #endif
