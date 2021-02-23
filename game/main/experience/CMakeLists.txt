@@ -7,6 +7,7 @@ target_include_directories(experience PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/includ
 
 target_sources(experience PUBLIC
 "${CMAKE_CURRENT_SOURCE_DIR}/include/experience_curve.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/iexperience_curve.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/fast_experience_curve.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/medium_fast_experience_curve.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/medium_slow_experience_curve.h"
@@ -16,6 +17,7 @@ target_sources(experience PUBLIC
 )
 
 target_sources(experience PRIVATE
+"${CMAKE_CURRENT_SOURCE_DIR}/include/experience_curve.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/src/fast_experience_curve.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/src/medium_fast_experience_curve.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/src/medium_slow_experience_curve.cpp"
