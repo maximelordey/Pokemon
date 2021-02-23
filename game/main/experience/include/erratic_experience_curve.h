@@ -6,10 +6,7 @@
 class ErraticExperienceCurve : public IExperienceCurve {
 	public:
 		uint32_t getExperienceMax(uint32_t level) const;
-		IExperienceCurve* clone () const;
-
-	private:
-		
+		IExperienceCurve* clone () const;		
 };
 
 #endif
