@@ -18,8 +18,8 @@ ExperienceCurve::~ExperienceCurve() {
 	delete _experienceCurve;
 }
 
-uint32_t ExperienceCurve::getExperienceMax() const {
-	return _experienceCurve->getExperienceMax();
+uint32_t ExperienceCurve::getExperienceMax(uint32_t level) const {
+	return _experienceCurve->getExperienceMax(level);
 }
 
 ExperienceCurve& ExperienceCurve::operator=(const ExperienceCurve& experienceCurve) {
