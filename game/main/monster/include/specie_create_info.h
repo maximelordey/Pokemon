@@ -7,8 +7,8 @@
 #include "weight.h"
 
 typedef struct SpecieCreateInfo {
-	const char*	_pName;
-	const Type*	_pTypes;
+	const char* _pName;
+	const Type* _pTypes;
 	uint32_t _typesCount;
 	const IExperienceCurve* _pExperienceCurve;
 	Height _Height;
