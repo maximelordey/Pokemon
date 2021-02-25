@@ -17,5 +17,4 @@ typedef struct SpecieCreateInfo {
 	Stats _BaseEv;
 } SpecieCreateInfo;
 
-
-#endif;
+#endif
