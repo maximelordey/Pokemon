@@ -8,8 +8,7 @@
 #include "type.h"
 #include "experience_curve.h"
 #include "specie_create_info.h"
-#include "base_stats.h"
-#include "base_ev.h"
+#include "stats.h"
 #include "height.h"
 #include "weight.h"
 
@@ -24,8 +23,8 @@ class Specie {
 		ExperienceCurve _experienceCurve;
 		Height _height;
 		Weight _weight;
-		BaseStats _baseStats;
-		BaseEv _baseEv;
+		Stats _baseStats;
+		Stats _baseEv;
 };
 
 #endif

@@ -3,7 +3,7 @@
 
 #include <cstdint>
 
-struct Stats {
+typedef struct Stats {
 	uint32_t _health;
 	uint32_t _attack;
 	uint32_t _defence;

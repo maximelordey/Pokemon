@@ -1,7 +1,7 @@
 #ifndef WEIGHT_H
 #define WEIGHT_H
 
-struct Weight {
+typedef struct Weight {
 	float value;
 } Weight;
 
