@@ -14,8 +14,8 @@ struct SpecieCreateInfo {
 	const IExperienceCurve* _pExperienceCurve;
 	const Height& _rHeight;
 	const Weight& _rWeight;
-	const BaseStats& _rBaseStats;
-	const BaseEv& _rBaseEv;
+	const Stats& _rBaseStats;
+	const Stats& _rBaseEv;
 } SpecieCreateInfo;
 
 
