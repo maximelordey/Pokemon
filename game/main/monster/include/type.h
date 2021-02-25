@@ -4,7 +4,7 @@
 #include <string>
 #include <map>
 
-class Type;
+#include "coefficient.h"
 
 class Type {
 	public:
@@ -20,7 +20,7 @@ class Type {
 
 	public:
 		std::string _name;
-		std::map<Type, float> _weaknesses;
+		std::map<Type, Coefficient> _weaknesses;
 };
 
 #endif
