@@ -2,21 +2,21 @@
 #define SPECIE_CREATE_INFO_H
 
 #include <string>
+#include "base_stats.h"
+#include "base_ev.h"
+#include "height.h"
+#include "weight.h"
 
 struct SpecieCreateInfo {
-	const char* pName;
-	const Type* pTypes;
-	uint32_t typeCount;
-	const IExperienceCurve* pExperienceCurve;
-	float size;
-	float weight;
-	uint32_t baseHealth;
-	uint32_t baseAttack;
-	uint32_t baseDefence;
-	uint32_t baseAttackSpe;
-	uint32_t baseDefenceSpe;
-	uint32_t baseSpeed;
-};
+	const char*	_pName;
+	const Type*	_pTypes;
+	uint32_t _typesCount;
+	const IExperienceCurve* _pExperienceCurve;
+	const Height& _rHeight;
+	const Weight& _rWeight;
+	const BaseStats& _rBaseStats;
+	const BaseEv& _rBaseEv;
+} SpecieCreateInfo;
 
 
 #endif;

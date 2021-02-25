@@ -8,6 +8,10 @@
 #include "type.h"
 #include "experience_curve.h"
 #include "specie_create_info.h"
+#include "base_stats.h"
+#include "base_ev.h"
+#include "height.h"
+#include "weight.h"
 
 class Specie {
 	public:
@@ -18,14 +22,10 @@ class Specie {
 		std::string _name;
 		std::vector<Type> _types;
 		ExperienceCurve _experienceCurve;
-		float _size;
-		float _weight;
-		uint32_t _baseHealth;
-		uint32_t _baseAttack;
-		uint32_t _baseDefence;
-		uint32_t _baseAttackSpe;
-		uint32_t _baseDefenceSpe;
-		uint32_t _baseSpeed;
+		Height _height;
+		Weight _weight;
+		BaseStats _baseStats;
+		BaseEv _baseEv;
 };
 
 #endif

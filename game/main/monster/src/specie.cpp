@@ -1,9 +1,7 @@
 #include "specie.h"
 
 Specie::Specie(const SpecieCreateInfo& info)
-	: _name(info.pName), _types(info.typeCount, info.pTypes), _size(info.size),
-	_weight(info.weight), _baseHealth(info.baseHealth), _baseAttack(info.baseAttack),
-	_baseDefence(info.baseDefence), _baseAttackSpe(info.baseAttackSpe),
-	_baseDefenceSpe(info.baseDefenceSpe), _baseSpeed(info.baseSpeed),
-	_experienceCurve(info.pExperienceCurve)
+	: _name(info._pName), _types(info._typeCount, info._pTypes),
+	_experienceCurve(info._pExperienceCurve), _height(info._pHeight),
+	_weight(info._pWeight), _baseStats(info._pBaseStats), _baseEv(info._pBaseEv)
 {}
