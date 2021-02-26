@@ -2,8 +2,9 @@
 #define COEFFICIENT_H
 
 class Coefficient {
-	Coefficient();
-	Coefficient(float value);
+	public:
+		Coefficient();
+		Coefficient(float value);
 
 	public:
 		float _value;
