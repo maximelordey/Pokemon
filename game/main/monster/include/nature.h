@@ -5,9 +5,13 @@
 #include "coefficient.h"
 
 class Nature {
-	Nature();
-	Nature(const char* name);
-	Nature(const std::string name);
+	public:
+		static const float DEFAULT_VALUE;
+
+	public:
+		Nature();
+		Nature(const char* name);
+		Nature(const std::string name);
 
 	public:
 		std::string _name;
