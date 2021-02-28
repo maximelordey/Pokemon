@@ -22,7 +22,7 @@ target_sources(monster PUBLIC
 target_sources(monster PRIVATE
 "${CMAKE_CURRENT_SOURCE_DIR}/src/coefficient.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/src/ev.cpp"
-"${CMAKE_CURRENT_SOURCE_DIR}/src/nature.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/src/nature.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/src/pokemon.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/src/specie.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/src/type.cpp"
