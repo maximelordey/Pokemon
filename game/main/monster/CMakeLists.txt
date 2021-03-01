@@ -3,7 +3,7 @@ project(monster VERSION 1.0.0)
 
 add_library(monster)
 
-target_include_directories(monster PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include/")
+target_include_directories(monster PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include/" common)
 
 target_sources(monster PUBLIC
 "${CMAKE_CURRENT_SOURCE_DIR}/include/coefficient.h"
