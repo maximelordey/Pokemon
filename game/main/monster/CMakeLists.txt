@@ -14,6 +14,7 @@ target_sources(monster PUBLIC
 "${CMAKE_CURRENT_SOURCE_DIR}/include/iv.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/level.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/nature.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/pokemon_create_info.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/pokemon.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/specie_create_info.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/specie.h"
