@@ -9,6 +9,7 @@
 #include "experience.h"
 #include "iv.h"
 #include "ev.h"
+#include "nature.h"
 
 typedef struct {
 	std::string _name;
@@ -20,6 +21,7 @@ typedef struct {
 	Experience _experience;
 	Iv _iv;
 	Ev _ev;
+	Nature _nature;
 } PokemonCreateInfo;
 
 #endif
