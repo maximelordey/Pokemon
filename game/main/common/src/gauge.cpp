@@ -8,16 +8,6 @@ Gauge::Gauge(uint32_t capacity)
 : _capacity(capacity), _value(0u)
 {}
 
-Gauge::Gauge(const Gauge &gauge) {
-	_value = gauge._value;
-	_capacity = gauge._capacity;
-}
-
-Gauge::Gauge(Gauge &&gauge) {
-	_value = gauge._value;
-	_capacity = gauge._capacity;
-}
-
 bool Gauge::isEmpty() const {
 	return _value == 0u;
 }
@@ -89,18 +79,4 @@ Gauge& Gauge::operator+=(uint32_t value) {
 Gauge& Gauge::operator-=(uint32_t value) {
 	this->remove(value);
 	return *this;
-}
-
-Gauge& Gauge::operator=(const Gauge &gauge) {
-	if (this != &gauge) {
-		_value = gauge._value;
-		_capacity = gauge._capacity;
-	}
-}
-
-Gauge& Gauge::operator=(Gauge &&gauge) {
-	if (this != &gauge) {
-		_value = gauge._value;
-		_capacity = gauge._capacity;
-	}
 }
