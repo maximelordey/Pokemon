@@ -1,11 +1,16 @@
 #ifndef TEXT_T
 #define TEXT_T
 
-#include <string>
+#include <map>
+
+#include "language.h"
+#include "translation.h"
 
 class Text {
 	public:
-		std::wstring _content;
-}
+		Text();
+	public:
+		std::map<Language, Translation> _translations;
+};
 
 #endif
