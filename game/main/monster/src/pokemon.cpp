@@ -7,6 +7,13 @@ uint32_t Pokemon::computeStat(uint32_t baseStat, uint32_t iv, uint32_t ev, Level
 	return ((((2u * baseStat + iv + bonusEv) * currentLevel) / 100u) + 5u) * coefficient._value;
 }
 
+uint32_t Pokemon::computeMaxHealth(uint32_t baseStat, uint32_t iv, uint32_t ev, Level level) {
+	uint32_t bonusEv = ev / 4u;
+	uint32_t currentLevel = level._gauge.getValue();
+
+	return (((2u * baseStat + iv + bonusEv) * currentLevel) / 100u) + currentLevel + 10u;
+}
+
 Pokemon::Pokemon()
 	: _name(), _specie(), _height(), _weight(),
 	_health(), _level(), _experience(), _iv(), _ev(), _nature()
@@ -63,3 +70,110 @@ uint32_t Pokemon::getSpeed() const {
 	return Pokemon::computeStat(baseSpeed, ivSpeed, evSpeed, _level, coefficientSpeed);
 }
 
+bool Pokemon::isExperienceEmpty() const {
+	return _experience._gauge.isEmpty();
+}
+
+bool Pokemon::isExperienceFull() const {
+	return _experience._gauge.isFull();
+}
+
+void Pokemon::setExperienceEmpty() {
+	_experience._gauge.setEmpty();
+}
+
+void Pokemon::setExperienceFull() {
+	_experience._gauge.setFull();
+	this->addLevel(1u);
+}
+
+void Pokemon::addExperience(uint32_t value) {
+	uint32_t gap = _experience._gauge.getCapacity() - _experience._gauge.getValue();
+	_experience._gauge.add(value);
+
+	if (_experience._gauge.isFull()) {
+		this->addLevel(1u);
+		this->addExperience(value - gap);
+	}
+}
+
+void Pokemon::removeExperience(uint32_t value) {
+	_experience._gauge.remove(value);
+}
+
+uint32_t Pokemon::getExperienceMax() const {
+	_experience._gauge.getCapacity();
+}
+
+uint32_t Pokemon::getExperience() const {
+	_experience._gauge.getValue();
+}
+
+void Pokemon::setExperience(uint32_t value) {
+	_experience._gauge.setValue(value);
+	
+	if (_experience._gauge.isFull()) {
+		this->addLevel(1u);
+	}
+}
+
+bool Pokemon::isLevelEmpty() const {
+	_level._gauge.isEmpty();
+}
+
+bool Pokemon::isLevelFull() const {
+	_level._gauge.isFull();
+}
+
+void Pokemon::setLevelEmpty() {
+	_level._gauge.setEmpty();
+}
+
+void Pokemon::setLevelFull() {
+	_level._gauge.setFull();
+}
+
+void Pokemon::addLevel(uint32_t value) {
+	_level._gauge.add(value);
+	this->updateExperience();
+	this->updateHealth();
+}
+
+void Pokemon::removeLevel(uint32_t value) {
+	_level._gauge.remove(value);
+	this->updateExperience();
+	this->updateHealth();
+}
+
+uint32_t Pokemon::getLevelMax() const {
+	_level._gauge.getCapacity();
+}
+
+uint32_t Pokemon::getLevel() const {
+	_level._gauge.getValue();
+}
+
+void Pokemon::setLevel(uint32_t value) {
+	_level._gauge.setValue(value);
+	this->updateExperience();
+	this->updateHealth();
+}
+
+void Pokemon::updateExperience() {
+	uint32_t newExperienceMax = _specie._experienceCurve.getExperienceMax(_level._gauge.getValue());
+	_experience = Experience(newExperienceMax);
+}
+
+void Pokemon::updateHealth() {
+	uint32_t baseHealth = _specie._baseStats._health;
+	uint32_t ivHealth = _iv._bonus._health;
+	uint32_t evHealth = _ev._health.getValue();
+	Health currentHealth = _health; 
+
+	uint32_t newHealthMax = Pokemon::computeMaxHealth(baseHealth, ivHealth, evHealth, _level);
+	float growthRatio = newHealthMax / currentHealth._gauge.getValue();
+	uint32_t newHealthValue = currentHealth._gauge.getValue() * growthRatio;
+
+	_health = Health(newHealthMax);
+	_health._gauge.setValue(newHealthValue);
+}
