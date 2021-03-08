@@ -7,10 +7,6 @@ class Gauge {
 	public:
 		Gauge();
 		Gauge(uint32_t capacity);
-		Gauge(uint32_t capacity, uint32_t value);
-		Gauge(const Gauge &gauge);
-		Gauge(Gauge &&gauge);
-		~Gauge();
 
 		bool isEmpty() const;
 		bool isFull() const;
@@ -20,18 +16,14 @@ class Gauge {
 		void remove(uint32_t value);
 		uint32_t getCapacity() const;
 		uint32_t getValue() const;
+		uint32_t getRemaining() const;
 		void setValue(uint32_t value);
-		void init(uint32_t capacity, uint32_t value);
 
 		Gauge operator+(uint32_t value);
 		Gauge operator-(uint32_t value);
 
 		Gauge& operator+=(uint32_t value);
 		Gauge& operator-=(uint32_t value);
-		
-		Gauge& operator=(const Gauge &gauge);
-		Gauge& operator=(Gauge &&gauge);
-
 	private:
 		uint32_t _capacity;
 		uint32_t _value;

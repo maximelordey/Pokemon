@@ -8,14 +8,6 @@ Gauge::Gauge(uint32_t capacity)
 : _capacity(capacity), _value(0u)
 {}
 
-Gauge::Gauge(uint32_t capacity, uint32_t value) 
-: _capacity(capacity), _value(value)
-{
-	if (_value > _capacity) {
-		_value = _capacity;
-	}
-}
-
 Gauge::Gauge(const Gauge &gauge) {
 	_value = gauge._value;
 	_capacity = gauge._capacity;
@@ -67,16 +59,13 @@ uint32_t Gauge::getValue() const {
 	return _value;
 }
 
+uint32_t Gauge::getRemaining() const {
+	return _capacity - _value;
+}
+
 void Gauge::setValue(uint32_t value) {
 	if (value <= _capacity) {
 		_value = value;
-	}
-}
-
-void Gauge::init(uint32_t capacity, uint32_t value) {
-	if (value <= capacity) {
-		_value = value;
-		_capacity = capacity;
 	}
 }
 
