@@ -11,6 +11,7 @@
 #include "stats.h"
 #include "height.h"
 #include "weight.h"
+#include "identifier.h"
 
 class Specie {
 	public:
@@ -18,6 +19,7 @@ class Specie {
 		Specie(const SpecieCreateInfo &infos);
 
 	public:
+		Identifier _identifier;
 		std::string _name;
 		std::vector<Type> _types;
 		ExperienceCurve _experienceCurve;

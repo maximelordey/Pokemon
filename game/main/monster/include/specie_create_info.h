@@ -5,8 +5,10 @@
 #include "stats.h"
 #include "height.h"
 #include "weight.h"
+#include "identifier.h"
 
 typedef struct SpecieCreateInfo {
+	Identifier _identifier;
 	const char* _pName;
 	const Type* _pTypes;
 	uint32_t _typesCount;
