@@ -2,7 +2,9 @@
 #define NATURE_H
 
 #include <string>
+
 #include "coefficient.h"
+#include "identifier.h"
 
 class Nature {
 	public:
@@ -10,10 +12,10 @@ class Nature {
 
 	public:
 		Nature();
-		Nature(const char* name);
-		Nature(const std::string name);
+		Nature(const Identifier& identifier);
 
 	public:
+		Identifier _identifier;
 		std::string _name;
 		Coefficient _attack;
 		Coefficient _defence;

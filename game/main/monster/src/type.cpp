@@ -1,19 +1,15 @@
 #include "type.h"
 
 Type::Type()
-	: _name(), _weaknesses()
+	: _identifier(), _name(), _weaknesses()
 {}
 
-Type::Type(const std::string &name)
-	: _name(name), _weaknesses()
-{}
-		
-Type::Type(const char *name)
-	: _name(name), _weaknesses()
+Type::Type(const Identifier& identifier)
+	: _identifier(identifier), _name(), _weaknesses()
 {}
 
 bool Type::isEqualTo(const Type &type) const {
-	return (_name.compare(type._name) == 0);
+	return _identifier == type._identifier;
 }
 
 bool Type::operator==(const Type &type) const {
@@ -25,9 +21,9 @@ bool Type::operator!=(const Type &type) const {
 }
 
 bool Type::operator<(const Type &type) const {
-	return (_name.compare(type._name) < 0);
+	return _identifier < type._identifier;
 }
 
 bool Type::operator>(const Type &type) const {
-	return (_name.compare(type._name) > 0);
+	return _identifier > type._identifier;
 }
