@@ -2,6 +2,7 @@
 #define SPECIE_CREATE_INFO_H
 
 #include <string>
+#include <vector>
 #include "stats.h"
 #include "height.h"
 #include "weight.h"
@@ -11,9 +12,7 @@
 typedef struct SpecieCreateInfo {
 	Identifier _identifier;
 	Translation _names;
-	const char* _pName;
-	const Type* _pTypes;
-	uint32_t _typesCount;
+	std::vector<Type> _types;
 	const IExperienceCurve* _pExperienceCurve;
 	Height _Height;
 	Weight _Weight;
