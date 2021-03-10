@@ -1,13 +1,12 @@
 #ifndef LANGUAGE_H
 #define LANGUAGE_H
 
-#include "translation.h"
+#include "text.h"
+#include "identifier.h"
 
 class Language {
 		Language();
-		Language(const wchar_t* _name);
-		Language(std::wstring &_name);
-		Language(Translation &_name);
+		Language(const Identifier& _name);
 
 		bool operator==(const Language& language) const;
 		bool operator!=(const Language& language) const;
@@ -15,7 +14,8 @@ class Language {
 		bool operator<(const Language& language) const;
 		
 	public:
-		Translation _name;
+		Identifier _identifier;
+		Text _name;
 };
 
 #endif

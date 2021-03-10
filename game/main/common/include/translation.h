@@ -1,16 +1,20 @@
 #ifndef TRANSLATION_H
 #define TRANSLATION_H
 
-#include <string>
+#include <map>
+
+#include "text.h"
+#include "language.h"
+#include "identifier.h"
 
 class Translation {
 	public:
 		Translation();
-		Translation(const wchar_t* _content);
-		Translation(std::wstring& _content);
+		Translation(const Identifier& identifier);
 
 	public:
-		std::wstring _content;
+		Identifier _identifier;
+		std::map<Language, Text> _translations;
 };
 
 #endif
