@@ -6,9 +6,11 @@
 #include "height.h"
 #include "weight.h"
 #include "identifier.h"
+#include "translation.h"
 
 typedef struct SpecieCreateInfo {
 	Identifier _identifier;
+	Translation _names;
 	const char* _pName;
 	const Type* _pTypes;
 	uint32_t _typesCount;
