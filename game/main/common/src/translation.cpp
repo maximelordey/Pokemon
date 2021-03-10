@@ -1,11 +1,9 @@
 #include "translation.h"
 
 Translation::Translation()
-	: _content()
+	: _identifier(), _translations()
 {}
-Translation::Translation(const wchar_t* _content)
-	: _content(_content)
-{}
-Translation::Translation(std::wstring& _content)
-	: _content(_content)
+
+Translation::Translation(const Identifier& identifier) 
+	: _identifier(identifier), _translations()
 {}
