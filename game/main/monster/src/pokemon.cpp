@@ -15,13 +15,13 @@ uint32_t Pokemon::computeMaxHealth(uint32_t baseStat, uint32_t iv, uint32_t ev, 
 }
 
 Pokemon::Pokemon()
-	: _name(), _specie(), _height(), _weight(),
+	: _identifier(), _name(), _specie(), _height(), _weight(),
 	_health(), _level(), _experience(), _iv(), _ev(), _nature()
 {}
 
 Pokemon::Pokemon(PokemonCreateInfo infos)
-	: _name(infos._name), _specie(infos._specie), _height(infos._height),
-	_weight(infos._weight), _health(infos._health), _level(infos._level),
+	: _identifier(infos._identifier), _name(infos._name), _specie(infos._specie),
+	_height(infos._height),_weight(infos._weight), _health(infos._health), _level(infos._level),
 	_experience(infos._experience), _iv(infos._iv), _ev(infos._ev), _nature(infos._nature)
 {}
 

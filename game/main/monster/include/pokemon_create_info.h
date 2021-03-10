@@ -10,9 +10,12 @@
 #include "iv.h"
 #include "ev.h"
 #include "nature.h"
+#include "translation.h"
+#include "identifier.h"
 
 typedef struct {
-	std::string _name;
+	Identifier _identifier;
+	Translation _name;
 	Specie _specie;
 	Height _height;
 	Weight _weight;
