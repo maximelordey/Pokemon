@@ -12,6 +12,7 @@
 #include "height.h"
 #include "weight.h"
 #include "identifier.h"
+#include "translation.h"
 
 class Specie {
 	public:
@@ -20,7 +21,7 @@ class Specie {
 
 	public:
 		Identifier _identifier;
-		std::string _name;
+		Translation _name;
 		std::vector<Type> _types;
 		ExperienceCurve _experienceCurve;
 		Height _height;

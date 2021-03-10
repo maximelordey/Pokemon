@@ -6,6 +6,7 @@
 
 #include "coefficient.h"
 #include "identifier.h"
+#include "translation.h"
 
 class Type {
 	public:
@@ -20,7 +21,7 @@ class Type {
 
 	public:
 		Identifier _identifier;
-		std::string _name;
+		Translation _name;
 		std::map<Type, Coefficient> _weaknesses;
 };
 

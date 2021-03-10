@@ -5,6 +5,7 @@
 
 #include "coefficient.h"
 #include "identifier.h"
+#include "translation.h"
 
 class Nature {
 	public:
@@ -16,7 +17,7 @@ class Nature {
 
 	public:
 		Identifier _identifier;
-		std::string _name;
+		Translation _name;
 		Coefficient _attack;
 		Coefficient _defence;
 		Coefficient _attackSpe;
