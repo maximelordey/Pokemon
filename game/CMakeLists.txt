@@ -6,5 +6,6 @@ add_executable(game main.cpp)
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/main/common")
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/main/experience")
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/main/monster")
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/main/move")
 
-target_link_libraries(game PUBLIC common monster)
+target_link_libraries(game PUBLIC common monster move)
