@@ -12,11 +12,16 @@ monster
 target_link_libraries(move PRIVATE common monster)
 
 target_sources(move PUBLIC
+"${CMAKE_CURRENT_SOURCE_DIR}/include/move_accuracy.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/move_class.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/move_create_info.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/move.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/move_power.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/move_power_point.h"
 )
 
 target_sources(move PRIVATE
+"${CMAKE_CURRENT_SOURCE_DIR}/src/move_accuracy.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/src/move_class.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/src/move.cpp"
 )
