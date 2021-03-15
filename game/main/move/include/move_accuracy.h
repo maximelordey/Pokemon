@@ -9,11 +9,10 @@ class MoveAccuracy {
 
 	public:
 		MoveAccuracy();
-		MoveAccuracy(float value, bool cannotMiss);
+		MoveAccuracy(float value);
 
 	public:
 		uint8_t _value;
-		bool _cannotMiss;
 };
 
 #endif

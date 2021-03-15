@@ -3,9 +3,9 @@
 const uint8_t MoveAccuracy::DEFAULT_VALUE = UINT8_MAX;
 
 MoveAccuracy::MoveAccuracy()
-	: _value(DEFAULT_VALUE), _cannotMiss(false)
+	: _value(DEFAULT_VALUE)
 {}
 
-MoveAccuracy::MoveAccuracy(float value, bool canMiss)
-	: _value(value), _cannotMiss(canMiss)
+MoveAccuracy::MoveAccuracy(float value)
+	: _value(value)
 {}

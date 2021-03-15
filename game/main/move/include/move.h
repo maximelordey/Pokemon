@@ -8,6 +8,7 @@
 #include "identifier.h"
 #include "translation.h"
 #include "type.h"
+#include "effect.h"
 
 class Move {
 	public:
@@ -21,6 +22,7 @@ class Move {
 		MoveClass _moveClass;
 		MoveAccuracy _accuracy;
 		MovePower _power;
+		Effect _effect;
 };
 
 #endif

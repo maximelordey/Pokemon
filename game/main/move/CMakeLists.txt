@@ -3,13 +3,16 @@ project(move VERSION 1.0.0)
 
 add_library(move)
 
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/effect/")
+
 target_include_directories(move PUBLIC 
 "${CMAKE_CURRENT_SOURCE_DIR}/include/"
 common
 monster
+effect
 )
 
-target_link_libraries(move PRIVATE common monster)
+target_link_libraries(move PRIVATE common monster effect)
 
 target_sources(move PUBLIC
 "${CMAKE_CURRENT_SOURCE_DIR}/include/move_accuracy.h"
