@@ -18,8 +18,7 @@
 
 class Pokemon {
 	private:
-		static uint32_t computeStat(uint32_t _baseStat, uint32_t iv, uint32_t ev, Level level, Coefficient coefficient);
-		static uint32_t computeMaxHealth(uint32_t _baseStat, uint32_t iv, uint32_t ev, Level level);
+		static uint32_t getStat(uint32_t _baseStat, uint32_t iv, uint32_t ev, Level level, Coefficient coefficient);
 	
 	public:
 		Pokemon();
@@ -31,30 +30,6 @@ class Pokemon {
 		uint32_t getDefenceSpe() const;
 		uint32_t getSpeed() const;
 
-		bool isExperienceEmpty() const;
-		bool isExperienceFull() const;
-		void setExperienceEmpty();
-		void setExperienceFull();
-		void addExperience(uint32_t value);
-		void removeExperience(uint32_t value);
-		uint32_t getExperienceMax() const;
-		uint32_t getExperience() const;
-		void setExperience(uint32_t value);
-
-		bool isLevelEmpty() const;
-		bool isLevelFull() const;
-		void setLevelEmpty();
-		void setLevelFull();
-		void addLevel(uint32_t value);
-		void removeLevel(uint32_t value);
-		uint32_t getLevelMax() const;
-		uint32_t getLevel() const;
-		void setLevel(uint32_t value);
-	
-	private:
-		void updateHealth();
-		void updateExperience();
-
 	public:
 		Identifier _identifier;
 		Translation _name;
@@ -65,8 +40,6 @@ class Pokemon {
 		Iv _iv;
 		Ev _ev;
 		Nature _nature;
-
-	private:
 		Level _level;
 		Experience _experience;
 };
