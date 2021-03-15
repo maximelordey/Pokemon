@@ -2,15 +2,14 @@
 #define MOVE_POWER_POINT_H
 
 #include <cstdint>
-#include "gauge.h"
 
 class MovePowerPoint {
 	public:
 		MovePowerPoint();
-		MovePowerPoint(uint32_t powerPointMax);
+		MovePowerPoint(uint32_t value);
 	
 	public:
-		Gauge _gauge;
+		uint32_t _value;
 };
 
 #endif

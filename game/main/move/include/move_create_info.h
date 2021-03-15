@@ -7,14 +7,18 @@
 #include "identifier.h"
 #include "translation.h"
 #include "type.h"
+#include "move_power_point.h"
+#include "effect.h"
 
 typedef struct {
 	Identifier _identifier;
 	Translation _name;
 	Type _type;
 	MoveClass _moveClass;
-	MoveAccuracy _accuracy;
-	MovePower _power;
+	MoveAccuracy _moveAccuracy;
+	MovePower _movePower;
+	MovePowerPoint _movePowerPoint;
+	Effect _effect;
 } MoveCreateInfo;
 
 #endif

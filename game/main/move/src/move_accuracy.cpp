@@ -1,11 +1,9 @@
 #include "move_accuracy.h"
 
-const uint8_t MoveAccuracy::DEFAULT_VALUE = UINT8_MAX;
-
 MoveAccuracy::MoveAccuracy()
-	: _value(DEFAULT_VALUE)
+	: _value(0)
 {}
 
-MoveAccuracy::MoveAccuracy(float value)
+MoveAccuracy::MoveAccuracy(uint32_t value)
 	: _value(value)
 {}

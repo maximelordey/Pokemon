@@ -4,15 +4,12 @@
 #include <cstdint>
 
 class MoveAccuracy {
-	private:
-		static const uint8_t DEFAULT_VALUE;
-
 	public:
 		MoveAccuracy();
-		MoveAccuracy(float value);
+		MoveAccuracy(uint32_t value);
 
 	public:
-		uint8_t _value;
+		uint32_t _value;
 };
 
 #endif

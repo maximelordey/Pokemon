@@ -26,5 +26,7 @@ target_sources(move PUBLIC
 target_sources(move PRIVATE
 "${CMAKE_CURRENT_SOURCE_DIR}/src/move_accuracy.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/src/move_class.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/src/move_power_point.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/src/move_power.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/src/move.cpp"
 )
