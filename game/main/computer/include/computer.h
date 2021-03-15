@@ -2,11 +2,12 @@
 #define COMPUTER_H
 
 #include <vector>
-#include "pokemon.h"
+
+#include "box.h"
 
 class Computer {
 	public:
-		std::vector<Pokemon> _content;
+		std::vector<Box> _boxes;
 };
 
 #endif
