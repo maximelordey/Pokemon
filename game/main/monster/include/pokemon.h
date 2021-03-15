@@ -22,7 +22,7 @@ class Pokemon {
 	
 	public:
 		Pokemon();
-		Pokemon(PokemonCreateInfo infos);
+		Pokemon(const PokemonCreateInfo& infos);
 
 		uint32_t getAttack() const;
 		uint32_t getDefence() const;
