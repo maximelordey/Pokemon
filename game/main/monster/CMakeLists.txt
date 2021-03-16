@@ -20,6 +20,7 @@ target_sources(monster PUBLIC
 "${CMAKE_CURRENT_SOURCE_DIR}/include/specie.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/stats.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/type.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/weaknesses.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/weight.h"
 )
 
