@@ -12,6 +12,7 @@ target_sources(computer PUBLIC
 
 target_sources(computer PRIVATE
 "${CMAKE_CURRENT_SOURCE_DIR}/src/computer.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/src/box.cpp"
 )
 
 target_link_libraries(computer PRIVATE monster)

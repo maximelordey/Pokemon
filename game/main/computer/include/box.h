@@ -13,7 +13,7 @@ class Box {
 		Box(size_t size);
 
 	public:
-		std::vector<std::optional<Pokemon>> _content;
+		std::vector<Pokemon> _content;
 };
 
 #endif
