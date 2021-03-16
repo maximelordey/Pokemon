@@ -25,7 +25,6 @@ target_sources(monster PUBLIC
 
 target_sources(monster PRIVATE
 "${CMAKE_CURRENT_SOURCE_DIR}/src/ev.cpp"
-"${CMAKE_CURRENT_SOURCE_DIR}/src/experience.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/src/health.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/src/level.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/src/nature.cpp"
