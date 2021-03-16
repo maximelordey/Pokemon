@@ -4,12 +4,8 @@
 #include <cstdint>
 #include "gauge.h"
 
-class Health {
-	public:
-		Health();
-		Health(uint32_t healthMax);
-	public:
-		Gauge _gauge;
-};
+typedef struct {
+	Gauge _gauge;
+} Health;
 
 #endif
