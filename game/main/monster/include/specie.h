@@ -14,20 +14,15 @@
 #include "identifier.h"
 #include "translation.h"
 
-class Specie {
-	public:
-		Specie();
-		Specie(const SpecieCreateInfo &infos);
-
-	public:
-		Identifier _identifier;
-		Translation _name;
-		std::vector<Type> _types;
-		ExperienceCurve _experienceCurve;
-		Height _height;
-		Weight _weight;
-		Stats _baseStats;
-		Stats _baseEv;
-};
+typedef struct {
+	Identifier _identifier;
+	Translation _name;
+	std::vector<Type> _types;
+	ExperienceCurve _experienceCurve;
+	Height _height;
+	Weight _weight;
+	Stats _baseStats;
+	Stats _baseEv;
+} Specie;
 
 #endif
