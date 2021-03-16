@@ -4,19 +4,9 @@
 #include "identifier.h"
 #include "translation.h"
 
-class MoveClass {
-	public:
-		MoveClass();
-		MoveClass(const Identifier& identifier);
-
-		bool isEqualTo(const MoveClass& moveClass) const;
-
-		bool operator==(const MoveClass& moveClass) const;
-		bool operator!=(const MoveClass& moveClass) const;
-		
-	public:
-		Identifier _identifier;
-		Translation _name;
-};
+typedef struct {
+	Identifier _identifier;
+	Translation _name;
+} MoveClass;
 
 #endif

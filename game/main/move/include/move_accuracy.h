@@ -3,13 +3,8 @@
 
 #include <cstdint>
 
-class MoveAccuracy {
-	public:
-		MoveAccuracy();
-		MoveAccuracy(uint32_t value);
-
-	public:
-		uint32_t _value;
-};
+typedef struct {
+	uint32_t _value;
+} MoveAccuracy;
 
 #endif

@@ -3,13 +3,8 @@
 
 #include <cstdint>
 
-class MovePowerPoint {
-	public:
-		MovePowerPoint();
-		MovePowerPoint(uint32_t value);
-	
-	public:
-		uint32_t _value;
-};
+typedef struct {
+	uint32_t _value;
+} MovePowerPoint;
 
 #endif

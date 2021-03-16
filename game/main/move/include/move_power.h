@@ -3,14 +3,8 @@
 
 #include <cstdint>
 
-class MovePower {
-	public:
-		MovePower();
-		MovePower(uint32_t value);
-	
-	public:
-		uint32_t _value;
-
-};
+typedef struct {
+	uint32_t _value;
+} MovePower;
 
 #endif

@@ -3,13 +3,8 @@
 
 #include "identifier.h"
 
-class Effect {
-	public:
-		Effect();
-		Effect(const Identifier& identifier);
-		
-	public:
-		Identifier _identifier;
-};
+typedef struct {
+	Identifier _identifier;
+} Effect;
 
 #endif

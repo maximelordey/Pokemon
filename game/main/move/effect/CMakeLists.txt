@@ -11,6 +11,4 @@ target_sources(effect PUBLIC
 "${CMAKE_CURRENT_SOURCE_DIR}/include/effect.h"
 )
 
-target_sources(effect PRIVATE
-"${CMAKE_CURRENT_SOURCE_DIR}/src/effect.cpp"
-)
+target_sources(effect PRIVATE)
