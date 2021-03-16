@@ -3,7 +3,6 @@
 
 #include <string>
 
-#include "pokemon_create_info.h"
 #include "specie.h"
 #include "height.h"
 #include "weight.h"

@@ -7,7 +7,6 @@
 
 #include "type.h"
 #include "experience_curve.h"
-#include "specie_create_info.h"
 #include "stats.h"
 #include "height.h"
 #include "weight.h"
