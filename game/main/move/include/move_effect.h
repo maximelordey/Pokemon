@@ -1,10 +1,10 @@
-#ifndef EFFECT_H
-#define EFFECT_H
+#ifndef MOVE_EFFECT_H
+#define MOVE_EFFECT_H
 
 #include "identifier.h"
 
 typedef struct {
 	Identifier _identifier;
-} Effect;
+} MoveEffect;
 
 #endif

@@ -8,7 +8,7 @@
 #include "translation.h"
 #include "type.h"
 #include "move_power_point.h"
-#include "effect.h"
+#include "move_effect.h"
 
 typedef struct {
 	Identifier _identifier;
@@ -18,7 +18,7 @@ typedef struct {
 	MoveAccuracy _moveAccuracy;
 	MovePower _movePower;
 	MovePowerPoint _movePowerPoint;
-	Effect _effect;
+	MoveEffect _effect;
 } Move;
 
 #endif
