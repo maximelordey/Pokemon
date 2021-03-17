@@ -10,12 +10,14 @@
 #include "weight.h"
 #include "identifier.h"
 #include "translation.h"
+#include "learn_set.h"
 
 typedef struct {
 	Identifier _identifier;
 	Translation _name;
 	std::vector<Type> _types;
 	ExperienceCurve _experienceCurve;
+	LearnSet _learnSet;
 	Height _height;
 	Weight _weight;
 	Stats _baseStats;
