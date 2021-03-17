@@ -1,9 +1,7 @@
 #ifndef SPECIE_H
 #define SPECIE_H
 
-#include <string>
 #include <vector>
-#include <cstdint>
 
 #include "type.h"
 #include "experience_curve.h"

@@ -1,15 +1,22 @@
 #ifndef TYPE_H
 #define TYPE_H
 
-#include "weaknesses.h"
-#include "coefficient.h"
+#include <map>
 #include "identifier.h"
 #include "translation.h"
+#include "coefficient.h"
 
-typedef struct {
+typedef struct Type Type;
+typedef struct Weaknesses Weaknesses;
+
+struct Weaknesses{
+	std::map<Type, Coefficient> _content;
+};
+
+struct Type{
 	Identifier _identifier;
 	Translation _name;
 	Weaknesses _weaknesses;
-} Type;
+};
 
 #endif
