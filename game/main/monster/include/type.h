@@ -1,28 +1,22 @@
 #ifndef TYPE_H
 #define TYPE_H
 
-#include <string>
 #include <map>
-
-#include "coefficient.h"
 #include "identifier.h"
 #include "translation.h"
+#include "coefficient.h"
 
-class Type {
-	public:
-		Type();
-		Type(const Identifier &identifier);
+typedef struct Type Type;
+typedef struct Effectiveness Effectiveness;
 
-		bool isEqualTo(const Type &type) const;
-		bool operator==(const Type &type) const;
-		bool operator!=(const Type &type) const;
-		bool operator<(const Type &type) const;
-		bool operator>(const Type &type) const;
+struct Effectiveness{
+	std::map<Type, Coefficient> _content;
+};
 
-	public:
-		Identifier _identifier;
-		Translation _name;
-		std::map<Type, Coefficient> _weaknesses;
+struct Type{
+	Identifier _identifier;
+	Translation _name;
+	Effectiveness _effectiveness;
 };
 
 #endif
