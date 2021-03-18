@@ -12,12 +12,11 @@ target_sources(monster PUBLIC
 "${CMAKE_CURRENT_SOURCE_DIR}/include/health.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/height.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/iv.h"
-"${CMAKE_CURRENT_SOURCE_DIR}/include/learn_set.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/level.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/nature.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/pokemon.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/specie.h"
-"${CMAKE_CURRENT_SOURCE_DIR}/include/stats.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/stat.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/type.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/weight.h"
 )

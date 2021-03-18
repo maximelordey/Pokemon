@@ -2,10 +2,9 @@
 #define IV_H
 
 #include <cstdint>
-#include "stats.h"
 
 typedef struct Iv {
-	Stats _bonus;
+	uint32_t _value;
 } Iv;
 
 #endif

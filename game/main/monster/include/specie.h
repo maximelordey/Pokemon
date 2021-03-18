@@ -5,23 +5,25 @@
 
 #include "type.h"
 #include "experience_curve.h"
-#include "stats.h"
 #include "height.h"
 #include "weight.h"
 #include "identifier.h"
 #include "translation.h"
-#include "learn_set.h"
+#include "stat.h"
 
 typedef struct {
 	Identifier _identifier;
 	Translation _name;
 	std::vector<Type> _types;
 	ExperienceCurve _experienceCurve;
-	LearnSet _learnSet;
 	Height _height;
 	Weight _weight;
-	Stats _baseStats;
-	Stats _baseEv;
+	Stat _baseHealth;
+	Stat _baseAttack;
+	Stat _baseDefence;
+	Stat _baseAttackSpe;
+	Stat _baseDefeceSpe;
+	Stat _baseSpeed;
 } Specie;
 
 #endif

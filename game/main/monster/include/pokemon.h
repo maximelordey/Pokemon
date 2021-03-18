@@ -20,11 +20,21 @@ typedef struct {
 	Height _height;
 	Weight _weight;
 	Health _health;
-	Iv _iv;
-	Ev _ev;
-	Nature _nature;
 	Level _level;
 	Experience _experience;
+	Iv _bonusIvHealth;
+	Iv _bonusIvAttack;
+	Iv _bonusIvDefence;
+	Iv _bonusIvAttackSpe;
+	Iv _bonusIvDefenceSpe;
+	Iv _bonusIvSpeed;
+	Ev _bonusEvHealth;
+	Ev _bonusEvAttack;
+	Ev _bonusEvDefence;
+	Ev _bonusEvAttackSpe;
+	Ev _bonusEvDefenceSpe;
+	Ev _bonusEvSpeed;
+	Nature _nature;
 } Pokemon;
 
 #endif
