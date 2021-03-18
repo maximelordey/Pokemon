@@ -3,8 +3,6 @@
 
 #include "gauge.h"
 
-typedef struct {
-	Gauge _gauge;
-} Experience;
+typedef Gauge Experience;
 
 #endif

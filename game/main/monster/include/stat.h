@@ -3,8 +3,6 @@
 
 #include <cstdint>
 
-typedef struct {
-	uint32_t _value;
-} Stat;
+typedef uint32_t Stat;
 
 #endif

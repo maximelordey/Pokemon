@@ -4,8 +4,6 @@
 #include <cstdint>
 #include "gauge.h"
 
-typedef struct {
-	Gauge _gauge;
-} Health;
+typedef Gauge Health;
 
 #endif

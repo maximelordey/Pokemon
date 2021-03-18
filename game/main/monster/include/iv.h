@@ -3,8 +3,6 @@
 
 #include <cstdint>
 
-typedef struct Iv {
-	uint32_t _value;
-} Iv;
+typedef uint32_t Iv;
 
 #endif

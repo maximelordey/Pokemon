@@ -7,16 +7,16 @@
 #include "coefficient.h"
 
 typedef struct Type Type;
-typedef struct Weaknesses Weaknesses;
+typedef struct Effectiveness Effectiveness;
 
-struct Weaknesses{
+struct Effectiveness{
 	std::map<Type, Coefficient> _content;
 };
 
 struct Type{
 	Identifier _identifier;
 	Translation _name;
-	Weaknesses _weaknesses;
+	Effectiveness _effectiveness;
 };
 
 #endif
