@@ -5,12 +5,8 @@
 
 #include "box.h"
 
-class Computer {
-	public:
-		Computer();
-
-	public:
-		std::vector<Box> _boxes;
-};
+typedef struct {
+	std::vector<Box> _boxes;
+} Computer;
 
 #endif

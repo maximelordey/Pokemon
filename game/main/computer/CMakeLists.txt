@@ -10,9 +10,4 @@ target_sources(computer PUBLIC
 "${CMAKE_CURRENT_SOURCE_DIR}/include/computer.h"
 )
 
-target_sources(computer PRIVATE
-"${CMAKE_CURRENT_SOURCE_DIR}/src/computer.cpp"
-"${CMAKE_CURRENT_SOURCE_DIR}/src/box.cpp"
-)
-
 target_link_libraries(computer PRIVATE monster)
