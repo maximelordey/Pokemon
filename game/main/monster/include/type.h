@@ -7,13 +7,9 @@
 #include "coefficient.h"
 
 typedef struct Type Type;
-typedef struct Effectiveness Effectiveness;
+typedef std::map<Type, Coefficient> Effectiveness;
 
-struct Effectiveness{
-	std::map<Type, Coefficient> _content;
-};
-
-struct Type{
+struct Type {
 	Identifier _identifier;
 	Translation _name;
 	Effectiveness _effectiveness;
