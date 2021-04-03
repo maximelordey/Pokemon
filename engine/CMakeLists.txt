@@ -9,6 +9,9 @@ pkg_check_modules(SDL2_IMAGE REQUIRED SDL2_image)
 add_library(engine)
 
 target_sources(engine PUBLIC
+${CMAKE_CURRENT_SOURCE_DIR}/include/point.hpp
+${CMAKE_CURRENT_SOURCE_DIR}/include/dimension.hpp
+${CMAKE_CURRENT_SOURCE_DIR}/include/color.hpp
 ${CMAKE_CURRENT_SOURCE_DIR}/include/game_engine.hpp
 )
 
