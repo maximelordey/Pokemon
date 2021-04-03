@@ -6,7 +6,7 @@
 
 void GameEngine::start() {
 	this->setUp();
-	this->gameLoop();
+	this->run();
 	this->tearDown();
 }
 
@@ -42,16 +42,17 @@ void GameEngine::drawString(const Point& origin, const std::string& string) {
 }
 
 void GameEngine::run() {
-	std::thread gameThread = std::thread(&GameEngine::gameLoop, this);
-	gameThread.join();
+	this->gameLoop();
 }
 
 void GameEngine::setUp() {
 	this->initSDL();
 	this->createWindow();
+	this->createRenderer();
 }
 
 void GameEngine::tearDown() {
+	this->destoryRenderer();
 	this->destroyWindow();
 	this->quitSDL();
 }
@@ -64,8 +65,13 @@ void GameEngine::initSDL() {
 }
 
 void GameEngine::createWindow() {
+<<<<<<< HEAD
 	mWindow = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 960, 540, SDL_WINDOW_SHOWN );
     if( mWindow == NULL )
+=======
+	window = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 990, 540, SDL_WINDOW_SHOWN );
+    if( window == NULL )
+>>>>>>> empty.
     {
         throw std::runtime_error("Window could not be created!");
     }
@@ -83,7 +89,7 @@ void GameEngine::gameLoop() {
 	mExitGameLoop = false;
 
 	Delta deltaThreshold = 17;
-	Time lastUpdate;
+	Time lastUpdate = SDL_GetTicks();
 
 	while(!mExitGameLoop) {
 		Time now = SDL_GetTicks();

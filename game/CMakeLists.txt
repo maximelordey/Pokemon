@@ -9,4 +9,4 @@ add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/main/model/monster")
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/main/model/specie")
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/main/model/move")
 
-target_link_libraries(game PUBLIC common monster move)
+target_link_libraries(game PUBLIC common monster move engine)
