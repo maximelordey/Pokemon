@@ -19,6 +19,7 @@ class GameEngine {
 		void start();
 
 		void setColor(const Color& color);
+		void clear(const Color& color);
 		void drawPoint(const Point& point);
 		void drawLine(const Point& from, const Point& to);
 		void drawRectangle(const Point& origin, const Dimension& dimension);
@@ -48,8 +49,11 @@ class GameEngine {
 		virtual void onPaint() = 0;
 
 	private:
-		SDL_Window* window;
-		SDL_Renderer* renderer;
+		SDL_Window* mWindow;
+		SDL_Renderer* mRenderer;
+
+	public:
+		bool mExitGameLoop;
 };
 
 #endif
