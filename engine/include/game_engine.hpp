@@ -1,11 +1,15 @@
 #ifndef GAME_ENGINE_HPP
 #define GAME_ENGINE_HPP
 
-#include "SDL.h"
+#include <SDL.h>
+#include <cstdint>
+
+typedef uint32_t DeltaMilliseconds;
+typedef SDL_Event Event;
 
 class GameEngine {
 	public:
-		run();
+		void run();
 
 	private:
 		void setUp();
@@ -22,10 +26,9 @@ class GameEngine {
 		void closeSDL();
 	
 	protected:
-		virtual void onEvent() = 0;
-		virtual void onUpdate() = 0;
+		virtual void onEvent(const Event& event) = 0;
+		virtual void onUpdate(DeltaMilliseconds delta) = 0;
 		virtual void onDisplay() = 0;
-
 
 	private:
 		SDL_Window* window;
