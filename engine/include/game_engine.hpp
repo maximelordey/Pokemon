@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include <cstdint>
+#include <string>
 
 #include "color.hpp"
 #include "point.hpp"
@@ -22,6 +23,7 @@ class GameEngine {
 		void drawLine(const Point& from, const Point& to);
 		void drawRectangle(const Point& origin, const Dimension& dimension);
 		void fillRectangle(const Point& origin, const Dimension& dimension);
+		void drawString(const Point& origin, const std::string& string);
 
 	private:
 		void setUp();

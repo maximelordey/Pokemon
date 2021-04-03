@@ -32,6 +32,10 @@ void GameEngine::fillRectangle(const Point& origin, const Dimension& dimension) 
 	SDL_RenderFillRect(renderer, &rect);
 }
 
+void GameEngine::drawString(const Point& origin, const std::string& string) {
+	std::runtime_error("drawString is not implemented yet!");
+}
+
 void GameEngine::run() {
 	std::thread gameThread = std::thread(&GameEngine::gameLoop, this);
 	gameThread.join();
