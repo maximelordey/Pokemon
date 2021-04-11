@@ -20,12 +20,13 @@ class Window {
 
 		Window& operator=(const Window& window);
 		Window& operator=(Window&& window);
+		
 	private:
 		SDL_Window* window;
 };
 
 typedef struct WindowCreateInfo {
-	std::wstring name;
+	std::string name;
 	WindowFlags flags;
 	Point origin;
 	Dimension dimension;
