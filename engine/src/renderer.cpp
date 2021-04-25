@@ -2,10 +2,6 @@
 
 #include <stdexcept>
 
-Renderer::Renderer() 
-	: sdl_renderer(nullptr)
-{}
-
 Renderer::Renderer(const RendererCreateInfo& infos)
 {
 	SDL_assert(infos.window != nullptr);

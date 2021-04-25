@@ -12,7 +12,6 @@ typedef int32_t RendererIndex;
 
 class Renderer {
 	public:
-		Renderer();
 		Renderer(const RendererCreateInfo& infos);
 		~Renderer();
 		Renderer(const Renderer& renderer) = delete;
