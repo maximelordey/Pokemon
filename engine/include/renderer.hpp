@@ -16,7 +16,7 @@ class Renderer {
 		Renderer(const Renderer& renderer) = delete;
 		Renderer(Renderer&& renderer);
 
-		const SDL_Renderer* get() const;
+		SDL_Renderer* get() const;
 
 		void setColor(const Color& color);
 		void clear(const Color& color);
