@@ -6,23 +6,37 @@
 #include "point.hpp"
 #include "dimension.hpp"
 
-typedef uint32_t WindowFlags;
+typedef int32_t WindowFlags;
 
 class Window {
 	public:
-		Window();
 		Window(const WindowCreateInfo& infos);
 		~Window();
-		Window(const Window& window);
+		Window(const Window& window) = delete;
 		Window(Window&& window);
 
-		const SDL_Window* get() const;
+		SDL_Window* get() const;
 
-		Window& operator=(const Window& window);
+		void setTitle(std::string& title);
+		std::string getTitle() const;
+
+		void setDimension(const Dimension& dimension);
+		Dimension getDimension() const;
+
+		void setOrigin(const Point& origin);
+		Point getOrigin() const;
+
+		void show();
+		void hide();
+
+		void setFlags(WindowFlags flags);
+		WindowFlags getFlags() const;
+
+		Window& operator=(const Window& window) = delete;
 		Window& operator=(Window&& window);
 		
 	private:
-		SDL_Window* window;
+		SDL_Window* sdl_window;
 };
 
 typedef struct WindowCreateInfo {

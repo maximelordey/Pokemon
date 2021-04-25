@@ -2,12 +2,8 @@
 
 #include <stdexcept>
 
-Window::Window() 
-	: window(nullptr)
-{}
-
 Window::Window(const WindowCreateInfo& infos) {
-	window = SDL_CreateWindow(
+	sdl_window = SDL_CreateWindow(
 		infos.name.data(),
 		infos.origin.x,
 		infos.origin.y,
@@ -16,33 +12,69 @@ Window::Window(const WindowCreateInfo& infos) {
 		infos.flags
 	);
 
-	if (window == NULL) {
+	if (sdl_window == nullptr) {
 		throw std::runtime_error("Couldn't create window!");
 	}
 }
 
 Window::~Window() {
-	SDL_DestroyWindow(window);
-}
-
-Window::Window(const Window& window) {
-	this->window = SDL_CreateWindowFrom(window.window);
+	SDL_DestroyWindow(sdl_window);
 }
 
 Window::Window(Window&& window) {
-	this->window = window.window;
-	window.window = nullptr;
+	this->sdl_window = window.sdl_window;
+	window.sdl_window = nullptr;
 }
 
-const SDL_Window* Window::get() const {
-	return window;
+SDL_Window* Window::get() const {
+	return sdl_window;
 }
 
-Window& Window::operator=(const Window& window) {
-	this->window = SDL_CreateWindowFrom(window.window);
+void Window::setTitle(std::string& title) {
+	SDL_SetWindowTitle(sdl_window, title.data());
+}
+
+std::string Window::getTitle() const {
+	return std::string(SDL_GetWindowTitle(sdl_window));
+}
+
+void Window::setDimension(const Dimension& dimension) {
+	SDL_SetWindowSize(sdl_window, dimension.width, dimension.height);
+}
+
+Dimension Window::getDimension() const {
+	Dimension dimension;
+	SDL_GetWindowSize(sdl_window, &dimension.width, &dimension.height);
+	return dimension;
+}
+
+void Window::setOrigin(const Point& origin) {
+	SDL_SetWindowPosition(sdl_window, origin.x, origin.y);
+}
+
+Point Window::getOrigin() const {
+	Point origin;
+	SDL_GetWindowPosition(sdl_window, &origin.x, &origin.y);
+	return origin;
+}
+
+void Window::show() {
+	SDL_ShowWindow(sdl_window);
+}
+
+void Window::hide() {
+	SDL_HideWindow(sdl_window);
+}
+
+void Window::setFlags(WindowFlags flags) {
+	std::runtime_error("setFlags is not implemented yet!");
+}
+
+WindowFlags Window::getFlags() const {
+	return SDL_GetWindowFlags(sdl_window);
 }
 
 Window& Window::operator=(Window&& window) {
-	this->window = window.window;
-	window.window = nullptr;
+	this->sdl_window = window.sdl_window;
+	window.sdl_window = nullptr;
 }
