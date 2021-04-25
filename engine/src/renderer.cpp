@@ -6,6 +6,10 @@ Renderer::Renderer(const RendererCreateInfo& infos)
 {
 	SDL_assert(infos.window != nullptr);
 	sdl_renderer = SDL_CreateRenderer(infos.window->get(), infos.index, infos.flags);
+	if( sdl_renderer == nullptr )
+	{
+		std::runtime_error("Renderer could not be created!");
+	}
 }
 
 Renderer::~Renderer() {
