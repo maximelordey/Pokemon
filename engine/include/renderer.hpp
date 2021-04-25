@@ -5,6 +5,7 @@
 #include "window.hpp"
 #include "color.hpp"
 #include "line.hpp"
+#include "point.hpp"
 #include "rectangle.hpp"
 
 typedef uint32_t RendererFlags;
