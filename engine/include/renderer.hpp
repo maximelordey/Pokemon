@@ -4,6 +4,8 @@
 #include <SDL2/SDL.h>
 #include "window.hpp"
 #include "color.hpp"
+#include "line.hpp"
+#include "rectangle.hpp"
 
 typedef uint32_t RendererFlags;
 typedef int32_t RendererIndex;
@@ -21,9 +23,13 @@ class Renderer {
 		void setColor(const Color& color);
 		void clear(const Color& color);
 		void drawPoint(const Point& point);
-		void drawLine(const Point& from, const Point& to);
-		void drawRectangle(const Point& origin, const Dimension& dimension);
-		void fillRectangle(const Point& origin, const Dimension& dimension);
+		void drawPoints(Point* points, size_t count);
+		void drawLine(const Line& line);
+		void drawLines(Line* lines, size_t count);
+		void drawRectangle(const Rectangle& rectangle);
+		void fillRectangle(const Rectangle& rectangle);
+		void drawRectangles(Rectangle* rectangles, size_t count);
+		void fillRectangles(Rectangle* rectangles, size_t count);
 		void drawString(const Point& origin, const std::string& string);
 		void display();
 
