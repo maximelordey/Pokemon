@@ -34,7 +34,7 @@ class Renderer {
 };
 
 typedef struct RendererCreateInfo {
-	Window& window;
+	Window* window;
 	RendererIndex index;
 	RendererFlags flags;
 };

@@ -8,7 +8,7 @@ Renderer::Renderer()
 
 Renderer::Renderer(const RendererCreateInfo& infos)
 {
-	sdl_renderer = SDL_CreateRenderer(infos.window.get(), infos.index, infos.flags);
+	sdl_renderer = SDL_CreateRenderer(infos.window->get(), infos.index, infos.flags);
 }
 
 Renderer::~Renderer() {
