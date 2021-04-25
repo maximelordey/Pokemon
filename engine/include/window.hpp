@@ -2,7 +2,7 @@
 #define WINDOW_HPP
 
 #include <string>
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include "point.hpp"
 #include "dimension.hpp"
 
