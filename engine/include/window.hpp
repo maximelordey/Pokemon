@@ -6,7 +6,7 @@
 #include "point.hpp"
 #include "dimension.hpp"
 
-typedef int32_t WindowFlags;
+typedef uint32_t WindowFlags;
 
 class Window {
 	public:
