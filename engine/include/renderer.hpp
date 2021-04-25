@@ -1,7 +1,11 @@
 #ifndef RENDERER_HPP
 #define RENDERER_HPP
 
+<<<<<<< HEAD
 #include <SDL.h>
+=======
+#include <SDL2/SDL.h>
+>>>>>>> 38dab48cdf246472dac141c2b67fc7db97b2d38c
 #include "window.hpp"
 #include "color.hpp"
 #include "line.hpp"
