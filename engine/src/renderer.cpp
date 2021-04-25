@@ -15,10 +15,6 @@ Renderer::~Renderer() {
 	SDL_DestroyRenderer(sdl_renderer);
 }
 
-Renderer::Renderer(const Renderer& renderer) {
-	*this = renderer;
-}
-
 Renderer::Renderer(Renderer&& renderer) {
 	*this = renderer;
 }
@@ -57,8 +53,8 @@ void Renderer::drawString(const Point& origin, const std::string& string) {
 	throw std::runtime_error("drawString is not implemented yet !");
 }
 
-Renderer& operator=(const Renderer& renderer) {
-
+void Renderer::display() {
+	SDL_RenderPresent(sdl_renderer);
 }
 
 Renderer& Renderer::operator=(Renderer&& renderer) {

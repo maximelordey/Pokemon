@@ -13,7 +13,7 @@ class Renderer {
 		Renderer();
 		Renderer(const RendererCreateInfo& infos);
 		~Renderer();
-		Renderer(const Renderer& renderer);
+		Renderer(const Renderer& renderer) = delete;
 		Renderer(Renderer&& renderer);
 
 		const SDL_Renderer* get() const;
@@ -25,8 +25,9 @@ class Renderer {
 		void drawRectangle(const Point& origin, const Dimension& dimension);
 		void fillRectangle(const Point& origin, const Dimension& dimension);
 		void drawString(const Point& origin, const std::string& string);
+		void display();
 
-		Renderer& operator=(const Renderer& renderer);
+		Renderer& operator=(const Renderer& renderer) = delete;
 		Renderer& operator=(Renderer&& renderer);	
 	private:
 		SDL_Renderer* sdl_renderer;
