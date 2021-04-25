@@ -8,6 +8,7 @@ Renderer::Renderer()
 
 Renderer::Renderer(const RendererCreateInfo& infos)
 {
+	SDL_assert(infos.window != nullptr);
 	sdl_renderer = SDL_CreateRenderer(infos.window->get(), infos.index, infos.flags);
 }
 
@@ -19,7 +20,7 @@ Renderer::Renderer(Renderer&& renderer) {
 	*this = renderer;
 }
 
-const SDL_Renderer* Renderer::get() const {
+SDL_Renderer* Renderer::get() const {
 	return sdl_renderer;
 }
 
