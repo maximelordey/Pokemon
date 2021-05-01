@@ -65,6 +65,12 @@ Surface::Surface(Surface&& surface) {
 	*this = surface
 }
 
+Surface Surface::convertSurface(const PixelFormat& format) const {
+	Surface surface;
+	surface.sdl_surface = SDL_ConvertSurface(sdl_surface, &format, 0);
+	return surface;
+}
+
 void Surface::fillRect(const std::optionnal<Rectangle>& rectangle, const Color& color) {
 	uint32_t color = SDL_MapRGBA(sdl_surface->format, color.red, color.green, color.blue, color.alpha);
 	if (rectangle.has_value()) {
@@ -90,6 +96,56 @@ Surface Surface::blit(const std::optionnal<Rectangle>& extract_zone) const {
 	}
 	SDL_BlitSurface(sdl_surface, &sdl_extract_zone, surface.get(), nullptr);
 	return surface;
+}
+
+Rectangle Surface::getClipRect() const {
+	SDL_Rect sdl_rect;
+	SDL_GetClipRect(sdl_surface, &sdl_rect);
+	return Rectangle{Point{sdl_rect.x, sdl_rect.y},Dimension{sdl_rect.w, sdl_rect.h}};
+}
+
+Color Surface::getColorKey() const {
+	uint32_t sdl_pixel;
+	SDL_GetColorKey(sdl_surface, &sdl_pixel);
+
+	Color color;
+	SDL_GetRGBA(sdl_pixel, sdl_surface->format, &color.red, &color.green, &color.blue, &color.alpha);
+	return color;
+}
+BlendMod Surface::getSurfaceBlendMod() const {
+	BlendMod blendMod;
+	SDL_GetSurfaceAlphaMod(sdl_surface, &blendMod.color.alpha);
+	SDL_GetSurfaceBlendMod(sdl_surface, &blendMod.blendMod);
+	SDL_GetSurfaceColorMod(sdl_surface, &blendMod.color.red, &blendMod.color.green, &blendMod.color.blue);
+	return blendMod;
+}	
+
+void Surface::setClipRect(const Rectangle& rectangle) {
+	SDL_SetClipRect(sdl_surface);
+}
+
+void Surface::setColorKey(const Color& color) {
+	uint32_t sdl_color_key = SDL_MapRGBA(sdl_surface->format,
+                   color.red, color.green, color.blue, color.alpha);
+	SDL_SetColorKey(sdl_surface, 1, sdl_color_key);
+}
+
+void Surface::setBlendMode(const BlendMod& blendMod) {
+	SDL_SetSurfaceAlphaMod(sdl_surface, &blendMod.color.alpha);
+	SDL_SetSurfaceBlendMod(sdl_surface, &blendMod.blendMod);
+	SDL_SetSurfaceColorMod(sdl_surface, &blendMod.color.red, &blendMod.color.green, &blendMod.color.blue);
+}
+
+void Surface::removeColorKey() {
+	SDL_SetColorKey(sdl_surface,0,0);
+}
+
+void Surface::removeBlendMod() {
+	SDL_SetSurfaceBlendMode(sdl_surface,SDL_BLENDMODE_NONE);
+}
+
+void Surface::removeClipRect() {
+	SDL_SetClipRect(sdl_surface, nullptr);
 }
 
 void Surface::enableRLE() {

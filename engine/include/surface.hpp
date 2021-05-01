@@ -7,12 +7,14 @@
 #include <vector>
 
 #include "dimension.hpp"
+#include "rectangle.hpp"
+#include "color.hpp"
 
 class Surface;
 typedef struct Palette Palette;
 typedef struct SurfaceCreateInfo SurfaceCreateInfo;
-typedef struct PixelFormat PixelFormat;
-
+typedef SDL_PixelFormat PixelFormat;
+typedef struct BlendMod BlendMod;
 
 class Surface {
 	private:
@@ -30,9 +32,11 @@ class Surface {
 		~Surface();
 		Surface(const Surface& surface);
 		Surface(Surface&& surface);
+
 		SDL_Surface* get();
 
 		Surface convertSurface(const PixelFormat& format) const;
+		
 		void fillRect(const std::optionnal<Rectangle>& rectangle, const Color& color);
 		void fillRects(const Rectangle* rectangle, size_t count, const Color& color);
 		
@@ -41,15 +45,13 @@ class Surface {
 
 		Rectangle getClipRect() const;
 		Color getColorKey() const;
-		AlphaMod getSurfaceAlphaMod() const;
 		BlendMod getSurfaceBlendMod() const;
-		ColorMod getSurfaceColorMod() const;
 		void setClipRect(const Rectangle& rectangle);
 		void setColorKey(const Color& color);
-		void setAlphaMod(const AlpaMod& alphaMod);
 		void setBlendMode(const BlendMod& blendMod);
-		void setColorMod(const ColorMod& ColorMod);
-		void setPalette(const Palette& palette);
+		void removeColorKey();
+		void removeBlendMod();
+		void removeClipRect();
 
 		void enableRLE();
 		void disableRLE();
@@ -63,12 +65,9 @@ class Surface {
 		SDL_Surface* sdl_surface;
 };
 
-struct PixelFormat {
-
-};
-
-struct Palette {
-	std::vector<Color> colors;
+struct BlendMod {
+	SDL_BlendMode blendMod;
+	Color color;
 };
 
 struct SurfaceCreateInfo {
