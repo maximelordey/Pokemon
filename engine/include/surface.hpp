@@ -2,7 +2,6 @@
 #define SURFACE_HPP
 
 #include <SDL2/SDL.h>
-#include <filesystem>
 #include <optional>
 #include <vector>
 
@@ -29,12 +28,12 @@ class Surface {
 
 		SDL_Surface* get();
 
-		Surface convertSurface(const PixelFormat& format) const;		
+		Surface convertSurface(const SDL_PixelFormat& format) const;		
 		
-		Surface blit(const std::optionnal<Rectangle>& extract_zone) const;
-		Surface	blitScaled(const std::optionnal<Rectangle>& extract_zone) const;
+		Surface blit(const std::optional<Rectangle>& extract_zone) const;
+		Surface	blitScaled(const std::optional<Rectangle>& extract_zone) const;
 
-		void fillRect(const std::optionnal<Rectangle>& rectangle, const Color& color);
+		void fillRect(const std::optional<Rectangle>& rectangle, const Color& color);
 		void fillRects(const Rectangle* rectangle, size_t count, const Color& color);
 
 		Rectangle getClipRect() const;

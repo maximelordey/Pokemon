@@ -5,7 +5,7 @@
 
 const Dimension Surface::DEFAULT_DIMENSION = Dimension{0, 0};
 const uint32_t Surface::DEFAULT_DEPTH = 0;
-const uint32_t Surface::DEFAULT_FORMAT = SDL_PIXELTYPE_UNKNOWN;
+const SDL_PixelFormatEnum Surface::DEFAULT_FORMAT = SDL_PIXELFORMAT_UNKNOWN;
 
 Surface::Surface() {
 	sdl_surface = SDL_CreateRGBSurfaceWithFormat(
@@ -14,7 +14,7 @@ Surface::Surface() {
 		DEFAULT_DIMENSION.height,
 		DEFAULT_DEPTH,
 		DEFAULT_FORMAT
-	)
+	);
 
 	if (sdl_surface == nullptr) {
 		throw std::runtime_error("Couldn't create the surface !");
@@ -30,7 +30,7 @@ Surface::Surface(const SurfaceCreateInfo& infos) {
 			infos.dimension.height,
 			infos.pixel_depth,
 			infos.format
-		)
+		);
 	} else {
 		int pitch = (infos.dimension.width * infos.pixel_depth) / 8;
 		sdl_surface = SDL_CreateRGBSurfaceWithFormatFrom(
@@ -40,7 +40,7 @@ Surface::Surface(const SurfaceCreateInfo& infos) {
 			infos.pixel_depth,
 			pitch,
 			infos.format
-		)
+		);
 	}
 
 	if (sdl_surface == nullptr) {
@@ -53,37 +53,37 @@ Surface::~Surface() {
 }
 
 Surface::Surface(const Surface& surface) {
-	*this = surface
+	*this = surface;
 }
 
 Surface::Surface(Surface&& surface) {
-	*this = surface
+	*this = surface;
 }
 
-Surface Surface::convertSurface(const PixelFormat& format) const {
+Surface Surface::convertSurface(const SDL_PixelFormat& format) const {
 	Surface surface;
 	surface.sdl_surface = SDL_ConvertSurface(sdl_surface, &format, 0);
 	return surface;
 }
 
-void Surface::fillRect(const std::optionnal<Rectangle>& rectangle, const Color& color) {
-	uint32_t color = SDL_MapRGBA(sdl_surface->format, color.red, color.green, color.blue, color.alpha);
+void Surface::fillRect(const std::optional<Rectangle>& rectangle, const Color& color) {
+	uint32_t sdl_color = SDL_MapRGBA(sdl_surface->format, color.red, color.green, color.blue, color.alpha);
 	if (rectangle.has_value()) {
 		SDL_Rect sdl_rectangle{rectangle.value.origin.x, rectangle.value.origin.y,
 			rectangle.value.dimension.width, rectangle.value.dimension.height};
-		SDL_FillRect(sdl_surface, &sdl_rectangle, color);
+		SDL_FillRect(sdl_surface, &sdl_rectangle, sdl_color);
 	} else {
-		SDL_FillRect(sdl_surface, nullptr, color);
+		SDL_FillRect(sdl_surface, nullptr, sdl_color);
 	}
 }
 
 void Surface::fillRects(const Rectangle* rectangle, size_t count, const Color& color) {
-	uint32_t color = SDL_MapRGBA(sdl_surface->format, color.red, color.green, color.blue, color.alpha);
-	SDL_Rect ptr_sdl_rect = reinterpret_cast<SDL_Rect*>(rectangle);
-	SDL_FillRects(sdl_surface, ptr_sdl_rect, count, color);
+	uint32_t sdl_color = SDL_MapRGBA(sdl_surface->format, color.red, color.green, color.blue, color.alpha);
+	SDL_Rect* ptr_sdl_rect = reinterpret_cast<SDL_Rect*>(rectangle);
+	SDL_FillRects(sdl_surface, ptr_sdl_rect, count, sdl_color);
 }
 
-Surface Surface::blit(const std::optionnal<Rectangle>& extract_zone) const {
+Surface Surface::blit(const std::optional<Rectangle>& extract_zone) const {
 	Surface surface;
 	SDL_Rect sdl_extract_zone;
 	if (extract_zone.has_value()) {
@@ -110,13 +110,14 @@ Color Surface::getColorKey() const {
 BlendMod Surface::getSurfaceBlendMod() const {
 	BlendMod blendMod;
 	SDL_GetSurfaceAlphaMod(sdl_surface, &blendMod.color.alpha);
-	SDL_GetSurfaceBlendMod(sdl_surface, &blendMod.blendMod);
+	SDL_GetSurfaceBlendMode(sdl_surface, &blendMod.blendMod);
 	SDL_GetSurfaceColorMod(sdl_surface, &blendMod.color.red, &blendMod.color.green, &blendMod.color.blue);
 	return blendMod;
 }	
 
 void Surface::setClipRect(const Rectangle& rectangle) {
-	SDL_SetClipRect(sdl_surface);
+	SDL_Rect sdl_rect{rectangle.origin.x, rectangle.origin.y, rectangle.dimension.width, rectangle.dimension.height};
+	SDL_SetClipRect(sdl_surface, &sdl_rect);
 }
 
 void Surface::setColorKey(const Color& color) {
@@ -126,9 +127,9 @@ void Surface::setColorKey(const Color& color) {
 }
 
 void Surface::setBlendMode(const BlendMod& blendMod) {
-	SDL_SetSurfaceAlphaMod(sdl_surface, &blendMod.color.alpha);
-	SDL_SetSurfaceBlendMod(sdl_surface, &blendMod.blendMod);
-	SDL_SetSurfaceColorMod(sdl_surface, &blendMod.color.red, &blendMod.color.green, &blendMod.color.blue);
+	SDL_SetSurfaceAlphaMod(sdl_surface, blendMod.color.alpha);
+	SDL_SetSurfaceBlendMode(sdl_surface, blendMod.blendMod);
+	SDL_SetSurfaceColorMod(sdl_surface, blendMod.color.red, blendMod.color.green, blendMod.color.blue);
 }
 
 void Surface::removeColorKey() {
@@ -160,7 +161,7 @@ void Surface::unlockSurface() {
 }
 
 
-Surface::operator=(const Surface& surface) {
+Surface& Surface::operator=(const Surface& surface) {
 	sdl_surface = SDL_CreateRGBSurfaceFrom(
 		surface.sdl_surface->pixels,
 		surface.sdl_surface->w,
@@ -169,12 +170,12 @@ Surface::operator=(const Surface& surface) {
 		surface.sdl_surface->pitch,
 		surface.sdl_surface->format->Rmask,
 		surface.sdl_surface->format->Gmask,
-		surface.sdl_surface->format->Bmask
-		surface.sdl_surface->format->Amask,
-	)
+		surface.sdl_surface->format->Bmask,
+		surface.sdl_surface->format->Amask
+	);
 }
 
-Surface::operator=(Surface&& surface) {
+Surface& Surface::operator=(Surface&& surface) {
 	sdl_surface = surface.sdl_surface;
 	surface.sdl_surface = nullptr;
 }
