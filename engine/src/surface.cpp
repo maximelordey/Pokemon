@@ -69,27 +69,30 @@ Surface Surface::convertSurface(const SDL_PixelFormat& format) const {
 void Surface::fillRect(const std::optional<Rectangle>& rectangle, const Color& color) {
 	uint32_t sdl_color = SDL_MapRGBA(sdl_surface->format, color.red, color.green, color.blue, color.alpha);
 	if (rectangle.has_value()) {
-		SDL_Rect sdl_rectangle{rectangle.value.origin.x, rectangle.value.origin.y,
-			rectangle.value.dimension.width, rectangle.value.dimension.height};
+		SDL_Rect sdl_rectangle{rectangle.value().origin.x, rectangle.value().origin.y,
+			rectangle.value().dimension.width, rectangle.value().dimension.height};
 		SDL_FillRect(sdl_surface, &sdl_rectangle, sdl_color);
 	} else {
 		SDL_FillRect(sdl_surface, nullptr, sdl_color);
 	}
 }
 
-void Surface::fillRects(const Rectangle* rectangle, size_t count, const Color& color) {
+void Surface::fillRects(Rectangle* rectangle, size_t count, const Color& color) {
 	uint32_t sdl_color = SDL_MapRGBA(sdl_surface->format, color.red, color.green, color.blue, color.alpha);
-	SDL_Rect* ptr_sdl_rect = reinterpret_cast<SDL_Rect*>(rectangle);
+	const SDL_Rect* ptr_sdl_rect = reinterpret_cast<SDL_Rect*>(rectangle);
 	SDL_FillRects(sdl_surface, ptr_sdl_rect, count, sdl_color);
 }
 
-Surface Surface::blit(const std::optional<Rectangle>& extract_zone) const {
+Surface Surface::blit(const std::optional<Rectangle>& rectangle) const {
 	Surface surface;
-	SDL_Rect sdl_extract_zone;
-	if (extract_zone.has_value()) {
-		sdl_extract_zone = SDL_Rect{extract_zone.value.width, extract_zone.value.height};
+	SDL_Rect sdl_rectangle;
+	if (rectangle.has_value()) {
+		sdl_rectangle.x = rectangle.value().origin.x;
+		sdl_rectangle.y = rectangle.value().origin.y;
+		sdl_rectangle.w = rectangle.value().dimension.width;
+		sdl_rectangle.h = rectangle.value().dimension.height;
 	}
-	SDL_BlitSurface(sdl_surface, &sdl_extract_zone, surface.sdl_surface, nullptr);
+	SDL_BlitSurface(sdl_surface, &sdl_rectangle, surface.sdl_surface, nullptr);
 	return surface;
 }
 

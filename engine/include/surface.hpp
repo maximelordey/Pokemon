@@ -30,11 +30,10 @@ class Surface {
 
 		Surface convertSurface(const SDL_PixelFormat& format) const;		
 		
-		Surface blit(const std::optional<Rectangle>& extract_zone) const;
-		Surface	blitScaled(const std::optional<Rectangle>& extract_zone) const;
+		Surface blit(const std::optional<Rectangle>& rectangle) const;
 
 		void fillRect(const std::optional<Rectangle>& rectangle, const Color& color);
-		void fillRects(const Rectangle* rectangle, size_t count, const Color& color);
+		void fillRects(Rectangle* rectangle, size_t count, const Color& color);
 
 		Rectangle getClipRect() const;
 		Color getColorKey() const;
