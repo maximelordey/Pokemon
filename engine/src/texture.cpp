@@ -100,15 +100,15 @@ void updateTexture(const TextureContentInfo& contentInfo) {
 }
 
 Texture& Texture::operator=(const Texture& texture) {
-	void** pixels;
-	int pitch;
+	TextureContentInfo content_info= texture.lockTexture();
 	
 	SDL_UpdateTexture(
 		sdl_texture,
 		nullptr,
-		*pixels,
-		pitch
-	)
+		content_info.pixels,
+		content_info.pitch
+	);
+	texture.unlockTexture();
 }
 
 Texture& Texture::operator=(Texture&& texture) {
