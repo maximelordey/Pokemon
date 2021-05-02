@@ -7,7 +7,8 @@
 #include "blend_mod.hpp"
 
 class Texture;
-typedef struct TextureInfo TextureInfo;
+typedef struct TextureMetaInfo TextureMetaInfo;
+typedef struct TextureContentInfo TextureContentInfo;
 
 class Texture {
 	public:
@@ -24,8 +25,9 @@ class Texture {
 		void removeTextureBlendMod();
 
 		void unlockTexture();
-		void lockTexture();
-		TextureInfo queryTexture();
+		TextureContentInfo lockTexture();
+		TextureMetaInfo queryTexture();
+		void updateTexture(const TextureContentInfo& contentInfo);
 
 		Texture& operator=(const Texture& texture);
 		Texture& operator=(Texture&& texture);
@@ -33,10 +35,15 @@ class Texture {
 		SDL_Texture* sdl_texture;
 };
 
-struct TextureInfo {
+struct TextureMetaInfo {
 	SDL_PixelFormatEnum format;
 	SDL_TextureAccess access;
     Dimension dimension;
+};
+
+struct TextureContentInfo {
+	void* pixels;
+	int pitch;
 };
 
 #endif

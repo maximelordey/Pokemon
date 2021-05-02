@@ -67,12 +67,19 @@ void Texture::unlockTexture() {
 	SDL_UnlockTexture(sdl_texture);
 }
 
-void Texture::lockTexture() {
-
+TextureContentInfo Texture::lockTexture() {
+	TextureContentInfo content_info;
+	SDL_LockTexture(
+		sdl_texture,
+		nullptr,
+		&content_info.pixels,
+		&content_info.pitch
+	);
+	return content_info;
 }
 
 void Texture::queryTexture() {
-	TextureInfo texture_info;
+	TextureMetaInfo texture_info;
 	SDL_QueryTexture(
 		sdl_texture,
         &texture_info.format,
@@ -81,6 +88,15 @@ void Texture::queryTexture() {
 		&texture_info.dimension.height
 	);
 	return texture_info;
+}
+
+void updateTexture(const TextureContentInfo& contentInfo) {
+	SDL_UpdateTexture(
+		sdl_texture,
+        nullptr,
+		contentInfo.pixels,
+		contentInfo.pitch
+	);
 }
 
 Texture& Texture::operator=(const Texture& texture) {
