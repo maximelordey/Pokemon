@@ -8,10 +8,10 @@
 #include "dimension.hpp"
 #include "rectangle.hpp"
 #include "color.hpp"
+#include "blend_mod.hpp"
 
 class Surface;
 typedef struct SurfaceCreateInfo SurfaceCreateInfo;
-typedef struct BlendMod BlendMod;
 
 class Surface {
 	private:
@@ -40,7 +40,7 @@ class Surface {
 		BlendMod getSurfaceBlendMod() const;
 		void setClipRect(const Rectangle& rectangle);
 		void setColorKey(const Color& color);
-		void setBlendMode(const BlendMod& blendMod);
+		void setBlendMod(const BlendMod& blendMod);
 		void removeColorKey();
 		void removeBlendMod();
 		void removeClipRect();
@@ -55,11 +55,6 @@ class Surface {
 		Surface& operator=(Surface&& surface);	
 	private:
 		SDL_Surface* sdl_surface;
-};
-
-struct BlendMod {
-	SDL_BlendMode blendMod;
-	Color color;
 };
 
 struct SurfaceCreateInfo {

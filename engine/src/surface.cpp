@@ -129,7 +129,7 @@ void Surface::setColorKey(const Color& color) {
 	SDL_SetColorKey(sdl_surface, 1, sdl_color_key);
 }
 
-void Surface::setBlendMode(const BlendMod& blendMod) {
+void Surface::setBlendMod(const BlendMod& blendMod) {
 	SDL_SetSurfaceAlphaMod(sdl_surface, blendMod.color.alpha);
 	SDL_SetSurfaceBlendMode(sdl_surface, blendMod.blendMod);
 	SDL_SetSurfaceColorMod(sdl_surface, blendMod.color.red, blendMod.color.green, blendMod.color.blue);
