@@ -39,7 +39,7 @@ Texture::Texture(Texture&& texture) {
 	*this = texture;
 }
 
-SDL_Texture* Texture::get() {
+SDL_Texture* Texture::get() const{
 	return sdl_texture;
 }
 
@@ -51,23 +51,23 @@ BlendMod Texture::getTextureBlendMod() {
 	return blend_mod;
 }
 
-void Texture::setTextureBlendMod(const BlendMod& blendMod) {
-	SDL_GetTextureAlphaMod(sdl_texture, blend_mod.color.alpha);
-	SDL_GetTextureBlendMode(sdl_texture, blend_mod.blendMod);
-	SDL_GetTextureColorMod(sdl_texture, blend_mod.color.red, blend_mod.color.green, blend_mod.color.blue);
+void Texture::setTextureBlendMod(const BlendMod& blend_mod) {
+	SDL_SetTextureAlphaMod(sdl_texture, blend_mod.color.alpha);
+	SDL_SetTextureBlendMode(sdl_texture, blend_mod.blendMod);
+	SDL_SetTextureColorMod(sdl_texture, blend_mod.color.red, blend_mod.color.green, blend_mod.color.blue);
 }
 
 void Texture::removeTextureBlendMod() {
-	SDL_GetTextureAlphaMod(sdl_texture, 0xFF);
-	SDL_GetTextureBlendMode(sdl_texture, SDL_BLENDMODE_NONE);
-	SDL_GetTextureColorMod(sdl_texture, 0x00, 0x00, 0x00);
+	SDL_SetTextureAlphaMod(sdl_texture, 0x00u);
+	SDL_SetTextureBlendMode(sdl_texture, SDL_BLENDMODE_NONE);
+	SDL_SetTextureColorMod(sdl_texture, 0x00u, 0x00u, 0x00u);
 }
 
-void Texture::unlockTexture() {
+void Texture::unlockTexture() const{
 	SDL_UnlockTexture(sdl_texture);
 }
 
-TextureContentInfo Texture::lockTexture() {
+TextureContentInfo Texture::lockTexture() const{
 	TextureContentInfo content_info;
 	SDL_LockTexture(
 		sdl_texture,
@@ -78,7 +78,7 @@ TextureContentInfo Texture::lockTexture() {
 	return content_info;
 }
 
-void Texture::queryTexture() {
+TextureMetaInfo Texture::queryTexture() {
 	TextureMetaInfo texture_info;
 	SDL_QueryTexture(
 		sdl_texture,
@@ -90,7 +90,7 @@ void Texture::queryTexture() {
 	return texture_info;
 }
 
-void updateTexture(const TextureContentInfo& contentInfo) {
+void Texture::updateTexture(const TextureContentInfo& contentInfo) {
 	SDL_UpdateTexture(
 		sdl_texture,
         nullptr,
@@ -100,7 +100,7 @@ void updateTexture(const TextureContentInfo& contentInfo) {
 }
 
 Texture& Texture::operator=(const Texture& texture) {
-	TextureContentInfo content_info= texture.lockTexture();
+	TextureContentInfo content_info = texture.lockTexture();
 	
 	SDL_UpdateTexture(
 		sdl_texture,

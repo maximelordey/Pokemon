@@ -7,6 +7,7 @@
 #include "dimension.hpp"
 
 typedef uint32_t WindowFlags;
+typedef struct WindowCreateInfo WindowCreateInfo;
 
 class Window {
 	public:
@@ -39,7 +40,7 @@ class Window {
 		SDL_Window* sdl_window;
 };
 
-typedef struct WindowCreateInfo {
+struct WindowCreateInfo {
 	std::string name;
 	WindowFlags flags;
 	Point origin;

@@ -26,7 +26,7 @@ class Surface {
 		Surface(const Surface& surface);
 		Surface(Surface&& surface);
 
-		SDL_Surface* get();
+		SDL_Surface* get() const;
 
 		Surface convertSurface(const SDL_PixelFormat& format) const;		
 		

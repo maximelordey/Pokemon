@@ -60,6 +60,10 @@ Surface::Surface(Surface&& surface) {
 	*this = surface;
 }
 
+SDL_Surface* Surface::get() const {
+	return sdl_surface;
+}
+
 Surface Surface::convertSurface(const SDL_PixelFormat& format) const {
 	Surface surface;
 	surface.sdl_surface = SDL_ConvertSurface(sdl_surface, &format, 0);

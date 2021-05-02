@@ -17,7 +17,8 @@ Renderer::~Renderer() {
 }
 
 Renderer::Renderer(Renderer&& renderer) {
-	*this = renderer;
+	sdl_renderer = renderer.sdl_renderer;
+	renderer.sdl_renderer = nullptr;
 }
 
 SDL_Renderer* Renderer::get() const {

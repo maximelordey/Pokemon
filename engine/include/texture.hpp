@@ -9,6 +9,8 @@
 class Texture;
 typedef struct TextureMetaInfo TextureMetaInfo;
 typedef struct TextureContentInfo TextureContentInfo;
+typedef	uint32_t PixelFormatEnum;
+typedef	int TextureAccess;
 
 class Texture {
 	public:
@@ -18,14 +20,14 @@ class Texture {
 		Texture(const Texture& texture);
 		Texture(Texture&& texture);
 
-		SDL_Texture* get();
+		SDL_Texture* get() const;
 
 		BlendMod getTextureBlendMod();
 		void setTextureBlendMod(const BlendMod& blendMod);
 		void removeTextureBlendMod();
 
-		void unlockTexture();
-		TextureContentInfo lockTexture();
+		void unlockTexture() const;
+		TextureContentInfo lockTexture() const;
 		TextureMetaInfo queryTexture();
 		void updateTexture(const TextureContentInfo& contentInfo);
 
@@ -36,8 +38,8 @@ class Texture {
 };
 
 struct TextureMetaInfo {
-	SDL_PixelFormatEnum format;
-	SDL_TextureAccess access;
+	PixelFormatEnum format;
+	TextureAccess access;
     Dimension dimension;
 };
 

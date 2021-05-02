@@ -10,6 +10,7 @@
 
 typedef uint32_t RendererFlags;
 typedef int32_t RendererIndex;
+typedef struct RendererCreateInfo RendererCreateInfo;
 
 class Renderer {
 	public:
@@ -39,7 +40,7 @@ class Renderer {
 		SDL_Renderer* sdl_renderer;
 };
 
-typedef struct RendererCreateInfo {
+struct RendererCreateInfo {
 	Window* window;
 	RendererIndex index;
 	RendererFlags flags;
