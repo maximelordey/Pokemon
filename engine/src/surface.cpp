@@ -3,23 +3,17 @@
 #include <SDL2/SDL_image.h>
 #include <stdexcept>
 
-const Dimension Surface::DEFAULT_DIMENSION(0, 0);
-const uint32_t Surface::DEFAULT_DEPTH = 8 * 4 * sizeof(uint8_t);
-const uint32_t Surface::DEFAULT_RED_MASK =		0xFF000000;
-const uint32_t Surface::DEFAULT_GREEN_MASK =	0x00FF0000;
-const uint32_t Surface::DEFAULT_BLUE_MASK =		0x0000FF00;
-const uint32_t Surface::DEFAULT_ALPHA_MASK =	0x000000FF;
+const Dimension Surface::DEFAULT_DIMENSION = Dimension{0, 0};
+const uint32_t Surface::DEFAULT_DEPTH = 0;
+const uint32_t Surface::DEFAULT_FORMAT = SDL_PIXELTYPE_UNKNOWN;
 
 Surface::Surface() {
-	sdl_surface = SDL_CreateRGBSurface(
+	sdl_surface = SDL_CreateRGBSurfaceWithFormat(
 		0,
 		DEFAULT_DIMENSION.width,
 		DEFAULT_DIMENSION.height,
 		DEFAULT_DEPTH,
-		DEFAULT_RED_MASK,
-		DEFAULT_GREEN_MASK,
-		DEFAULT_BLUE_MASK,
-		DEFAULT_ALPHA_MASK,
+		DEFAULT_FORMAT
 	)
 
 	if (sdl_surface == nullptr) {
@@ -29,27 +23,28 @@ Surface::Surface() {
 }
 
 Surface::Surface(const SurfaceCreateInfo& infos) {
-	sdl_surface = SDL_CreateRGBSurface(
-		0,
-		infos.w,
-		infos.h,
-		DEFAULT_DEPTH,
-		infos.red_mask,
-		infos.green_mask,
-		infos.blue_mask,
-		infos.alpha_mask
-	)
+	if (infos.pixels == nullptr) {
+		sdl_surface = SDL_CreateRGBSurfaceWithFormat(
+			0,
+			infos.dimension.width,
+			infos.dimension.height,
+			infos.pixel_depth,
+			infos.format
+		)
+	} else {
+		int pitch = (infos.dimension.width * infos.pixel_depth) / 8;
+		sdl_surface = SDL_CreateRGBSurfaceWithFormatFrom(
+			infos.pixels,
+			infos.dimension.width,
+			infos.dimension.height,
+			infos.pixel_depth,
+			pitch,
+			infos.format
+		)
+	}
 
 	if (sdl_surface == nullptr) {
 		throw std::runtime_error("Couldn't create the surface !");
-	}
-}
-
-Surface::Surface(const std::path& path) {
-	sdl_surface = SDL_LoadBMP(path.c_str());
-
-	if (sdl_surface == nullptr) {
-		throw std::runtime_error("Couldn't load the surface !");
 	}
 }
 
@@ -94,7 +89,7 @@ Surface Surface::blit(const std::optionnal<Rectangle>& extract_zone) const {
 	if (extract_zone.has_value()) {
 		sdl_extract_zone = SDL_Rect{extract_zone.value.width, extract_zone.value.height};
 	}
-	SDL_BlitSurface(sdl_surface, &sdl_extract_zone, surface.get(), nullptr);
+	SDL_BlitSurface(sdl_surface, &sdl_extract_zone, surface.sdl_surface, nullptr);
 	return surface;
 }
 
