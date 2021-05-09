@@ -4,9 +4,9 @@
 #include <stdexcept>
 
 Surface::Surface() {
-	Dimension dimension{0, 0};
-	PixelDepth pixel_depth = 0;
-	SDL_PixelFormatEnum format = SDL_PIXELFORMAT_UNKNOWN;
+	const Dimension dimension{0, 0};
+	const PixelDepth pixel_depth = 0;
+	const SDL_PixelFormatEnum format = SDL_PIXELFORMAT_UNKNOWN;
 
 	sdl_surface = SDL_CreateRGBSurfaceWithFormat(
 		0,
