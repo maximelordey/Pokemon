@@ -3,22 +3,20 @@
 #include <SDL2/SDL_image.h>
 #include <stdexcept>
 
-const Dimension Surface::DEFAULT_DIMENSION = Dimension{0, 0};
-const uint32_t Surface::DEFAULT_DEPTH = 0;
-const SDL_PixelFormatEnum Surface::DEFAULT_FORMAT = SDL_PIXELFORMAT_UNKNOWN;
-
 Surface::Surface() {
+	Dimension dimension{0, 0};
+	PixelDepth pixel_depth = 0;
+	SDL_PixelFormatEnum format = SDL_PIXELFORMAT_UNKNOWN;
+
 	sdl_surface = SDL_CreateRGBSurfaceWithFormat(
 		0,
-		DEFAULT_DIMENSION.width,
-		DEFAULT_DIMENSION.height,
-		DEFAULT_DEPTH,
-		DEFAULT_FORMAT
+		dimension.width,
+		dimension.height,
+		pixel_depth,
+		format
 	);
 
-	if (sdl_surface == nullptr) {
-		throw std::runtime_error("Couldn't create the surface !");
-	}
+	SDL_assert(sdl_surface);
 }
 
 Surface::Surface(const SurfaceCreateInfo& infos) {
@@ -41,9 +39,7 @@ Surface::Surface(const SurfaceCreateInfo& infos) {
 		);
 	}
 
-	if (sdl_surface == nullptr) {
-		throw std::runtime_error("Couldn't create the surface !");
-	}
+	SDL_assert(sdl_surface);
 }
 
 Surface::~Surface() {

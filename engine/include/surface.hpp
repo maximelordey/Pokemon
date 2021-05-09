@@ -11,15 +11,12 @@
 #include "blend_mod.hpp"
 
 class Surface;
-typedef struct SurfaceCreateInfo SurfaceCreateInfo;
+struct SurfaceCreateInfo;
 typedef uint32_t PixelFormatEnum;
+typedef int Pitch;
+typedef int PixelDepth;
 
 class Surface {
-	private:
-		static const Dimension DEFAULT_DIMENSION;
-		static const uint32_t DEFAULT_DEPTH;
-		static const SDL_PixelFormatEnum DEFAULT_FORMAT;
-
 	public:
 		Surface();
 		Surface(const SurfaceCreateInfo& infos);
@@ -58,8 +55,8 @@ class Surface {
 struct SurfaceCreateInfo {
 	void* pixels;
 	Dimension dimension;
-	int pixel_depth;
-	int pitch;
+	PixelDepth pixel_depth;
+	Pitch pitch;
 	PixelFormatEnum format;
 };
 
