@@ -16,6 +16,8 @@ class Renderer;
 class Texture;
 struct RendererCreateInfo;
 
+class Renderer;
+class Texture;
 typedef uint32_t RendererFlags;
 typedef int32_t RendererIndex;
 
@@ -26,6 +28,7 @@ typedef std::weak_ptr<Renderer> WeakRenderer;
 
 class Renderer {
 	public:
+		Renderer();
 		Renderer(const RendererCreateInfo& infos);
 		~Renderer();
 		Renderer(const Renderer& renderer) = delete;

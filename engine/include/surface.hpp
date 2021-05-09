@@ -22,6 +22,7 @@ class Surface {
 	public:
 		Surface();
 		Surface(const SurfaceCreateInfo& infos);
+		Surface(const std::string& path);
 		~Surface();
 		Surface(const Surface& surface) = delete;
 		Surface(Surface&& surface);

@@ -2,6 +2,10 @@
 
 #include <stdexcept>
 
+Window::Window()
+	: sdl_window(nullptr)
+{}
+
 Window::Window(const WindowCreateInfo& infos) {
 	sdl_window = SDL_CreateWindow(
 		infos.name.data(),

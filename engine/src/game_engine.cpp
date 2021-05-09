@@ -10,37 +10,6 @@ void GameEngine::start() {
 	this->tearDown();
 }
 
-void GameEngine::setColor(const Color& color) {
-	SDL_SetRenderDrawColor(mRenderer, color.red, color.green, color.blue, color.alpha);
-}
-
-void GameEngine::clear(const Color& color) {
-	//this->setColor();
-	SDL_RenderClear(mRenderer);
-}
-
-void GameEngine::drawPoint(const Point& point) {
-	SDL_RenderDrawPoint(mRenderer, point.x, point.y);
-}
-
-void GameEngine::drawLine(const Point& from, const Point& to) {
-	SDL_RenderDrawLine(mRenderer, from.x, from.y, to.x, to.y);
-}
-
-void GameEngine::drawRectangle(const Point& origin, const Dimension& dimension) {
-	SDL_Rect rect = SDL_Rect{origin.x, origin.y, dimension.width, dimension.height};
-	SDL_RenderDrawRect(mRenderer, &rect);
-}
-
-void GameEngine::fillRectangle(const Point& origin, const Dimension& dimension) {
-	SDL_Rect rect = SDL_Rect{origin.x, origin.y, dimension.width, dimension.height};
-	SDL_RenderFillRect(mRenderer, &rect);
-}
-
-void GameEngine::drawString(const Point& origin, const std::string& string) {
-	std::runtime_error("drawString is not implemented yet!");
-}
-
 void GameEngine::run() {
 	this->gameLoop();
 }
@@ -65,24 +34,22 @@ void GameEngine::initSDL() {
 }
 
 void GameEngine::createWindow() {
-<<<<<<< HEAD
-	mWindow = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 960, 540, SDL_WINDOW_SHOWN );
-    if( mWindow == NULL )
-=======
-	window = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 990, 540, SDL_WINDOW_SHOWN );
-    if( window == NULL )
->>>>>>> empty.
-    {
-        throw std::runtime_error("Window could not be created!");
-    }
+	WindowCreateInfo createInfo;
+	createInfo.dimension = Dimension{960, 540};
+	createInfo.name = std::string("SDL Tutorial");
+	createInfo.origin = Point{SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED};
+	createInfo.flags = SDL_WINDOW_SHOWN;
+
+	mWindow = Window(createInfo);
 }
 
 void GameEngine::createRenderer() {
-	mRenderer = SDL_CreateRenderer( mWindow, -1, SDL_RENDERER_ACCELERATED );
-	if( mRenderer == NULL )
-	{
-		std::runtime_error("Renderer could not be created!");
-	}
+	RendererCreateInfo createInfo;
+	createInfo.window = &mWindow;
+	createInfo.index = -1;
+	createInfo.flags = SDL_RENDERER_SOFTWARE;
+
+	mRenderer = Renderer(createInfo);
 }
 
 void GameEngine::gameLoop() {
@@ -91,6 +58,7 @@ void GameEngine::gameLoop() {
 	Delta deltaThreshold = 17;
 	Time lastUpdate = SDL_GetTicks();
 
+	this->onCreate();
 	while(!mExitGameLoop) {
 		Time now = SDL_GetTicks();
 		Delta delta = now - lastUpdate;
@@ -105,8 +73,9 @@ void GameEngine::gameLoop() {
 }
 
 void GameEngine::display() {
+	mRenderer.clear(Color{0,0,0,255});
 	this->onPaint();
-	SDL_RenderPresent(mRenderer);
+	mRenderer.display();
 }
 
 void GameEngine::processEvent() {
@@ -117,11 +86,9 @@ void GameEngine::processEvent() {
 }
 
 void GameEngine::destoryRenderer() {
-	SDL_DestroyRenderer(mRenderer);
 }
 
 void GameEngine::destroyWindow() {
-	SDL_DestroyWindow( mWindow );
 }
 
 void GameEngine::quitSDL() {

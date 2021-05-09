@@ -8,6 +8,9 @@
 #include "color.hpp"
 #include "point.hpp"
 #include "dimension.hpp"
+#include "texture.hpp"
+#include "renderer.hpp"
+#include "window.hpp"
 
 typedef uint32_t Milliseconds;
 typedef Milliseconds Delta;
@@ -17,14 +20,6 @@ typedef SDL_Event Event;
 class GameEngine {
 	public:
 		void start();
-
-		void setColor(const Color& color);
-		void clear(const Color& color);
-		void drawPoint(const Point& point);
-		void drawLine(const Point& from, const Point& to);
-		void drawRectangle(const Point& origin, const Dimension& dimension);
-		void fillRectangle(const Point& origin, const Dimension& dimension);
-		void drawString(const Point& origin, const std::string& string);
 
 	private:
 		void setUp();
@@ -44,13 +39,14 @@ class GameEngine {
 		void quitSDL();
 	
 	protected:
+		virtual void onCreate() = 0;
 		virtual void onEvent(const Event& event) = 0;
 		virtual void onUpdate(Delta delta) = 0;
 		virtual void onPaint() = 0;
 
-	private:
-		SDL_Window* mWindow;
-		SDL_Renderer* mRenderer;
+	public:
+		Window mWindow;
+		Renderer mRenderer;
 
 	public:
 		bool mExitGameLoop;

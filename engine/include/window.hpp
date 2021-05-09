@@ -20,6 +20,7 @@ typedef std::weak_ptr<Window> WeakWindow;
 
 class Window {
 	public:
+		Window();
 		Window(const WindowCreateInfo& infos);
 		~Window();
 		Window(const Window& window) = delete;

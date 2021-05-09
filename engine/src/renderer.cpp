@@ -2,6 +2,10 @@
 
 #include <stdexcept>
 
+Renderer::Renderer()
+	: sdl_renderer(nullptr)
+{}
+
 Renderer::Renderer(const RendererCreateInfo& infos)
 {
 	SDL_assert(infos.window != nullptr);
@@ -30,6 +34,7 @@ void Renderer::setColor(const Color& color) {
 }
 
 void Renderer::clear(const Color& color) {
+	setColor(color);
 	SDL_RenderClear(sdl_renderer);
 }
 
@@ -96,6 +101,24 @@ void Renderer::drawTexture(const Texture& texture, const OptRectangle& rectangle
 
 void Renderer::display() {
 	SDL_RenderPresent(sdl_renderer);
+}
+
+void Renderer::drawTexture(const Texture& texture,const  Rectangle& rectangle) {
+	SDL_assert(texture.get() != nullptr);
+	SDL_assert(sdl_renderer != nullptr);
+	
+	SDL_Rect rect = SDL_Rect{rectangle.origin.x,rectangle.origin.y,rectangle.dimension.width,rectangle.dimension.height};
+	int code = SDL_RenderCopy(
+		sdl_renderer,
+        texture.get(),
+		nullptr,
+		&rect
+	);
+
+	if (code == -1) {
+		printf( "Unable to Render image! SDL Error: %s\n", SDL_GetError() );
+		throw std::runtime_error("SDL_RenderCopy Failed");
+	}
 }
 
 Renderer& Renderer::operator=(Renderer&& renderer) {

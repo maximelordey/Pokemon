@@ -2,7 +2,9 @@
 
 #include <SDL2/SDL_image.h>
 #include <stdexcept>
+#include <iostream>
 
+<<<<<<< HEAD
 Surface::Surface() {
 	const Dimension dimension{0, 0};
 	const PixelDepth pixel_depth = 0;
@@ -17,6 +19,23 @@ Surface::Surface() {
 	);
 
 	SDL_assert(sdl_surface);
+=======
+const Dimension Surface::DEFAULT_DIMENSION = Dimension{0, 0};
+const uint32_t Surface::DEFAULT_DEPTH = 0;
+const SDL_PixelFormatEnum Surface::DEFAULT_FORMAT = SDL_PIXELFORMAT_UNKNOWN;
+
+Surface::Surface()
+	: sdl_surface()
+{}
+
+Surface::Surface(const std::string& path) {
+	sdl_surface = SDL_LoadBMP(path.data());
+
+	if (sdl_surface == nullptr) {
+		printf( "Unable to load image %s! SDL Error: %s\n", "02_getting_an_image_on_the_screen/hello_world.bmp", SDL_GetError() );
+		throw std::runtime_error("Couldn't load the surface !");
+	}
+>>>>>>> SPrite test.
 }
 
 Surface::Surface(const SurfaceCreateInfo& infos) {
@@ -71,6 +90,7 @@ Surface Surface::blit(const Rectangle& rectangle) const {
 	create_info.pixel_depth = sdl_surface->format->BitsPerPixel;
 	Surface surface(create_info);
 
+<<<<<<< HEAD
 	SDL_Rect sdl_rectangle;
 	sdl_rectangle.x = rectangle.origin.x;
 	sdl_rectangle.y = rectangle.origin.y;
@@ -78,6 +98,32 @@ Surface Surface::blit(const Rectangle& rectangle) const {
 	sdl_rectangle.h = rectangle.dimension.height;
 
 	SDL_BlitSurface(sdl_surface, &sdl_rectangle, surface.sdl_surface, nullptr);
+=======
+void Surface::fillRects(Rectangle* rectangle, size_t count, const Color& color) {
+	uint32_t sdl_color = SDL_MapRGBA(sdl_surface->format, color.red, color.green, color.blue, color.alpha);
+	const SDL_Rect* ptr_sdl_rect = reinterpret_cast<SDL_Rect*>(rectangle);
+	SDL_FillRects(sdl_surface, ptr_sdl_rect, count, sdl_color);
+}
+
+Surface Surface::blit(const std::optional<Rectangle>& rectangle) const {
+	SurfaceCreateInfo createInfo;
+	createInfo.pixels = nullptr;
+	createInfo.dimension = rectangle.value().dimension;
+	createInfo.pixel_depth = sdl_surface->format->BitsPerPixel;
+	createInfo.format = sdl_surface->format->format;
+	Surface surface(createInfo);
+
+	if (rectangle.has_value()) {
+		SDL_Rect sdl_rectangle;
+		sdl_rectangle.x = rectangle.value().origin.x;
+		sdl_rectangle.y = rectangle.value().origin.y;
+		sdl_rectangle.w = rectangle.value().dimension.width;
+		sdl_rectangle.h = rectangle.value().dimension.height;
+		SDL_BlitSurface(sdl_surface, &sdl_rectangle, surface.sdl_surface, nullptr);
+	} else {
+		SDL_BlitSurface(sdl_surface, nullptr, surface.sdl_surface, nullptr);
+	}
+>>>>>>> SPrite test.
 	return surface;
 }
 
@@ -149,6 +195,27 @@ void Surface::unlockSurface() {
 }
 
 
+<<<<<<< HEAD
+=======
+Surface& Surface::operator=(const Surface& surface) {
+	sdl_surface = SDL_CreateRGBSurfaceFrom(
+		surface.sdl_surface->pixels,
+		surface.sdl_surface->w,
+		surface.sdl_surface->h,
+		surface.sdl_surface->format->BitsPerPixel,
+		surface.sdl_surface->pitch,
+		surface.sdl_surface->format->Rmask,
+		surface.sdl_surface->format->Gmask,
+		surface.sdl_surface->format->Bmask,
+		surface.sdl_surface->format->Amask
+	);
+
+	if (sdl_surface == nullptr) {
+		throw std::runtime_error("Couldn't copy the surface !");
+	}
+}
+
+>>>>>>> SPrite test.
 Surface& Surface::operator=(Surface&& surface) {
 	if (this != &surface) {
 		sdl_surface = surface.sdl_surface;
