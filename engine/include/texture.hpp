@@ -7,17 +7,18 @@
 #include "blend_mod.hpp"
 
 class Texture;
-typedef struct TextureMetaInfo TextureMetaInfo;
-typedef struct TextureContentInfo TextureContentInfo;
+struct TextureMetaInfo;
+struct TextureContentInfo;
 typedef	uint32_t PixelFormatEnum;
 typedef	int TextureAccess;
 
 class Texture {
 	public:
+		Texture();
 		Texture(const Renderer& renderer, SDL_PixelFormatEnum format, SDL_TextureAccess acces, const Dimension& dimension);
 		Texture(const Surface& surface, const Renderer& renderer);
 		~Texture();
-		Texture(const Texture& texture);
+		Texture(const Texture& texture) = delete;
 		Texture(Texture&& texture);
 
 		SDL_Texture* get() const;
@@ -31,7 +32,7 @@ class Texture {
 		TextureMetaInfo queryTexture();
 		void updateTexture(const TextureContentInfo& contentInfo);
 
-		Texture& operator=(const Texture& texture);
+		Texture& operator=(const Texture& texture) = delete;
 		Texture& operator=(Texture&& texture);
 	private:
 		SDL_Texture* sdl_texture;

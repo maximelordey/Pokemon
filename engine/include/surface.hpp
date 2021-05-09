@@ -12,6 +12,7 @@
 
 class Surface;
 typedef struct SurfaceCreateInfo SurfaceCreateInfo;
+typedef uint32_t PixelFormatEnum;
 
 class Surface {
 	private:
@@ -23,17 +24,14 @@ class Surface {
 		Surface();
 		Surface(const SurfaceCreateInfo& infos);
 		~Surface();
-		Surface(const Surface& surface);
+		Surface(const Surface& surface) = delete;
 		Surface(Surface&& surface);
 
 		SDL_Surface* get() const;
 
 		Surface convertSurface(const SDL_PixelFormat& format) const;		
 		
-		Surface blit(const std::optional<Rectangle>& rectangle) const;
-
-		void fillRect(const std::optional<Rectangle>& rectangle, const Color& color);
-		void fillRects(Rectangle* rectangle, size_t count, const Color& color);
+		Surface blit(const Rectangle& rectangle) const;
 
 		Rectangle getClipRect() const;
 		Color getColorKey() const;
@@ -51,7 +49,7 @@ class Surface {
 		void lockSurface();
 		void unlockSurface();
 
-		Surface& operator=(const Surface& surface);
+		Surface& operator=(const Surface& surface) = delete;
 		Surface& operator=(Surface&& surface);	
 	private:
 		SDL_Surface* sdl_surface;
@@ -61,7 +59,8 @@ struct SurfaceCreateInfo {
 	void* pixels;
 	Dimension dimension;
 	int pixel_depth;
-	SDL_PixelFormatEnum format;
+	int pitch;
+	PixelFormatEnum format;
 };
 
 #endif
