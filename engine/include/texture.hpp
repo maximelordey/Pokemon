@@ -14,9 +14,8 @@ typedef	int TextureAccess;
 
 class Texture {
 	public:
-		Texture();
-		Texture(const Renderer& renderer, SDL_PixelFormatEnum format, SDL_TextureAccess acces, const Dimension& dimension);
-		Texture(const Surface& surface, const Renderer& renderer);
+		Texture(const Renderer& renderer, const TextureMetaInfo& meta_info);
+		Texture(const Renderer& renderer, const Surface& surface);
 		~Texture();
 		Texture(const Texture& texture) = delete;
 		Texture(Texture&& texture);
@@ -27,13 +26,14 @@ class Texture {
 		void setTextureBlendMod(const BlendMod& blendMod);
 		void removeTextureBlendMod();
 
-		void unlockTexture() const;
 		TextureContentInfo lockTexture() const;
+		void unlockTexture() const;
 		TextureMetaInfo queryTexture();
 		void updateTexture(const TextureContentInfo& contentInfo);
 
 		Texture& operator=(const Texture& texture) = delete;
 		Texture& operator=(Texture&& texture);
+		
 	private:
 		SDL_Texture* sdl_texture;
 };

@@ -2,41 +2,36 @@
 
 #include <stdexcept>
 
-Texture::Texture(const Renderer& renderer, SDL_PixelFormatEnum format, SDL_TextureAccess acces, const Dimension& dimension) {
+Texture::Texture(const Renderer& renderer, const TextureMetaInfo& meta_info) {
 	sdl_texture = SDL_CreateTexture(
 		renderer.get(),
-		format,
-		acces,
-		dimension.width,
-		dimension.height
+		meta_info.format,
+		meta_info.acces,
+		meta_info.dimension.width,
+		meta_info.dimension.height
 	);
 
-	if (sdl_texture == nullptr) {
-		std::runtime_error("Couldn't create Texture !");
-	}
+	SDL_assert(sdl_texture);
 }
 
-Texture::Texture(const Surface& surface, const Renderer& renderer) {
+Texture::Texture(const Renderer& renderer, const Surface& surface) {
 	sdl_texture = SDL_CreateTextureFromSurface(
 		renderer.get(),
 		surface.get()
 	);
 
-	if (sdl_texture == nullptr) {
-		std::runtime_error("Couldn't create Texture !");
-	}
+
+	SDL_assert(sdl_texture);
 }
 
 Texture::~Texture() {
 	SDL_DestroyTexture(sdl_texture);
 }
 
-Texture::Texture(const Texture& texture) {
-	*this = texture;
-}
-
-Texture::Texture(Texture&& texture) {
-	*this = texture;
+Texture::Texture(Texture&& texture) 
+	: sdl_texture(texture.sdl_texture)
+{
+	texture.sdl_texture = nullptr;
 }
 
 SDL_Texture* Texture::get() const{
@@ -99,19 +94,10 @@ void Texture::updateTexture(const TextureContentInfo& contentInfo) {
 	);
 }
 
-Texture& Texture::operator=(const Texture& texture) {
-	TextureContentInfo content_info = texture.lockTexture();
-	
-	SDL_UpdateTexture(
-		sdl_texture,
-		nullptr,
-		content_info.pixels,
-		content_info.pitch
-	);
-	texture.unlockTexture();
-}
-
 Texture& Texture::operator=(Texture&& texture) {
-	sdl_texture = texture.sdl_texture;
-	texture.sdl_texture = nullptr;
+	if (this != &texture) {
+		sdl_texture = texture.sdl_texture;
+		texture.sdl_texture = nullptr;
+	}
+	return *this;
 }
