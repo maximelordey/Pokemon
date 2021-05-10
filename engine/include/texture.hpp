@@ -1,17 +1,22 @@
 #ifndef TEXTURE_HPP
 #define TEXTURE_HPP
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
+#include <optional>
+#include <memory>
+
 #include "renderer.hpp"
 #include "surface.hpp"
 #include "blend_mod.hpp"
 
 class Texture;
+class Renderer;
 struct TextureMetaInfo;
 struct TextureContentInfo;
 typedef	uint32_t PixelFormatEnum;
 typedef	int TextureAccess;
 
+typedef std::optional<Texture> OptTexture;
 typedef std::shared_ptr<Texture> SharedTexture;
 typedef std::unique_ptr<Texture> UniqueTexture;
 typedef std::weak_ptr<Texture> WeakTexture;

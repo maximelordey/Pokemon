@@ -1,13 +1,22 @@
 #ifndef WINDOW_HPP
 #define WINDOW_HPP
 
-#include <string>
 #include <SDL.h>
+#include <string>
+#include <memory>
+#include <optional>
+
 #include "point.hpp"
 #include "dimension.hpp"
 
+class Window;
 typedef uint32_t WindowFlags;
-typedef struct WindowCreateInfo WindowCreateInfo;
+struct WindowCreateInfo;
+
+typedef std::optional<Window> OptWindow;
+typedef std::shared_ptr<Window> SharedWindow;
+typedef std::unique_ptr<Window> UniqueWindow;
+typedef std::weak_ptr<Window> WeakWindow;
 
 class Window {
 	public:

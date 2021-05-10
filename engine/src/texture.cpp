@@ -4,9 +4,9 @@
 
 Texture::Texture(const Renderer& renderer, const TextureMetaInfo& meta_info) {
 	sdl_texture = SDL_CreateTexture(
-		renderer.get(),
+		&renderer.get(),
 		meta_info.format,
-		meta_info.acces,
+		meta_info.access,
 		meta_info.dimension.width,
 		meta_info.dimension.height
 	);
@@ -16,10 +16,9 @@ Texture::Texture(const Renderer& renderer, const TextureMetaInfo& meta_info) {
 
 Texture::Texture(const Renderer& renderer, const Surface& surface) {
 	sdl_texture = SDL_CreateTextureFromSurface(
-		renderer.get(),
-		surface.get()
+		&renderer.get(),
+		&surface.get()
 	);
-
 
 	SDL_assert(sdl_texture);
 }

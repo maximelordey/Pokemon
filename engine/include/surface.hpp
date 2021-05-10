@@ -1,7 +1,7 @@
 #ifndef SURFACE_HPP
 #define SURFACE_HPP
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <optional>
 #include <vector>
 #include <memory>
@@ -16,7 +16,7 @@ struct SurfaceCreateInfo;
 typedef uint32_t PixelFormatEnum;
 typedef int Pitch;
 typedef int PixelDepth;
-
+typedef std::optional<Surface> OptSurface;
 typedef std::shared_ptr<Surface> SharedSurface;
 typedef std::unique_ptr<Surface> UniqueSurface;
 typedef std::weak_ptr<Surface> WeakSurface;

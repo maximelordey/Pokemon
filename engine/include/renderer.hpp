@@ -2,15 +2,27 @@
 #define RENDERER_HPP
 
 #include <SDL.h>
+#include <memory>
+#include <optional>
+
 #include "window.hpp"
 #include "color.hpp"
 #include "line.hpp"
 #include "point.hpp"
 #include "rectangle.hpp"
+#include "texture.hpp"
+
+class Renderer;
+class Texture;
+struct RendererCreateInfo;
 
 typedef uint32_t RendererFlags;
 typedef int32_t RendererIndex;
-typedef struct RendererCreateInfo RendererCreateInfo;
+
+typedef std::optional<Renderer> OptRenderer;
+typedef std::shared_ptr<Renderer> SharedRenderer;
+typedef std::unique_ptr<Renderer> UniqueRenderer;
+typedef std::weak_ptr<Renderer> WeakRenderer;
 
 class Renderer {
 	public:
@@ -19,7 +31,7 @@ class Renderer {
 		Renderer(const Renderer& renderer) = delete;
 		Renderer(Renderer&& renderer);
 
-		SDL_Renderer* get() const;
+		SDL_Renderer& get() const;
 
 		void setColor(const Color& color);
 		void clear(const Color& color);
@@ -32,6 +44,7 @@ class Renderer {
 		void drawRectangles(Rectangle* rectangles, size_t count);
 		void fillRectangles(Rectangle* rectangles, size_t count);
 		void drawString(const Point& origin, const std::string& string);
+		void drawTexture(const Texture& texture, const OptRectangle& rectangle);		
 		void display();
 
 		Renderer& operator=(const Renderer& renderer) = delete;

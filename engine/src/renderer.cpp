@@ -21,8 +21,8 @@ Renderer::Renderer(Renderer&& renderer) {
 	renderer.sdl_renderer = nullptr;
 }
 
-SDL_Renderer* Renderer::get() const {
-	return sdl_renderer;
+SDL_Renderer& Renderer::get() const {
+	return *sdl_renderer;
 }
 
 void Renderer::setColor(const Color& color) {
@@ -77,6 +77,21 @@ void Renderer::fillRectangles(Rectangle* rectangles, size_t count) {
 
 void Renderer::drawString(const Point& origin, const std::string& string) {
 	throw std::runtime_error("drawString is not implemented yet !");
+}
+
+void Renderer::drawTexture(const Texture& texture, const OptRectangle& rectangle) {
+	SDL_Texture* sdl_texture = &texture.get();
+	if (rectangle.has_value()) {
+		SDL_Rect sdl_rectangle;
+		sdl_rectangle.x = rectangle.value().origin.x;
+		sdl_rectangle.y = rectangle.value().origin.y;
+		sdl_rectangle.w = rectangle.value().dimension.width;
+		sdl_rectangle.h = rectangle.value().dimension.height;
+
+		SDL_RenderCopy(sdl_renderer, sdl_texture, nullptr, &sdl_rectangle);
+	} else {
+		SDL_RenderCopy(sdl_renderer, sdl_texture, nullptr, nullptr);
+	}
 }
 
 void Renderer::display() {
