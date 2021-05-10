@@ -52,8 +52,8 @@ Surface::Surface(Surface&& surface)
 		surface.sdl_surface = nullptr;
 }
 
-SDL_Surface* Surface::get() const {
-	return sdl_surface;
+SDL_Surface& Surface::get() const {
+	return *sdl_surface;
 }
 
 Surface Surface::convertSurface(const SDL_PixelFormat& format) const {

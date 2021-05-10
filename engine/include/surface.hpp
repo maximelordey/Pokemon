@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <optional>
 #include <vector>
+#include <memory>
 
 #include "dimension.hpp"
 #include "rectangle.hpp"
@@ -16,6 +17,10 @@ typedef uint32_t PixelFormatEnum;
 typedef int Pitch;
 typedef int PixelDepth;
 
+typedef std::shared_ptr<Surface> SharedSurface;
+typedef std::unique_ptr<Surface> UniqueSurface;
+typedef std::weak_ptr<Surface> WeakSurface;
+
 class Surface {
 	public:
 		Surface();
@@ -24,7 +29,7 @@ class Surface {
 		Surface(const Surface& surface) = delete;
 		Surface(Surface&& surface);
 
-		SDL_Surface* get() const;
+		SDL_Surface& get() const;
 
 		Surface convertSurface(const SDL_PixelFormat& format) const;		
 		

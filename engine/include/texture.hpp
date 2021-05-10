@@ -12,6 +12,10 @@ struct TextureContentInfo;
 typedef	uint32_t PixelFormatEnum;
 typedef	int TextureAccess;
 
+typedef std::shared_ptr<Texture> SharedTexture;
+typedef std::unique_ptr<Texture> UniqueTexture;
+typedef std::weak_ptr<Texture> WeakTexture;
+
 class Texture {
 	public:
 		Texture(const Renderer& renderer, const TextureMetaInfo& meta_info);
@@ -20,7 +24,7 @@ class Texture {
 		Texture(const Texture& texture) = delete;
 		Texture(Texture&& texture);
 
-		SDL_Texture* get() const;
+		SDL_Texture& get() const;
 
 		BlendMod getTextureBlendMod();
 		void setTextureBlendMod(const BlendMod& blendMod);

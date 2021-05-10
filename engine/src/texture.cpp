@@ -34,8 +34,8 @@ Texture::Texture(Texture&& texture)
 	texture.sdl_texture = nullptr;
 }
 
-SDL_Texture* Texture::get() const{
-	return sdl_texture;
+SDL_Texture& Texture::get() const{
+	return *sdl_texture;
 }
 
 BlendMod Texture::getTextureBlendMod() {
