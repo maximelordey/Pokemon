@@ -9,13 +9,10 @@
 #include "dimension.hpp"
 #include "rectangle.hpp"
 #include "color.hpp"
-#include "blend_mod.hpp"
+#include "image_typedef.hpp"
 
 class Surface;
 struct SurfaceCreateInfo;
-typedef uint32_t PixelFormatEnum;
-typedef int Pitch;
-typedef int PixelDepth;
 typedef std::optional<Surface> OptSurface;
 typedef std::shared_ptr<Surface> SharedSurface;
 typedef std::unique_ptr<Surface> UniqueSurface;

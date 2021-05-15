@@ -7,14 +7,12 @@
 
 #include "renderer.hpp"
 #include "surface.hpp"
-#include "blend_mod.hpp"
+#include "image_typedef.hpp"
 
 class Texture;
 class Renderer;
 struct TextureMetaInfo;
 struct TextureContentInfo;
-typedef	uint32_t PixelFormatEnum;
-typedef	int TextureAccess;
 
 typedef std::optional<Texture> OptTexture;
 typedef std::shared_ptr<Texture> SharedTexture;
@@ -55,7 +53,7 @@ struct TextureMetaInfo {
 
 struct TextureContentInfo {
 	void* pixels;
-	int pitch;
+	Pitch pitch;
 };
 
 #endif
