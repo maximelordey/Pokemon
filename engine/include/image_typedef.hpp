@@ -1,7 +1,7 @@
 #ifndef IMAGE_TYPEDEF_HPP
 #define IMAGE_TYPEDEF_HPP
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <optional>
 #include <memory>
 

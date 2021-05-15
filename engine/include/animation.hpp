@@ -8,15 +8,20 @@
 
 class Animation {
 	public:
+		Animation(const AnimationCreateInfo& createInfo);		
 		void update(const Delta delta);
 		const Texture& getCurrentTexture() const;
-
-	public:
-		std::vector<Texture> textures;
-		Delta refresh_threshold;
 	
 	private:
-		Delta current;
+		std::vector<Texture> textures;
+		Delta refresh_rate;
+		Delta elapsed;
+		std::vector<Texture>::const_iterator currentTexture;
+};
+
+struct AnimationCreateInfo {
+	std::vector<Texture> textures;
+	Delta refresh_rate;
 };
 
 #endif

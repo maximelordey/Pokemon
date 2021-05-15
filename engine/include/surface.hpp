@@ -1,7 +1,7 @@
 #ifndef SURFACE_HPP
 #define SURFACE_HPP
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <optional>
 #include <vector>
 #include <memory>
