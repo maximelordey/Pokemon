@@ -1,12 +1,22 @@
 #ifndef WINDOW_HPP
 #define WINDOW_HPP
 
-#include <string>
 #include <SDL.h>
+#include <string>
+#include <memory>
+#include <optional>
+
 #include "point.hpp"
 #include "dimension.hpp"
 
+class Window;
 typedef uint32_t WindowFlags;
+struct WindowCreateInfo;
+
+typedef std::optional<Window> OptWindow;
+typedef std::shared_ptr<Window> SharedWindow;
+typedef std::unique_ptr<Window> UniqueWindow;
+typedef std::weak_ptr<Window> WeakWindow;
 
 class Window {
 	public:
@@ -17,7 +27,7 @@ class Window {
 
 		SDL_Window* get() const;
 
-		void setTitle(std::string& title);
+		void setTitle(const std::string& title);
 		std::string getTitle() const;
 
 		void setDimension(const Dimension& dimension);
@@ -39,7 +49,7 @@ class Window {
 		SDL_Window* sdl_window;
 };
 
-typedef struct WindowCreateInfo {
+struct WindowCreateInfo {
 	std::string name;
 	WindowFlags flags;
 	Point origin;

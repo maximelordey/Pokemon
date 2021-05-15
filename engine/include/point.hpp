@@ -2,10 +2,18 @@
 #define POINT_HPP
 
 #include <cstdint>
+#include <optional>
+#include <memory>
 
-typedef struct Point {
+struct Point;
+typedef std::optional<Point> OptPoint;
+typedef std::shared_ptr<Point> SharedPoint;
+typedef std::unique_ptr<Point> UniquePoint;
+typedef std::weak_ptr<Point> WeakPoint;
+
+struct Point {
 	int32_t x;
 	int32_t y;
-} Point;
+};
 
 #endif

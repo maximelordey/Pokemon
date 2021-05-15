@@ -15,7 +15,7 @@ void GameEngine::setColor(const Color& color) {
 }
 
 void GameEngine::clear(const Color& color) {
-	this->setColor();
+	//this->setColor();
 	SDL_RenderClear(mRenderer);
 }
 
