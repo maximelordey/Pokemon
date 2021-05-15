@@ -27,7 +27,7 @@ class Window {
 
 		SDL_Window* get() const;
 
-		void setTitle(std::string& title);
+		void setTitle(const std::string& title);
 		std::string getTitle() const;
 
 		void setDimension(const Dimension& dimension);
