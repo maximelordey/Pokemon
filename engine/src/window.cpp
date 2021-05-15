@@ -30,7 +30,7 @@ SDL_Window* Window::get() const {
 	return sdl_window;
 }
 
-void Window::setTitle(std::string& title) {
+void Window::setTitle(const std::string& title) {
 	SDL_SetWindowTitle(sdl_window, title.data());
 }
 
