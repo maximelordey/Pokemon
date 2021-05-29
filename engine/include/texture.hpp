@@ -21,6 +21,7 @@ typedef std::weak_ptr<Texture> WeakTexture;
 
 class Texture {
 	public:
+		Texture();
 		Texture(const Renderer& renderer, const TextureMetaInfo& meta_info);
 		Texture(const Renderer& renderer, const Surface& surface);
 		~Texture();

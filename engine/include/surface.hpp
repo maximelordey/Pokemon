@@ -31,7 +31,7 @@ class Surface {
 
 		Surface convertSurface(const SDL_PixelFormat& format) const;		
 		
-		Surface blit(const Rectangle& rectangle) const;
+		Surface blit(const Rectangle& rectangle) ;
 
 		Rectangle getClipRect() const;
 		Color getColorKey() const;

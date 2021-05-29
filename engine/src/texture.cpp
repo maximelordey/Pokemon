@@ -1,11 +1,10 @@
 #include "texture.hpp"
 
 #include <stdexcept>
-		
-Texture::Texture()
-	: sdl_texture()
-{}
 
+Texture::Texture() : sdl_texture(nullptr)
+{}
+		
 Texture::Texture(const Renderer& renderer, const TextureMetaInfo& meta_info) {
 	sdl_texture = SDL_CreateTexture(
 		&renderer.get(),
@@ -31,18 +30,9 @@ Texture::~Texture() {
 	SDL_DestroyTexture(sdl_texture);
 }
 
-<<<<<<< HEAD
 Texture::Texture(Texture&& texture) 
 	: sdl_texture(texture.sdl_texture)
 {
-=======
-Texture::Texture(const Texture& texture) {
-	*this = texture;
-}
-
-Texture::Texture(Texture&& texture) {
-	sdl_texture = texture.sdl_texture;
->>>>>>> SPrite test.
 	texture.sdl_texture = nullptr;
 }
 
@@ -106,13 +96,6 @@ void Texture::updateTexture(const TextureContentInfo& contentInfo) {
 	);
 }
 
-<<<<<<< HEAD
-=======
-Texture& Texture::operator=(const Texture& texture) {
-	throw std::runtime_error("Copy of texture is not supported yet !");
-}
-
->>>>>>> SPrite test.
 Texture& Texture::operator=(Texture&& texture) {
 	if (this != &texture) {
 		sdl_texture = texture.sdl_texture;

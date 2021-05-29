@@ -6,21 +6,25 @@
 #include "texture.hpp"
 #include "time.hpp"
 
+class Animation;
+struct AnimationCreateInfo;
+
 class Animation {
 	public:
+		Animation();
 		Animation(const AnimationCreateInfo& createInfo);		
 		void update(const Delta delta);
 		const Texture& getCurrentTexture() const;
 	
 	private:
-		std::vector<Texture> textures;
+		std::vector<SharedTexture> textures;
 		Delta refresh_rate;
 		Delta elapsed;
-		std::vector<Texture>::const_iterator currentTexture;
+		std::vector<SharedTexture>::const_iterator currentTexture;
 };
 
 struct AnimationCreateInfo {
-	std::vector<Texture> textures;
+	std::vector<SharedTexture> textures;
 	Delta refresh_rate;
 };
 

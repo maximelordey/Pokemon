@@ -11,16 +11,23 @@ pkg_check_modules(SDL2_IMAGE REQUIRED SDL2_image)
 add_library(engine)
 
 target_sources(engine PUBLIC
+${CMAKE_CURRENT_SOURCE_DIR}/include/animation.hpp
+${CMAKE_CURRENT_SOURCE_DIR}/include/image_typedef.hpp
 ${CMAKE_CURRENT_SOURCE_DIR}/include/point.hpp
 ${CMAKE_CURRENT_SOURCE_DIR}/include/dimension.hpp
 ${CMAKE_CURRENT_SOURCE_DIR}/include/window.hpp
 ${CMAKE_CURRENT_SOURCE_DIR}/include/renderer.hpp
+${CMAKE_CURRENT_SOURCE_DIR}/include/rectangle.hpp
+${CMAKE_CURRENT_SOURCE_DIR}/include/time.hpp
 ${CMAKE_CURRENT_SOURCE_DIR}/include/color.hpp
 ${CMAKE_CURRENT_SOURCE_DIR}/include/game_engine.hpp
-
+${CMAKE_CURRENT_SOURCE_DIR}/include/line.hpp
+${CMAKE_CURRENT_SOURCE_DIR}/include/surface.hpp
+${CMAKE_CURRENT_SOURCE_DIR}/include/texture.hpp
 )
 
 target_sources(engine PRIVATE
+${CMAKE_CURRENT_SOURCE_DIR}/src/animation.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/src/game_engine.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/src/window.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer.cpp

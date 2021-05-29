@@ -3,54 +3,26 @@
 #include "game_engine.hpp"
 #include "surface.hpp"
 #include "texture.hpp"
+#include "animation.hpp"
 
 class Game;
-class Animation;
-
-class Animation {
-	public:
-		void update(const Delta& elapsed) {
-			refresh += elapsed;
-			if (refresh > refresh_rate) {
-				indice++;
-				if (indice >= textures.size()) {
-					indice = 0;
-				}
-				refresh = 0;
-			}
-		}
-
-		Texture& getTexture() {
-			return *textures.at(indice);
-		}
-
-	public:
-		std::vector<SharedTexture> textures;
-		Delta refresh_rate;
-		Delta refresh;
-		uint32_t indice;
-};
 
 class Game : public GameEngine {
-
 	Animation Load(const Renderer& renderer){
+		AnimationCreateInfo info;
 		Surface surface(std::string("/home/ubuntu/TvbKZr3.bmp"));
-		
-		Animation animation;
-		animation.refresh_rate = 150;
-		animation.refresh = 0;
-		animation.indice = 0;
 
 		Rectangle rectangle1{Point{35,38},Dimension{30,30}};
 		Rectangle rectangle2{Point{68,38},Dimension{30,30}};
 
-		Surface surface1 = surface.blit(rectangle1);
-		Surface surface2 = surface.blit(rectangle2);
+		Surface surface1(surface.blit(rectangle1));
+		Surface surface2(surface.blit(rectangle2));
 
-		animation.textures.push_back(std::make_shared<Texture>(surface1, mRenderer));
-		animation.textures.push_back(std::make_shared<Texture>(surface2, mRenderer));
+		info.refresh_rate = 150;
+		info.textures.push_back(std::make_shared<Texture>(mRenderer, surface));
+		info.textures.push_back(std::make_shared<Texture>(mRenderer, surface1));
 
-		return animation;
+		return Animation(info);
 	}	
 
 	void onCreate() {
@@ -58,7 +30,6 @@ class Game : public GameEngine {
 	}
 
 	void onEvent(const Event& event) {
-		//std::cout << "catch event" << '\n';
 		if (event.type == SDL_QUIT) {
 			mExitGameLoop = true;
 		}
@@ -71,12 +42,11 @@ class Game : public GameEngine {
 
 	void onPaint() {
 		std::cout << "onPaint" << '\n';
-		mRenderer.drawTexture(animationWalk.getTexture(), Rectangle{Point{0,0},Dimension{300,300}});
+		mRenderer.drawTexture(animationWalk.getCurrentTexture(), std::nullopt);
 	}
 
 	private:
 		Animation animationWalk;
-		Texture t;
 };
 
 int main() {
@@ -89,6 +59,7 @@ int main() {
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
+		return -1;
 	}
-	
+	return 0;
 }
