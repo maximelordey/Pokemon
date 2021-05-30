@@ -55,7 +55,7 @@ class Surface {
 };
 
 struct SurfaceCreateInfo {
-	void* pixels;
+	std::optional<void*> pixels;
 	Dimension dimension;
 	PixelDepth pixel_depth;
 	Pitch pitch;

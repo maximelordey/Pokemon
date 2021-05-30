@@ -1,26 +1,31 @@
-#ifndef ANIMATION_HPP
-#define ANIMATION_HPP
+#ifndef DYNAMIC_ANIMATION_HPP
+#define DYNAMIC_ANIMATION_HPP
 
 #include <cstdint>
 #include <vector>
 #include "texture.hpp"
 #include "time.hpp"
+#include "interface_animation.hpp"
+#include "interface_mutable.hpp"
 
-class Animation {
+class DynamicAnimation;
+struct DynamicAnimationCreateInfo;
+
+class DynamicAnimation : public InterfaceAnimation,	public InterfaceMutable	{	
 	public:
-		Animation(const AnimationCreateInfo& createInfo);		
-		void update(const Delta delta);
-		const Texture& getCurrentTexture() const;
-	
+		DynamicAnimation(const DynamicAnimationCreateInfo& createInfo);		
+		void update(const Delta delta) override;
+		const Texture& getTexture() const override;
+
 	private:
-		std::vector<Texture> textures;
+		std::vector<SharedTexture> textures;
 		Delta refresh_rate;
 		Delta elapsed;
-		std::vector<Texture>::const_iterator currentTexture;
+		std::vector<SharedTexture>::const_iterator currentTexture;
 };
 
-struct AnimationCreateInfo {
-	std::vector<Texture> textures;
+struct DynamicAnimationCreateInfo {
+	std::vector<SharedTexture> textures;
 	Delta refresh_rate;
 };
 

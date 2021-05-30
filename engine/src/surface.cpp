@@ -20,7 +20,7 @@ Surface::Surface() {
 }
 
 Surface::Surface(const SurfaceCreateInfo& infos) {
-	if (infos.pixels) {
+	if (infos.pixels.has_value()) {
 		sdl_surface = SDL_CreateRGBSurfaceWithFormat(
 			0,
 			infos.dimension.width,
@@ -30,7 +30,7 @@ Surface::Surface(const SurfaceCreateInfo& infos) {
 		);
 	} else {
 		sdl_surface = SDL_CreateRGBSurfaceWithFormatFrom(
-			infos.pixels,
+			infos.pixels.value(),
 			infos.dimension.width,
 			infos.dimension.height,
 			infos.pixel_depth,
@@ -49,7 +49,7 @@ Surface::~Surface() {
 Surface::Surface(Surface&& surface) 
 	: sdl_surface(surface.sdl_surface)
 {
-		surface.sdl_surface = nullptr;
+	surface.sdl_surface = nullptr;
 }
 
 SDL_Surface& Surface::get() const {
