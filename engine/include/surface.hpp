@@ -1,7 +1,7 @@
 #ifndef SURFACE_HPP
 #define SURFACE_HPP
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <optional>
 #include <vector>
 #include <memory>
@@ -55,7 +55,7 @@ class Surface {
 };
 
 struct SurfaceCreateInfo {
-	void* pixels;
+	std::optional<void*> pixels;
 	Dimension dimension;
 	PixelDepth pixel_depth;
 	Pitch pitch;
