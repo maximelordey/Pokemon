@@ -11,8 +11,14 @@ target_sources(specie PUBLIC
 "${CMAKE_CURRENT_SOURCE_DIR}/include/nature.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/specie.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/stat.h"
-"${CMAKE_CURRENT_SOURCE_DIR}/include/type.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/type.hpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/weight.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/effectiveness.hpp"
+)
+
+target_sources(specie PRIVATE
+"${CMAKE_CURRENT_SOURCE_DIR}/src/effectiveness.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/src/type.cpp"
 )
 
 target_link_libraries(specie PUBLIC common experience)
