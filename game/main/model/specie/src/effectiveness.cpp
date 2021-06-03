@@ -5,6 +5,14 @@
 #include "coefficient.h"
 #include "type.hpp"
 
+namespace {
+	class SharedTypeComparator {
+		bool operator()(const SharedType& type1, const SharedType& type2) {
+			return type1->isLesserThan(*type2);
+		}
+	};
+}
+
 void Effectiveness::AddOrUpdateEffectiveness(const SharedType& type, Coefficient coefficient) {
 	auto pair = content.insert(std::make_pair(type, coefficient));
 	pair.first->second = coefficient;

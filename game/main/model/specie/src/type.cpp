@@ -20,6 +20,14 @@ bool Type::isEqualTo(const Type& type) const {
 	return identifier == type.identifier;
 }
 
+bool Type::isLesserThan(const Type& type) const {
+	return identifier < type.identifier;
+}
+
+bool Type::isGreaterThan(const Type& type) const {
+	return identifier > type.identifier;
+}
+
 bool Type::operator==(const Type& type) const {
 	return this->isEqualTo(type);
 }
@@ -28,3 +36,10 @@ bool Type::operator!=(const Type& type) const {
 	return !this->isEqualTo(type);
 }
 		
+bool Type::operator>(const Type& type) const {
+	return this->isGreaterThan(type);
+}
+
+bool Type::operator<(const Type& type) const {
+	return this->isLesserThan(type);
+}

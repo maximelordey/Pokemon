@@ -18,9 +18,13 @@ class Type {
 		Coefficient GetCoefficient(const SharedType& type) const;
 
 		bool isEqualTo(const Type& type) const;
+		bool isGreaterThan(const Type& type) const;
+		bool isLesserThan(const Type& type) const;
 
 		bool operator==(const Type& type) const;
 		bool operator!=(const Type& type) const;
+		bool operator>(const Type& type) const;
+		bool operator<(const Type& type) const;
 
 	private:
 		Identifier identifier;

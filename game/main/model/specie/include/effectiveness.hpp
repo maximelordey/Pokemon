@@ -4,6 +4,8 @@
 #include <memory>
 #include <map>
 
+#include "effectiveness_comparator.hpp"
+
 class Type;
 typedef std::shared_ptr<Type> SharedType;
 typedef float Coefficient;
@@ -14,7 +16,7 @@ class Effectiveness {
 		Coefficient GetCoefficient(const SharedType& type) const;	
 		
 	private:
-		std::map<SharedType, Coefficient> content;
+		std::map<SharedType, Coefficient, EffectivenessComparator> content;
 };
 
 #endif

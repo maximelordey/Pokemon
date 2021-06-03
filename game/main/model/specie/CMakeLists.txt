@@ -14,10 +14,12 @@ target_sources(specie PUBLIC
 "${CMAKE_CURRENT_SOURCE_DIR}/include/type.hpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/weight.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/include/effectiveness.hpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/effectiveness_comparator.hpp"
 )
 
 target_sources(specie PRIVATE
 "${CMAKE_CURRENT_SOURCE_DIR}/src/effectiveness.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/src/effectiveness_comparator.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/src/type.cpp"
 )
 
