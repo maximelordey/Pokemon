@@ -14,4 +14,4 @@ target_sources(monster PUBLIC
 "${CMAKE_CURRENT_SOURCE_DIR}/include/pokemon.h"
 )
 
-target_link_libraries(monster PUBLIC common experience)
+target_link_libraries(monster PUBLIC common experience specie)

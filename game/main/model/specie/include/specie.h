@@ -3,8 +3,8 @@
 
 #include <vector>
 
-#include "type.h"
-#include "experience_curve.h"
+#include "type.hpp"
+#include "iexperience_curve.hpp"
 #include "height.h"
 #include "weight.h"
 #include "identifier.h"
@@ -15,7 +15,7 @@ typedef struct {
 	Identifier _identifier;
 	Translation _name;
 	std::vector<Type> _types;
-	ExperienceCurve _experienceCurve;
+	SharedExperienceCurve _experienceCurve;
 	Height _height;
 	Weight _weight;
 	Stat _baseHealth;

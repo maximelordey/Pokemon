@@ -1,6 +1,8 @@
 #ifndef POKEMON_H
 #define POKEMON_H
 
+#include <memory>
+
 #include "specie.h"
 #include "height.h"
 #include "weight.h"
@@ -13,7 +15,10 @@
 #include "translation.h"
 #include "identifier.h"
 
-typedef struct {
+class Pokemon;
+typedef std::unique_ptr<Pokemon> UniquePokemon;
+
+class Pokemon{
 	Identifier _identifier;
 	Translation _name;
 	Specie _specie;
@@ -35,6 +40,6 @@ typedef struct {
 	Ev _bonusEvDefenceSpe;
 	Ev _bonusEvSpeed;
 	Nature _nature;
-} Pokemon;
+};
 
 #endif
