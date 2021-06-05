@@ -1,4 +1,4 @@
-#include "erratic_experience_curve.h"
+#include "erratic_experience_curve.hpp"
 
 uint32_t ErraticExperienceCurve::getExperienceMax(uint32_t level) const {
 	uint32_t experienceMax = 0u;
@@ -14,8 +14,4 @@ uint32_t ErraticExperienceCurve::getExperienceMax(uint32_t level) const {
 	}
 
 	return experienceMax;
-}
-
-IExperienceCurve* ErraticExperienceCurve::clone () const {
-	return new ErraticExperienceCurve();
 }

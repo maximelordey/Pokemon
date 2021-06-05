@@ -1,4 +1,4 @@
-#include "fluctuating_experience_curve.h"
+#include "fluctuating_experience_curve.hpp"
 
 uint32_t FluctuatingExperienceCurve::getExperienceMax(uint32_t level) const {
 	uint32_t experienceMax = 0;
@@ -12,8 +12,4 @@ uint32_t FluctuatingExperienceCurve::getExperienceMax(uint32_t level) const {
 	}
 
 	return experienceMax;
-}
-
-IExperienceCurve* FluctuatingExperienceCurve::clone () const {
-	return new FluctuatingExperienceCurve();
 }
