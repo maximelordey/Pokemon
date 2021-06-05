@@ -6,8 +6,13 @@ add_library(computer)
 target_include_directories(computer PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include/" monster)
 
 target_sources(computer PUBLIC
-"${CMAKE_CURRENT_SOURCE_DIR}/include/box.h"
-"${CMAKE_CURRENT_SOURCE_DIR}/include/computer.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/box.hpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/computer.hpp"
+)
+
+target_sources(computer PRIVATE
+"${CMAKE_CURRENT_SOURCE_DIR}/src/box.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/src/computer.cpp"
 )
 
 target_link_libraries(computer PRIVATE monster)
