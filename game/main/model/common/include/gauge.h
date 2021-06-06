@@ -24,6 +24,7 @@ class Gauge {
 
 		Gauge& operator+=(uint32_t value);
 		Gauge& operator-=(uint32_t value);
+		
 	private:
 		uint32_t _capacity;
 		uint32_t _value;
