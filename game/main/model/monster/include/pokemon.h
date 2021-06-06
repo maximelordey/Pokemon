@@ -7,7 +7,7 @@
 #include "height.h"
 #include "weight.h"
 #include "health.h"
-#include "level.h"
+#include "level.hpp"
 #include "experience.h"
 #include "iv.h"
 #include "ev.h"
