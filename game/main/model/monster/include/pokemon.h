@@ -11,7 +11,7 @@
 #include "experience.h"
 #include "iv.h"
 #include "ev.h"
-#include "nature.h"
+#include "nature.hpp"
 #include "translation.h"
 #include "identifier.h"
 
@@ -39,7 +39,7 @@ class Pokemon{
 	Ev _bonusEvAttackSpe;
 	Ev _bonusEvDefenceSpe;
 	Ev _bonusEvSpeed;
-	Nature _nature;
+	SharedNature _nature;
 };
 
 #endif
