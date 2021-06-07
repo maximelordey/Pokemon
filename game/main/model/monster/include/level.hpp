@@ -16,6 +16,7 @@ class Level {
 		uint32_t getLevelMax() const;
 		uint32_t getLevel() const;
 		bool isLevelMax() const;
+
 	private:
 		Gauge gauge;
 };
